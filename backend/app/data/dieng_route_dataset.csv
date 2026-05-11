@@ -1,0 +1,181 @@
+name,gradient,width,visibility,guardrail,surface,elevation,curve_count,lighting,vehicle_type,weather,effective_visibility,vehicle_score,safety_class
+Wonosobo - Kejajar,7.828518476459622,6.0,8,1,aspal,1200,5,1,motorcycle,cerah,8.004194957777793,0.6,0
+Wonosobo - Kejajar,7.098226141409601,6.0,8,1,aspal,1200,5,1,motorcycle,mendung,6.435966042362583,0.6,0
+Wonosobo - Kejajar,7.347050844067109,6.0,8,1,aspal,1200,5,1,motorcycle,hujan,4.004168337281324,0.6,0
+Wonosobo - Kejajar,7.877936062346687,6.0,8,1,aspal,1200,5,1,motorcycle,kabut,2.5429115534169258,0.6,0
+Wonosobo - Kejajar,7.246958003579058,6.0,8,1,aspal,1200,5,1,car,cerah,8.282751116059814,0.8,0
+Wonosobo - Kejajar,8.995827437803865,6.0,8,1,aspal,1200,5,1,car,mendung,6.382274140646698,0.8,0
+Wonosobo - Kejajar,8.166647406540264,6.0,8,1,aspal,1200,5,1,car,hujan,3.6923608645766817,0.8,0
+Wonosobo - Kejajar,7.298488638070598,6.0,8,1,aspal,1200,5,1,car,kabut,2.035983230203423,0.8,0
+Wonosobo - Kejajar,7.513579318722737,6.0,8,1,aspal,1200,5,1,bus,cerah,7.947269599929724,0.4,0
+Wonosobo - Kejajar,8.145151387427886,6.0,8,1,aspal,1200,5,1,bus,mendung,6.420205822956499,0.4,0
+Wonosobo - Kejajar,8.991346624006148,6.0,8,1,aspal,1200,5,1,bus,hujan,3.894175589788395,0.4,0
+Wonosobo - Kejajar,8.207629075907308,6.0,8,1,aspal,1200,5,1,bus,kabut,2.986709670904127,0.4,0
+Kejajar - Dieng Kulon,11.82935405465891,5.5,7,1,aspal,1600,8,1,motorcycle,cerah,6.967532846557374,0.6,1
+Kejajar - Dieng Kulon,12.101459849090547,5.5,7,1,aspal,1600,8,1,motorcycle,mendung,5.67918043085129,0.6,1
+Kejajar - Dieng Kulon,12.025029934679893,5.5,7,1,aspal,1600,8,1,motorcycle,hujan,3.4940794468164365,0.6,1
+Kejajar - Dieng Kulon,11.158347464464502,5.5,7,1,aspal,1600,8,1,motorcycle,kabut,1.575886335612433,0.6,1
+Kejajar - Dieng Kulon,11.097939025873632,5.5,7,1,aspal,1600,8,1,car,cerah,7.087363734603102,0.8,1
+Kejajar - Dieng Kulon,12.347870650124896,5.5,7,1,aspal,1600,8,1,car,mendung,6.164890915115476,0.8,1
+Kejajar - Dieng Kulon,12.31290269062186,5.5,7,1,aspal,1600,8,1,car,hujan,3.764995861771787,0.8,1
+Kejajar - Dieng Kulon,12.75380638242495,5.5,7,1,aspal,1600,8,1,car,kabut,2.6254356181660663,0.8,1
+Kejajar - Dieng Kulon,12.424537122471298,5.5,7,1,aspal,1600,8,1,bus,cerah,7.456717283303929,0.4,1
+Kejajar - Dieng Kulon,12.206241382795849,5.5,7,1,aspal,1600,8,1,bus,mendung,5.603420854824371,0.4,1
+Kejajar - Dieng Kulon,12.505738669909585,5.5,7,1,aspal,1600,8,1,bus,hujan,2.898266278445494,0.4,1
+Kejajar - Dieng Kulon,12.172402303314266,5.5,7,1,aspal,1600,8,1,bus,kabut,2.2416469204750626,0.4,1
+Dieng Kulon - Kawah Sikidang,5.109567113184662,5.0,6,1,aspal,2060,3,1,motorcycle,cerah,6.1145644720878325,0.6,0
+Dieng Kulon - Kawah Sikidang,4.747720192416441,5.0,6,1,aspal,2060,3,1,motorcycle,mendung,4.973653817243033,0.6,0
+Dieng Kulon - Kawah Sikidang,4.971247007209534,5.0,6,1,aspal,2060,3,1,motorcycle,hujan,3.295558823718774,0.6,0
+Dieng Kulon - Kawah Sikidang,5.394550798589172,5.0,6,1,aspal,2060,3,1,motorcycle,kabut,1.7014450998491986,0.6,0
+Dieng Kulon - Kawah Sikidang,4.225839235921455,5.0,6,1,aspal,2060,3,1,car,cerah,5.94008545589942,0.8,0
+Dieng Kulon - Kawah Sikidang,5.4621807486236,5.0,6,1,aspal,2060,3,1,car,mendung,4.846723873428803,0.8,0
+Dieng Kulon - Kawah Sikidang,4.562515512201097,5.0,6,1,aspal,2060,3,1,car,hujan,2.41529433492458,0.8,0
+Dieng Kulon - Kawah Sikidang,3.917387523583413,5.0,6,1,aspal,2060,3,1,car,kabut,1.9137455338042555,0.8,0
+Dieng Kulon - Kawah Sikidang,4.43120586149599,5.0,6,1,aspal,2060,3,1,bus,cerah,6.516871738415617,0.4,0
+Dieng Kulon - Kawah Sikidang,5.481412806395679,5.0,6,1,aspal,2060,3,1,bus,mendung,4.9539048170180955,0.4,0
+Dieng Kulon - Kawah Sikidang,4.3714235712012846,5.0,6,1,aspal,2060,3,1,bus,hujan,2.188126269296261,0.4,0
+Dieng Kulon - Kawah Sikidang,4.66622028239517,5.0,6,1,aspal,2060,3,1,bus,kabut,1.9779685212283615,0.4,0
+Dieng Kulon - Candi Arjuna,3.13118192178272,4.5,7,1,aspal,2060,2,1,motorcycle,cerah,6.972641237971961,0.6,0
+Dieng Kulon - Candi Arjuna,3.3188157218020122,4.5,7,1,aspal,2060,2,1,motorcycle,mendung,6.040701969262727,0.6,0
+Dieng Kulon - Candi Arjuna,3.112464715533619,4.5,7,1,aspal,2060,2,1,motorcycle,hujan,3.9462116544042023,0.6,0
+Dieng Kulon - Candi Arjuna,3.1878404486193883,4.5,7,1,aspal,2060,2,1,motorcycle,kabut,1.8024274524743977,0.6,0
+Dieng Kulon - Candi Arjuna,3.416940706193977,4.5,7,1,aspal,2060,2,1,car,cerah,6.435676523162109,0.8,0
+Dieng Kulon - Candi Arjuna,2.8390893433735105,4.5,7,1,aspal,2060,2,1,car,mendung,5.607849385570097,0.8,0
+Dieng Kulon - Candi Arjuna,2.4980584223312703,4.5,7,1,aspal,2060,2,1,car,hujan,3.7737781489502296,0.8,0
+Dieng Kulon - Candi Arjuna,3.4174088014675923,4.5,7,1,aspal,2060,2,1,car,kabut,2.428459408968137,0.8,0
+Dieng Kulon - Candi Arjuna,3.512498550442344,4.5,7,1,aspal,2060,2,1,bus,cerah,6.639224112170251,0.4,0
+Dieng Kulon - Candi Arjuna,2.8747588599771046,4.5,7,1,aspal,2060,2,1,bus,mendung,5.4352009923492455,0.4,0
+Dieng Kulon - Candi Arjuna,3.6178278000605286,4.5,7,1,aspal,2060,2,1,bus,hujan,3.7146986359670686,0.4,0
+Dieng Kulon - Candi Arjuna,3.824540797990717,4.5,7,1,aspal,2060,2,1,bus,kabut,2.0790561427053187,0.4,0
+Dieng Kulon - Telaga Warna,6.7199955937921985,4.0,5,1,aspal,2050,4,0,motorcycle,cerah,4.962606281745567,0.6,0
+Dieng Kulon - Telaga Warna,7.21232662022345,4.0,5,1,aspal,2050,4,0,motorcycle,mendung,4.387901554410273,0.6,0
+Dieng Kulon - Telaga Warna,6.866036628849736,4.0,5,1,aspal,2050,4,0,motorcycle,hujan,2.140744432564684,0.6,0
+Dieng Kulon - Telaga Warna,6.907144598743789,4.0,5,1,aspal,2050,4,0,motorcycle,kabut,1.6165639087262484,0.6,0
+Dieng Kulon - Telaga Warna,6.755582606585514,4.0,5,1,aspal,2050,4,0,car,cerah,4.960494927967856,0.8,0
+Dieng Kulon - Telaga Warna,6.965364431310566,4.0,5,1,aspal,2050,4,0,car,mendung,3.7664851208371277,0.8,0
+Dieng Kulon - Telaga Warna,6.571230035785859,4.0,5,1,aspal,2050,4,0,car,hujan,2.0245803815012353,0.8,0
+Dieng Kulon - Telaga Warna,6.689122954409209,4.0,5,1,aspal,2050,4,0,car,kabut,1.4188974700863635,0.8,0
+Dieng Kulon - Telaga Warna,6.815672034570869,4.0,5,1,aspal,2050,4,0,bus,cerah,4.85600353805545,0.4,0
+Dieng Kulon - Telaga Warna,6.598065282492839,4.0,5,1,aspal,2050,4,0,bus,mendung,4.182532830029177,0.4,0
+Dieng Kulon - Telaga Warna,6.2235609578026,4.0,5,1,aspal,2050,4,0,bus,hujan,2.1881102292165004,0.4,0
+Dieng Kulon - Telaga Warna,6.96666487875511,4.0,5,1,aspal,2050,4,0,bus,kabut,1.5714368721303105,0.4,0
+Jalur Gardu Pandang,17.631868995913027,3.5,3,0,aspal,2100,12,0,motorcycle,cerah,2.7908841254554577,0.6,1
+Jalur Gardu Pandang,18.3179521603081,3.5,3,0,aspal,2100,12,0,motorcycle,mendung,2.511453979919333,0.6,1
+Jalur Gardu Pandang,17.64422127400346,3.5,3,0,aspal,2100,12,0,motorcycle,hujan,1.4615339570530193,0.6,1
+Jalur Gardu Pandang,18.23357260114828,3.5,3,0,aspal,2100,12,0,motorcycle,kabut,0.44196791729241613,0.6,1
+Jalur Gardu Pandang,18.62853717022475,3.5,3,0,aspal,2100,12,0,car,cerah,3.6027495031998256,0.8,1
+Jalur Gardu Pandang,18.028733830053945,3.5,3,0,aspal,2100,12,0,car,mendung,2.278061163751253,0.8,1
+Jalur Gardu Pandang,18.562691402777542,3.5,3,0,aspal,2100,12,0,car,hujan,1.3208699600972251,0.8,1
+Jalur Gardu Pandang,17.9667378317514,3.5,3,0,aspal,2100,12,0,car,kabut,0.7588328617617293,0.8,1
+Jalur Gardu Pandang,18.078848177249533,3.5,3,0,aspal,2100,12,0,bus,cerah,3.1845647075415044,0.4,1
+Jalur Gardu Pandang,18.201301335170825,3.5,3,0,aspal,2100,12,0,bus,mendung,2.6766644344196022,0.4,1
+Jalur Gardu Pandang,17.34675296005778,3.5,3,0,aspal,2100,12,0,bus,hujan,1.129348075508569,0.4,1
+Jalur Gardu Pandang,18.269380548790487,3.5,3,0,aspal,2100,12,0,bus,kabut,0.9731776905841957,0.4,1
+Jalur ke Bukit Sikunir,20.043563278148124,3.0,4,0,batu,2200,10,0,motorcycle,cerah,3.985825591546534,0.6,1
+Jalur ke Bukit Sikunir,19.724974098566932,3.0,4,0,batu,2200,10,0,motorcycle,mendung,3.5994695635611538,0.6,1
+Jalur ke Bukit Sikunir,19.997647862798022,3.0,4,0,batu,2200,10,0,motorcycle,hujan,1.86994560666038,0.6,1
+Jalur ke Bukit Sikunir,19.902286421560163,3.0,4,0,batu,2200,10,0,motorcycle,kabut,1.5005362456300302,0.6,1
+Jalur ke Bukit Sikunir,20.79344607646572,3.0,4,0,batu,2200,10,0,car,cerah,3.8987313789822187,0.8,1
+Jalur ke Bukit Sikunir,20.263472159728636,3.0,4,0,batu,2200,10,0,car,mendung,2.6864857833297298,0.8,1
+Jalur ke Bukit Sikunir,20.980716639676253,3.0,4,0,batu,2200,10,0,car,hujan,1.986294134716372,0.8,1
+Jalur ke Bukit Sikunir,20.757162304008176,3.0,4,0,batu,2200,10,0,car,kabut,0.8065813884069315,0.8,1
+Jalur ke Bukit Sikunir,19.661622682496297,3.0,4,0,batu,2200,10,0,bus,cerah,4.418787428460012,0.4,1
+Jalur ke Bukit Sikunir,19.339885955533344,3.0,4,0,batu,2200,10,0,bus,mendung,3.153791536599909,0.4,1
+Jalur ke Bukit Sikunir,19.573402092614913,3.0,4,0,batu,2200,10,0,bus,hujan,1.9765230198537092,0.4,1
+Jalur ke Bukit Sikunir,19.674238850990044,3.0,4,0,batu,2200,10,0,bus,kabut,0.9916139230443943,0.4,1
+Jalur Sembungan,14.651560413919949,3.5,5,0,aspal,2300,9,0,motorcycle,cerah,4.946592008431132,0.6,1
+Jalur Sembungan,15.699587739380995,3.5,5,0,aspal,2300,9,0,motorcycle,mendung,4.298539106345159,0.6,1
+Jalur Sembungan,14.97348383995196,3.5,5,0,aspal,2300,9,0,motorcycle,hujan,2.101275069663044,0.6,1
+Jalur Sembungan,14.518225384411442,3.5,5,0,aspal,2300,9,0,motorcycle,kabut,1.9276338470897572,0.6,1
+Jalur Sembungan,16.003330737952446,3.5,5,0,aspal,2300,9,0,car,cerah,5.102214604708939,0.8,1
+Jalur Sembungan,13.96713224446531,3.5,5,0,aspal,2300,9,0,car,mendung,4.004307623807578,0.8,1
+Jalur Sembungan,14.695937608066817,3.5,5,0,aspal,2300,9,0,car,hujan,2.862668821996781,0.8,1
+Jalur Sembungan,15.395274936392653,3.5,5,0,aspal,2300,9,0,car,kabut,1.614612902405259,0.8,1
+Jalur Sembungan,15.38225382028185,3.5,5,0,aspal,2300,9,0,bus,cerah,4.8697941894152486,0.4,1
+Jalur Sembungan,15.885878755592996,3.5,5,0,aspal,2300,9,0,bus,mendung,4.097153948470315,0.4,1
+Jalur Sembungan,15.165373788106983,3.5,5,0,aspal,2300,9,0,bus,hujan,1.8514998057880427,0.4,1
+Jalur Sembungan,14.849883443778525,3.5,5,0,aspal,2300,9,0,bus,kabut,1.585432854695456,0.4,1
+Jalur Batu Ratapan Angin,14.119922494790652,4.0,4,0,aspal,2100,7,0,motorcycle,cerah,4.315148661125891,0.6,1
+Jalur Batu Ratapan Angin,13.480480419343467,4.0,4,0,aspal,2100,7,0,motorcycle,mendung,3.063032671854142,0.6,1
+Jalur Batu Ratapan Angin,13.468738096596244,4.0,4,0,aspal,2100,7,0,motorcycle,hujan,2.4530355856285753,0.6,1
+Jalur Batu Ratapan Angin,14.641519222888443,4.0,4,0,aspal,2100,7,0,motorcycle,kabut,1.038965571633974,0.6,1
+Jalur Batu Ratapan Angin,13.771921833357053,4.0,4,0,aspal,2100,7,0,car,cerah,4.36399800131223,0.8,1
+Jalur Batu Ratapan Angin,13.172678326224673,4.0,4,0,aspal,2100,7,0,car,mendung,2.9852698912974227,0.8,1
+Jalur Batu Ratapan Angin,14.103134868978788,4.0,4,0,aspal,2100,7,0,car,hujan,1.5515684426052312,0.8,1
+Jalur Batu Ratapan Angin,14.22450543138582,4.0,4,0,aspal,2100,7,0,car,kabut,1.66555783399996,0.8,1
+Jalur Batu Ratapan Angin,14.42075875716519,4.0,4,0,aspal,2100,7,0,bus,cerah,3.705586116058833,0.4,1
+Jalur Batu Ratapan Angin,13.892418503832753,4.0,4,0,aspal,2100,7,0,bus,mendung,3.008671844011753,0.4,1
+Jalur Batu Ratapan Angin,13.215846707120479,4.0,4,0,aspal,2100,7,0,bus,hujan,0.8434146964269242,0.4,1
+Jalur Batu Ratapan Angin,15.05549261848255,4.0,4,0,aspal,2100,7,0,bus,kabut,1.3394561963178107,0.4,1
+Jalur Kawah Candradimuka,15.342914382457623,3.0,4,0,batu,2150,8,0,motorcycle,cerah,4.2234484910869226,0.6,1
+Jalur Kawah Candradimuka,15.7559362162666,3.0,4,0,batu,2150,8,0,motorcycle,mendung,3.440392843761749,0.6,1
+Jalur Kawah Candradimuka,15.668742896701078,3.0,4,0,batu,2150,8,0,motorcycle,hujan,1.7871515672388125,0.6,1
+Jalur Kawah Candradimuka,15.414460475648475,3.0,4,0,batu,2150,8,0,motorcycle,kabut,1.5975682814458452,0.6,1
+Jalur Kawah Candradimuka,16.02206198595037,3.0,4,0,batu,2150,8,0,car,cerah,4.191784869612975,0.8,1
+Jalur Kawah Candradimuka,16.0105151791693,3.0,4,0,batu,2150,8,0,car,mendung,3.2542142252632886,0.8,1
+Jalur Kawah Candradimuka,16.40363680250344,3.0,4,0,batu,2150,8,0,car,hujan,2.202465448051113,0.8,1
+Jalur Kawah Candradimuka,16.045322524761087,3.0,4,0,batu,2150,8,0,car,kabut,1.2866209306135092,0.8,1
+Jalur Kawah Candradimuka,16.902869384783543,3.0,4,0,batu,2150,8,0,bus,cerah,3.8222349935683857,0.4,1
+Jalur Kawah Candradimuka,15.638283496160435,3.0,4,0,batu,2150,8,0,bus,mendung,3.1920874894840847,0.4,1
+Jalur Kawah Candradimuka,15.950248911070696,3.0,4,0,batu,2150,8,0,bus,hujan,1.9429086065349261,0.4,1
+Jalur Kawah Candradimuka,16.852695825863716,3.0,4,0,batu,2150,8,0,bus,kabut,1.041548926481357,0.4,1
+Tanjakan Sikarim,45.67979893044055,3.0,2,0,aspal,1800,15,0,motorcycle,cerah,2.2498063174746226,0.6,2
+Tanjakan Sikarim,44.92885655871704,3.0,2,0,aspal,1800,15,0,motorcycle,mendung,1.0956323691656178,0.6,2
+Tanjakan Sikarim,45.34040876394323,3.0,2,0,aspal,1800,15,0,motorcycle,hujan,1.112575051005708,0.6,2
+Tanjakan Sikarim,45.72367474449637,3.0,2,0,aspal,1800,15,0,motorcycle,kabut,0.35934013253137287,0.6,2
+Tanjakan Sikarim,45.13741413108846,3.0,2,0,aspal,1800,15,0,car,cerah,2.275043006833835,0.8,2
+Tanjakan Sikarim,44.46431928338252,3.0,2,0,aspal,1800,15,0,car,mendung,1.8847180862044195,0.8,2
+Tanjakan Sikarim,45.17985980416495,3.0,2,0,aspal,1800,15,0,car,hujan,0.7574163910832519,0.8,2
+Tanjakan Sikarim,46.08623272467017,3.0,2,0,aspal,1800,15,0,car,kabut,0.6609626751544082,0.8,2
+Tanjakan Sikarim,45.254140619989364,3.0,2,0,aspal,1800,15,0,bus,cerah,2.3452737436762194,0.4,2
+Tanjakan Sikarim,44.245567235155036,3.0,2,0,aspal,1800,15,0,bus,mendung,1.8503499907398364,0.4,2
+Tanjakan Sikarim,45.883456831868365,3.0,2,0,aspal,1800,15,0,bus,hujan,1.2514333515044467,0.4,2
+Tanjakan Sikarim,44.69532187185537,3.0,2,0,aspal,1800,15,0,bus,kabut,0.7790042179422638,0.4,2
+Tanjakan Watu Angkruk (15%),34.51632368177616,3.5,3,0,aspal,1900,12,0,motorcycle,cerah,3.1513513800704285,0.6,2
+Tanjakan Watu Angkruk (15%),34.6361692641564,3.5,3,0,aspal,1900,12,0,motorcycle,mendung,2.8075331082281316,0.6,2
+Tanjakan Watu Angkruk (15%),34.6766794355452,3.5,3,0,aspal,1900,12,0,motorcycle,hujan,1.8484531490990943,0.6,2
+Tanjakan Watu Angkruk (15%),35.26797774845494,3.5,3,0,aspal,1900,12,0,motorcycle,kabut,0.8754465353893854,0.6,2
+Tanjakan Watu Angkruk (15%),35.67910055028613,3.5,3,0,aspal,1900,12,0,car,cerah,2.917110863426626,0.8,2
+Tanjakan Watu Angkruk (15%),34.989613272645975,3.5,3,0,aspal,1900,12,0,car,mendung,1.9504406373978262,0.8,2
+Tanjakan Watu Angkruk (15%),35.49803163056598,3.5,3,0,aspal,1900,12,0,car,hujan,1.551648102673675,0.8,2
+Tanjakan Watu Angkruk (15%),35.20939904439628,3.5,3,0,aspal,1900,12,0,car,kabut,1.1136825642567048,0.8,2
+Tanjakan Watu Angkruk (15%),34.17361994948617,3.5,3,0,aspal,1900,12,0,bus,cerah,3.12442392960039,0.4,2
+Tanjakan Watu Angkruk (15%),34.542863361934735,3.5,3,0,aspal,1900,12,0,bus,mendung,2.281620613417346,0.4,2
+Tanjakan Watu Angkruk (15%),35.16449122261914,3.5,3,0,aspal,1900,12,0,bus,hujan,0.5745381158486946,0.4,2
+Tanjakan Watu Angkruk (15%),35.26593561289289,3.5,3,0,aspal,1900,12,0,bus,kabut,0.8997185427406079,0.4,2
+Jalur Alternatif Batur,31.32020341002295,2.5,2,0,tanah,1700,18,0,motorcycle,cerah,1.4169386996470497,0.6,2
+Jalur Alternatif Batur,29.296653919208595,2.5,2,0,tanah,1700,18,0,motorcycle,mendung,1.4265291582067294,0.6,2
+Jalur Alternatif Batur,29.444217054079253,2.5,2,0,tanah,1700,18,0,motorcycle,hujan,1.2962585272285672,0.6,2
+Jalur Alternatif Batur,29.8953359528461,2.5,2,0,tanah,1700,18,0,motorcycle,kabut,0.46759778368695204,0.6,2
+Jalur Alternatif Batur,30.46991142792455,2.5,2,0,tanah,1700,18,0,car,cerah,1.6863324279392342,0.8,2
+Jalur Alternatif Batur,30.34032538930278,2.5,2,0,tanah,1700,18,0,car,mendung,1.3635691463123734,0.8,2
+Jalur Alternatif Batur,30.653484188974208,2.5,2,0,tanah,1700,18,0,car,hujan,0.7371720715083673,0.8,2
+Jalur Alternatif Batur,29.161039745280245,2.5,2,0,tanah,1700,18,0,car,kabut,0.6736132493916589,0.8,2
+Jalur Alternatif Batur,30.25158069450454,2.5,2,0,tanah,1700,18,0,bus,cerah,2.089896960683153,0.4,2
+Jalur Alternatif Batur,29.54068304143097,2.5,2,0,tanah,1700,18,0,bus,mendung,1.3545907064069986,0.4,2
+Jalur Alternatif Batur,28.947176343430836,2.5,2,0,tanah,1700,18,0,bus,hujan,1.0046845668523408,0.4,2
+Jalur Alternatif Batur,29.748011830471423,2.5,2,0,tanah,1700,18,0,bus,kabut,0.31725391044488904,0.4,2
+Turunan Sikarim (malam),44.978849871209135,3.0,1,0,aspal,1800,15,0,motorcycle,cerah,0.5822074199905236,0.6,2
+Turunan Sikarim (malam),45.14792032230473,3.0,1,0,aspal,1800,15,0,motorcycle,mendung,0.6082421655611815,0.6,2
+Turunan Sikarim (malam),45.208026047435034,3.0,1,0,aspal,1800,15,0,motorcycle,hujan,0.44881872527031874,0.6,2
+Turunan Sikarim (malam),44.6668709270168,3.0,1,0,aspal,1800,15,0,motorcycle,kabut,0.1,0.6,2
+Turunan Sikarim (malam),45.63861189053577,3.0,1,0,aspal,1800,15,0,car,cerah,0.4338853017863675,0.8,2
+Turunan Sikarim (malam),44.62763432347121,3.0,1,0,aspal,1800,15,0,car,mendung,0.3207617332839512,0.8,2
+Turunan Sikarim (malam),45.49552429084503,3.0,1,0,aspal,1800,15,0,car,hujan,0.8915130393415136,0.8,2
+Turunan Sikarim (malam),44.9292417070122,3.0,1,0,aspal,1800,15,0,car,kabut,0.2542202345726917,0.8,2
+Turunan Sikarim (malam),44.59436717631264,3.0,1,0,aspal,1800,15,0,bus,cerah,1.4146369042804348,0.4,2
+Turunan Sikarim (malam),45.86612334291033,3.0,1,0,aspal,1800,15,0,bus,mendung,0.4373823261293735,0.4,2
+Turunan Sikarim (malam),44.87734725778572,3.0,1,0,aspal,1800,15,0,bus,hujan,0.325059565140605,0.4,2
+Turunan Sikarim (malam),44.36426264875293,3.0,1,0,aspal,1800,15,0,bus,kabut,0.1,0.4,2
+Jalur Lingkar Tebing,25.12359846663895,2.5,2,0,batu,2000,20,0,motorcycle,cerah,1.371086551892659,0.6,2
+Jalur Lingkar Tebing,25.294566269021406,2.5,2,0,batu,2000,20,0,motorcycle,mendung,1.0503744111792173,0.6,2
+Jalur Lingkar Tebing,26.382197879634667,2.5,2,0,batu,2000,20,0,motorcycle,hujan,1.1207450302111654,0.6,2
+Jalur Lingkar Tebing,25.52340786519273,2.5,2,0,batu,2000,20,0,motorcycle,kabut,0.1,0.6,2
+Jalur Lingkar Tebing,25.564225399113187,2.5,2,0,batu,2000,20,0,car,cerah,2.3430205392787427,0.8,2
+Jalur Lingkar Tebing,24.023407892060963,2.5,2,0,batu,2000,20,0,car,mendung,1.1483149377495008,0.8,2
+Jalur Lingkar Tebing,24.78677562830988,2.5,2,0,batu,2000,20,0,car,hujan,1.032394402413977,0.8,2
+Jalur Lingkar Tebing,25.38155025193745,2.5,2,0,batu,2000,20,0,car,kabut,1.5599402853449982,0.8,2
+Jalur Lingkar Tebing,25.019584832454356,2.5,2,0,batu,2000,20,0,bus,cerah,1.9069790780967606,0.4,2
+Jalur Lingkar Tebing,25.14418437400694,2.5,2,0,batu,2000,20,0,bus,mendung,1.8417075622545271,0.4,2
+Jalur Lingkar Tebing,25.22234741354381,2.5,2,0,batu,2000,20,0,bus,hujan,0.766291844725439,0.4,2
+Jalur Lingkar Tebing,24.929594620232812,2.5,2,0,batu,2000,20,0,bus,kabut,0.5937256925547587,0.4,2

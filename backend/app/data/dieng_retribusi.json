@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Kawah Sikidang",
+        "retribusi_lokal": 20000,
+        "retribusi_asing": 50000
+    },
+    {
+        "name": "Candi Arjuna",
+        "retribusi_lokal": 15000,
+        "retribusi_asing": 30000
+    },
+    {
+        "name": "Bukit Sikunir",
+        "retribusi_lokal": 15000,
+        "retribusi_asing": 15000
+    }
+]

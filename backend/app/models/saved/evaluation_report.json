@@ -1,0 +1,50 @@
+{
+  "project": "DITA - Dieng Intelligence Tourism Assistant",
+  "team": "PJK-GM067",
+  "ai_engineer": "Ida Masruroh (APC466D6X0040)",
+  "dataset": {
+    "source": "Open-Meteo Historical Weather API",
+    "location": "Dieng Plateau (-7.2056, 109.8731)",
+    "elevation": "2.060m",
+    "period": "2023-01-01 to 2023-12-31",
+    "total_records": 8760,
+    "features_engineered": 21
+  },
+  "models": {
+    "temperature_prediction": {
+      "type": "Random Forest Regressor",
+      "n_estimators": 100,
+      "test_split": "20%",
+      "metrics": {
+        "mae": 0.0657014302687222,
+        "rmse": 0.1541519613467703,
+        "r2": 0.9950539276702852,
+        "cv_r2": 0.9944498656077968
+      }
+    },
+    "rain_prediction": {
+      "type": "Gradient Boosting Classifier",
+      "n_estimators": 100,
+      "test_split": "20%",
+      "metrics": {
+        "accuracy": 0.8707093821510298,
+        "precision": 0.8159340659340659,
+        "recall": 0.6513157894736842,
+        "f1": 0.724390243902439
+      }
+    },
+    "risk_classification": {
+      "type": "Gradient Boosting Classifier",
+      "n_estimators": 150,
+      "classes": [
+        "Aman",
+        "Waspada",
+        "Bahaya"
+      ],
+      "test_split": "20%",
+      "metrics": {
+        "accuracy": 0.9856979405034325
+      }
+    }
+  }
+}
