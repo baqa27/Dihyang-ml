@@ -1,13 +1,20 @@
 # Dihyang Web — Dieng Intelligence Tourism Assistant (DITA)
 
 > **Tim Capstone PJK-GM067** | Pijak × IBM SkillsBuild  
-> Tema: AI for Smart Tourism Experience
+> Tema: AI for Smart Tourism Experience  
+> **🔴 REALTIME MONITORING ENABLED** — WebSocket + Auto-Scraping
 
 ---
 
 ## 📋 Project Overview
 
-Dihyang Web adalah platform pariwisata cerdas berbasis AI yang dirancang untuk mengatasi kesenjangan informasi keamanan di kawasan wisata Dataran Tinggi Dieng, Wonosobo. Dengan chatbot DITA, wisatawan mendapatkan rekomendasi rute aman, prediksi cuaca, dan informasi retribusi resmi secara real-time.
+Dihyang Web adalah platform pariwisata cerdas berbasis AI yang dirancang untuk mengatasi kesenjangan informasi keamanan di kawasan wisata Dataran Tinggi Dieng, Wonosobo. Dengan chatbot DITA, wisatawan mendapatkan rekomendasi rute aman, prediksi cuaca, dan informasi retribusi resmi secara **real-time**.
+
+### ✨ Fitur Realtime
+- **WebSocket Dashboard** — Update cuaca setiap 5 menit otomatis
+- **Auto-Scraping** — Data cuaca terbaru dari Open-Meteo API
+- **ML Predictions** — Prediksi suhu, hujan, dan risiko secara realtime
+- **Auto-Retrain** — Model ML diperbarui otomatis setiap minggu dengan data terbaru
 
 ## 🏗️ Architecture
 
@@ -76,50 +83,94 @@ CAPSTONE/
 - Python 3.13+
 - Node.js 18+
 
-### Backend
+### 1. Backend Setup
 ```bash
 cd backend
 python -m venv .venv
 .\.venv\Scripts\activate    # Windows
 pip install -r requirements.txt
+
+# Scrape data cuaca historis (2022-2025)
+python scraper/scrape.py
+
+# Scrape data realtime
+python scraper/scrape.py --realtime
+
+# Train ML models
+python -m app.models.train_weather_model
+python -m app.models.train_route_model
+
+# Jalankan server (dengan realtime scheduler)
 uvicorn app.main:app --reload
 ```
 
-### Frontend
+### 2. Frontend Setup
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-### Train ML Models
-```bash
-cd backend
-python -m app.models.train_weather_model
-python -m app.models.train_route_model
-```
-
-### Environment Variables
+### 3. Environment Variables
 Create `backend/.env`:
 ```env
 GEMINI_API_KEY=your_api_key_here
 ```
 
+## 🔄 Realtime Features
+
+### Auto-Scraping
+Server otomatis scrape data cuaca setiap **5 menit** saat berjalan:
+```bash
+# Manual trigger
+python scraper/scrape.py --realtime      # Data cuaca terkini
+python scraper/scrape.py --latest        # 30 hari terakhir untuk retrain
+```
+
+### WebSocket Endpoints
+- `ws://localhost:8000/api/realtime/ws/weather` — Weather updates
+- `ws://localhost:8000/api/realtime/ws/predictions` — ML predictions
+- `ws://localhost:8000/api/realtime/ws/dashboard` — Combined dashboard
+
+### Auto-Retrain
+Model ML otomatis retrain setiap **7 hari** dengan data terbaru:
+```bash
+# Manual trigger
+curl -X POST http://localhost:8000/api/realtime/retrain
+
+# Check status
+curl http://localhost:8000/api/realtime/status
+```
+
 ## 📊 API Endpoints
 
+### Weather & Realtime
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/weather/current` | GET | Current weather data |
 | `/api/weather/historical` | GET | Historical weather dataset |
+| `/api/realtime/status` | GET | Realtime system status |
+| `/api/realtime/retrain` | POST | Trigger manual retrain |
+| `ws://.../realtime/ws/weather` | WS | Weather WebSocket |
+| `ws://.../realtime/ws/dashboard` | WS | Dashboard WebSocket |
+
+### AI & ML
+| Endpoint | Method | Description |
+|----------|--------|-------------|
 | `/api/chat` | POST | DITA NLP chatbot |
 | `/api/itinerary/generate` | POST | AI-powered itinerary |
-| `/api/destinations/` | GET | Destination information |
 | `/api/ml/model-info` | GET | ML model metrics |
 | `/api/ml/predict/quick` | GET | Real-time prediction |
+| `/api/ml/predict/dashboard` | GET | Dashboard predictions |
 | `/api/ml/predict/temperature` | POST | Temperature prediction |
 | `/api/ml/predict/rain` | POST | Rain prediction |
 | `/api/ml/predict/risk` | POST | Tourism risk level |
 | `/api/ml/predict/route-safety` | POST | Route safety classification |
+
+### Destinations
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/destinations/` | GET | Destination information |
 
 ## 👥 Team
 

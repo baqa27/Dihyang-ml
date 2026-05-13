@@ -1,4 +1,4 @@
-.itinerary-page { padding: var(--space-2xl) 0 var(--space-4xl); }
+.itinerary-page { padding: 100px 0 var(--space-4xl); }
 .itinerary-page__header { text-align: center; margin-bottom: var(--space-2xl); display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
 .itinerary-page__header p { font-size: 1.05rem; }
 .itinerary-page__layout { display: grid; grid-template-columns: 340px 1fr; gap: var(--space-xl); align-items: start; }
@@ -35,5 +35,6 @@
 .timeline-item__info h5 { font-size: 0.95rem; margin-bottom: 4px; }
 .timeline-item__info p { font-size: 0.85rem; line-height: 1.5; }
 .timeline-item__cost { display: inline-block; margin-top: 6px; font-size: 0.78rem; font-weight: 600; color: var(--accent-400); }
+.itinerary-demo-notice { padding: var(--space-sm) var(--space-md); background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--warning-300); }
 @media (max-width: 1024px) { .itinerary-page__layout { grid-template-columns: 1fr; } .itinerary-config { position: static; } }
 @media (max-width: 768px) { .timeline-item { grid-template-columns: 50px 16px 1fr; } }

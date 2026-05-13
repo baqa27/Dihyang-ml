@@ -221,6 +221,31 @@
   flex-shrink: 0;
 }
 
+.explore__danger-disclaimer {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.explore__danger-ml-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.explore__danger-ml {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
 /* Map */
 .explore__map {
   width: 100%;

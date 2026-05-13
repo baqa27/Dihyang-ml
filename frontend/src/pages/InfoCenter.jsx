@@ -1,5 +1,10 @@
-import { useState } from 'react'
-import { Info, Shield, DollarSign, Bed, Navigation, AlertTriangle, ExternalLink, MapPin } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import {
+  Info, Shield, DollarSign, Bed, Navigation, AlertTriangle, MapPin,
+  Cpu, Loader2, Zap, BarChart3
+} from 'lucide-react'
+import { mlAPI } from '../services/api'
 import './InfoCenter.css'
 
 const infoCategories = [
@@ -7,18 +12,35 @@ const infoCategories = [
   { id: 'transportasi', label: 'Transportasi', icon: <Navigation size={18} /> },
   { id: 'penginapan', label: 'Penginapan', icon: <Bed size={18} /> },
   { id: 'regulasi', label: 'Regulasi & Keamanan', icon: <Shield size={18} /> },
+  { id: 'model-ai', label: 'Model AI DITA', icon: <Cpu size={18} /> },
 ]
 
 const retribusiData = [
   { name: 'Kawah Sikidang', local: 20000, asing: 50000 },
+  { name: 'Kawah Candradimuka', local: 10000, asing: 20000 },
+  { name: 'Kawah Sileri', local: 15000, asing: 30000 },
+  { name: 'Kawah Nagasari', local: 10000, asing: 20000 },
   { name: 'Candi Arjuna', local: 15000, asing: 30000 },
+  { name: 'Candi Gatotkaca', local: 10000, asing: 20000 },
+  { name: 'Candi Bima', local: 10000, asing: 20000 },
   { name: 'Tiket Terusan (Sikidang + Arjuna)', local: 30000, asing: 75000 },
   { name: 'Telaga Warna', local: 15000, asing: 30000 },
+  { name: 'Telaga Pengilon', local: 0, asing: 0, note: 'Gratis (via Telaga Warna)' },
+  { name: 'Telaga Merdada', local: 5000, asing: 10000 },
+  { name: 'Telaga Dringo', local: 5000, asing: 10000 },
   { name: 'Bukit Sikunir', local: 15000, asing: 15000 },
   { name: 'Batu Ratapan Angin', local: 10000, asing: 25000 },
-  { name: 'Kawah Candradimuka', local: 10000, asing: 20000 },
+  { name: 'Bukit Pangonan', local: 10000, asing: 20000 },
+  { name: 'Gardu Pandang Tieng', local: 10000, asing: 15000 },
   { name: 'Dieng Plateau Theater', local: 25000, asing: 50000 },
   { name: 'Museum Kailasa', local: 10000, asing: 20000 },
+  { name: 'Sumur Jalatunda', local: 5000, asing: 10000 },
+  { name: 'Gua Semar', local: 5000, asing: 10000 },
+  { name: 'Goa Jaran', local: 5000, asing: 10000 },
+  { name: 'Air Terjun Sikarim', local: 5000, asing: 10000 },
+  { name: 'Camping Ground Sikunir', local: 25000, asing: 40000 },
+  { name: 'Padang Savana Dieng', local: 5000, asing: 10000 },
+  { name: 'Ladang Kentang Dieng', local: 5000, asing: 10000 },
 ]
 
 const safetyTips = [
@@ -28,8 +50,29 @@ const safetyTips = [
   { title: 'Waspada Pungli', desc: 'Selalu minta karcis resmi berlogo Pemkab Wonosobo atau Banjarnegara saat membayar tiket masuk. Hindari membayar kepada oknum tanpa karcis.' },
 ]
 
+const TAB_IDS = new Set(infoCategories.map(c => c.id))
+
 export default function InfoCenter() {
+  const [searchParams] = useSearchParams()
   const [activeTab, setActiveTab] = useState('retribusi')
+  const [modelInfo, setModelInfo] = useState(null)
+  const [modelLoading, setModelLoading] = useState(false)
+  const [modelError, setModelError] = useState(false)
+
+  useEffect(() => {
+    const tab = searchParams.get('tab')
+    if (tab && TAB_IDS.has(tab)) setActiveTab(tab)
+  }, [searchParams])
+
+  useEffect(() => {
+    if (activeTab !== 'model-ai') return
+    setModelLoading(true)
+    setModelError(false)
+    mlAPI.getModelInfo()
+      .then(setModelInfo)
+      .catch(() => setModelError(true))
+      .finally(() => setModelLoading(false))
+  }, [activeTab])
 
   return (
     <div className="info-center page-enter" id="info-page">
@@ -79,9 +122,9 @@ export default function InfoCenter() {
                     <tbody>
                       {retribusiData.map((item, i) => (
                         <tr key={i}>
-                          <td>{item.name}</td>
-                          <td>Rp {item.local.toLocaleString('id-ID')}</td>
-                          <td>Rp {item.asing.toLocaleString('id-ID')}</td>
+                          <td>{item.name}{item.note ? <span style={{fontSize:'0.75rem',color:'var(--text-muted)',display:'block'}}>{item.note}</span> : null}</td>
+                          <td>{item.local === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.local.toLocaleString('id-ID')}`}</td>
+                          <td>{item.asing === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.asing.toLocaleString('id-ID')}`}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -165,6 +208,98 @@ export default function InfoCenter() {
                     </div>
                   </div>
                 </div>
+              </div>
+            )}
+
+            {activeTab === 'model-ai' && (
+              <div className="info-section info-section--model animate-fade-in">
+                <h2><Cpu size={24} /> Model AI &amp; Predictive Analytics</h2>
+                <p className="info-desc">
+                  Ringkasan teknis model lokal DITA (cuaca, risiko, rute). Data evaluasi bersumber dari{' '}
+                  <code className="info-code">evaluation_report.json</code> di backend.
+                </p>
+
+                {modelLoading && (
+                  <div className="info-model-loading">
+                    <Loader2 size={28} className="spin-anim" />
+                    <span>Memuat metadata model…</span>
+                  </div>
+                )}
+
+                {modelError && (
+                  <div className="info-card info-card--warning">
+                    <AlertTriangle size={20} />
+                    <div>
+                      <h4>Backend tidak terjangkau</h4>
+                      <p>Jalankan API FastAPI (port 8000) dan pastikan proxy Vite aktif agar endpoint <code className="info-code">/api/ml/model-info</code> dapat diakses.</p>
+                    </div>
+                  </div>
+                )}
+
+                {!modelLoading && !modelError && modelInfo && (
+                  <>
+                    <div className="info-model-status glass-card">
+                      <Zap size={20} />
+                      <div>
+                        <strong>Status pemuatan model</strong>
+                        <p>{modelInfo.models_loaded ? 'Semua artefak .pkl termuat — prediksi siap dipakai.' : 'Model belum terlatih atau gagal dimuat — sistem memakai fallback rule-based.'}</p>
+                      </div>
+                    </div>
+
+                    {modelInfo.dataset && (
+                      <div className="info-model-dataset">
+                        <h4><BarChart3 size={18} /> Dataset cuaca (training)</h4>
+                        <ul>
+                          <li>Lokasi: {modelInfo.dataset.location}</li>
+                          <li>Periode: {modelInfo.dataset.period}</li>
+                          <li>Rekaman: {modelInfo.dataset.total_records?.toLocaleString?.('id-ID') ?? modelInfo.dataset.total_records}</li>
+                          <li>Fitur rekayasa: {modelInfo.dataset.features_engineered}</li>
+                        </ul>
+                      </div>
+                    )}
+
+                    {modelInfo.models && (
+                      <div className="info-model-grid">
+                        {Object.entries(modelInfo.models).map(([key, spec]) => (
+                          <div key={key} className="info-model-card glass-card">
+                            <h4>{spec.type ?? key}</h4>
+                            <p className="info-model-card__slug">{key.replace(/_/g, ' ')}</p>
+                            {spec.metrics && (
+                              <dl className="info-model-metrics">
+                                {Object.entries(spec.metrics).map(([mk, mv]) => (
+                                  <div key={mk}>
+                                    <dt>{mk}</dt>
+                                    <dd>
+                                      {typeof mv === 'number'
+                                        ? mv.toLocaleString('id-ID', { maximumFractionDigits: 6 })
+                                        : String(mv)}
+                                    </dd>
+                                  </div>
+                                ))}
+                              </dl>
+                            )}
+                            {spec.note && <p className="info-model-note">{spec.note}</p>}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="info-card info-card--muted">
+                      <Shield size={20} />
+                      <div>
+                        <h4>Disclaimer</h4>
+                        <p>
+                          Prediksi ini prototipe penelitian capstone (PJK-GM067), bukan pengganti prakiraan resmi BMKG atau
+                          penilaian risiko profesional. Keputusan berkendara dan berwisata tetap menjadi tanggung jawab pengguna.
+                        </p>
+                      </div>
+                    </div>
+
+                    <Link to="/dashboard" className="btn btn-primary btn-sm info-model-cta">
+                      Lihat prediksi live di Dashboard
+                    </Link>
+                  </>
+                )}
               </div>
             )}
           </div>

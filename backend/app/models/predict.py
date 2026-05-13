@@ -18,6 +18,7 @@ Author      : Tim PJK-GM067 (Ida Masruroh — AI Engineer)
 import os
 import json
 import numpy as np
+import pandas as pd
 import joblib
 from datetime import datetime
 
@@ -67,68 +68,112 @@ class DiengPredictor:
             print(f"[WARN] Model belum di-train. Jalankan training dulu: {e}")
             self.models_loaded = False
     
+    def _build_weather_features(self, hour, month, day_of_year, current_temp,
+                                current_precip, temp_3h_ago, temp_6h_ago, temp_24h_ago,
+                                humidity=80.0, dewpoint=None, windspeed=10.0,
+                                cloudcover=50.0, visibility_km=5.0, apparent_temp=None):
+        """Build feature DataFrame dengan nama kolom yang sesuai training v2."""
+        if dewpoint is None:
+            # Estimasi dewpoint dari suhu dan humidity (Magnus formula approx)
+            dewpoint = current_temp - ((100 - humidity) / 5.0)
+        if apparent_temp is None:
+            apparent_temp = current_temp - 3.0
+
+        temp_dewpoint_spread = current_temp - dewpoint
+        # Fog risk score
+        spread_norm   = min(max(temp_dewpoint_spread, 0), 10) / 10.0
+        humidity_norm = (min(max(humidity, 50), 100) - 50) / 50.0
+        vis_norm      = 1.0 - (min(max(visibility_km, 0), 10) / 10.0)
+        fog_risk_score = (
+            (1 - spread_norm) * 0.4 +
+            humidity_norm     * 0.35 +
+            vis_norm          * 0.25
+        )
+
+        return pd.DataFrame([{
+            # Temporal
+            "hour":        hour,
+            "day_of_year": day_of_year,
+            "month":       month,
+            "is_weekend":  1 if datetime.now().weekday() >= 5 else 0,
+            "hour_sin":    np.sin(2 * np.pi * hour / 24),
+            "hour_cos":    np.cos(2 * np.pi * hour / 24),
+            "month_sin":   np.sin(2 * np.pi * month / 12),
+            "month_cos":   np.cos(2 * np.pi * month / 12),
+            # Temperature lags
+            "temp_lag_1h":  current_temp,
+            "temp_lag_3h":  temp_3h_ago,
+            "temp_lag_6h":  temp_6h_ago,
+            "temp_lag_24h": temp_24h_ago,
+            # Precipitation lags
+            "precip_lag_1h": current_precip,
+            "precip_lag_3h": current_precip * 0.8,
+            # Rolling stats
+            "temp_rolling_mean_6h":   (current_temp + temp_3h_ago + temp_6h_ago) / 3,
+            "temp_rolling_std_6h":    float(np.std([current_temp, temp_3h_ago, temp_6h_ago])),
+            "temp_rolling_mean_24h":  (current_temp + temp_24h_ago) / 2,
+            "precip_rolling_sum_6h":  current_precip * 3,
+            "precip_rolling_sum_24h": current_precip * 12,
+            # Rate of change
+            "temp_change_1h": current_temp - temp_3h_ago,
+            "temp_change_3h": current_temp - temp_6h_ago,
+            # NEW: Humidity & dewpoint
+            "humidity":                  humidity,
+            "dewpoint":                  dewpoint,
+            "temp_dewpoint_spread":      temp_dewpoint_spread,
+            "humidity_lag_1h":           humidity,
+            "humidity_rolling_mean_6h":  humidity,
+            # NEW: Wind
+            "windspeed":      windspeed,
+            "windspeed_lag_1h": windspeed,
+            # NEW: Cloud & visibility
+            "cloudcover":    cloudcover,
+            "visibility_km": visibility_km,
+            # NEW: Apparent temp
+            "apparent_temp": apparent_temp,
+            # NEW: Fog risk
+            "fog_risk_score": fog_risk_score,
+        }])
+
     def predict_temperature(self, hour: int, month: int, day_of_year: int,
                             current_temp: float, current_precip: float,
                             temp_3h_ago: float = None, temp_6h_ago: float = None,
-                            temp_24h_ago: float = None):
-        """
-        Prediksi suhu 1 jam ke depan di Dieng.
-        
-        Parameters:
-            hour: Jam saat ini (0-23)
-            month: Bulan (1-12)
-            day_of_year: Hari ke-N dalam tahun (1-365)
-            current_temp: Suhu saat ini (°C)
-            current_precip: Presipitasi saat ini (mm)
-            temp_3h_ago, temp_6h_ago, temp_24h_ago: Suhu historis
-        
-        Returns:
-            dict dengan predicted_temp, confidence, dan advisory
-        """
+                            temp_24h_ago: float = None, **kwargs):
+        """Prediksi suhu 1 jam ke depan di Dieng."""
         if not self.models_loaded:
             return self._fallback_temp_prediction(hour, month, current_temp)
-        
-        # Default lag values jika tidak diberikan
+
         if temp_3h_ago is None: temp_3h_ago = current_temp
         if temp_6h_ago is None: temp_6h_ago = current_temp
         if temp_24h_ago is None: temp_24h_ago = current_temp
-        
-        features = np.array([[
-            hour,                                           # hour
-            day_of_year,                                    # day_of_year
-            month,                                          # month
-            np.sin(2 * np.pi * hour / 24),                 # hour_sin
-            np.cos(2 * np.pi * hour / 24),                 # hour_cos
-            np.sin(2 * np.pi * month / 12),                # month_sin
-            np.cos(2 * np.pi * month / 12),                # month_cos
-            1 if datetime.now().weekday() >= 5 else 0,     # is_weekend
-            current_temp,                                   # temp_lag_1h
-            temp_3h_ago,                                    # temp_lag_3h
-            temp_6h_ago,                                    # temp_lag_6h
-            temp_24h_ago,                                   # temp_lag_24h
-            current_precip,                                 # precip_lag_1h
-            current_precip * 0.8,                           # precip_lag_3h (estimated)
-            (current_temp + temp_3h_ago + temp_6h_ago) / 3, # temp_rolling_mean_6h
-            np.std([current_temp, temp_3h_ago, temp_6h_ago]),  # temp_rolling_std_6h
-            (current_temp + temp_24h_ago) / 2,             # temp_rolling_mean_24h
-            current_precip * 3,                             # precip_rolling_sum_6h (est.)
-            current_precip * 12,                            # precip_rolling_sum_24h (est.)
-            current_temp - temp_3h_ago,                     # temp_change_1h (approx)
-            current_temp - temp_6h_ago,                     # temp_change_3h (approx)
-        ]])
-        
-        features_scaled = self.temp_scaler.transform(features)
+
+        features = self._build_weather_features(
+            hour, month, day_of_year, current_temp, current_precip,
+            temp_3h_ago, temp_6h_ago, temp_24h_ago,
+            humidity=kwargs.get("humidity", 80.0),
+            dewpoint=kwargs.get("dewpoint", None),
+            windspeed=kwargs.get("windspeed", 10.0),
+            cloudcover=kwargs.get("cloudcover", 50.0),
+            visibility_km=kwargs.get("visibility_km", 5.0),
+            apparent_temp=kwargs.get("apparent_temp", None),
+        )
+
+        # Handle model trained with old features (v1) vs new features (v2)
+        try:
+            features_scaled = self.temp_scaler.transform(features)
+        except ValueError:
+            # Fallback: model lama hanya punya 21 kolom, pakai subset
+            features_scaled = self.temp_scaler.transform(features[self._v1_cols()])
+
         predicted_temp = float(self.temp_model.predict(features_scaled)[0])
-        
-        # Generate advisory
         advisory = self._generate_temp_advisory(predicted_temp, hour)
-        
+
         return {
             "predicted_temperature": round(predicted_temp, 1),
             "current_temperature": current_temp,
             "change": round(predicted_temp - current_temp, 1),
             "model": "Random Forest Regressor",
-            "advisory": advisory
+            "advisory": advisory,
         }
     
     def predict_rain(self, hour: int, month: int, day_of_year: int,
@@ -136,38 +181,35 @@ class DiengPredictor:
         """Prediksi apakah akan hujan dalam 1 jam ke depan."""
         if not self.models_loaded:
             return self._fallback_rain_prediction(hour, current_precip)
-        
-        temp_3h_ago = kwargs.get('temp_3h_ago', current_temp)
-        temp_6h_ago = kwargs.get('temp_6h_ago', current_temp)
+
+        temp_3h_ago  = kwargs.get('temp_3h_ago', current_temp)
+        temp_6h_ago  = kwargs.get('temp_6h_ago', current_temp)
         temp_24h_ago = kwargs.get('temp_24h_ago', current_temp)
-        
-        features = np.array([[
-            hour, day_of_year, month,
-            np.sin(2 * np.pi * hour / 24),
-            np.cos(2 * np.pi * hour / 24),
-            np.sin(2 * np.pi * month / 12),
-            np.cos(2 * np.pi * month / 12),
-            1 if datetime.now().weekday() >= 5 else 0,
-            current_temp, temp_3h_ago, temp_6h_ago, temp_24h_ago,
-            current_precip, current_precip * 0.8,
-            (current_temp + temp_3h_ago + temp_6h_ago) / 3,
-            np.std([current_temp, temp_3h_ago, temp_6h_ago]),
-            (current_temp + temp_24h_ago) / 2,
-            current_precip * 3,
-            current_precip * 12,
-            current_temp - temp_3h_ago,
-            current_temp - temp_6h_ago,
-        ]])
-        
-        features_scaled = self.rain_scaler.transform(features)
-        prediction = int(self.rain_model.predict(features_scaled)[0])
+
+        features = self._build_weather_features(
+            hour, month, day_of_year, current_temp, current_precip,
+            temp_3h_ago, temp_6h_ago, temp_24h_ago,
+            humidity=kwargs.get("humidity", 80.0),
+            dewpoint=kwargs.get("dewpoint", None),
+            windspeed=kwargs.get("windspeed", 10.0),
+            cloudcover=kwargs.get("cloudcover", 50.0),
+            visibility_km=kwargs.get("visibility_km", 5.0),
+            apparent_temp=kwargs.get("apparent_temp", None),
+        )
+
+        try:
+            features_scaled = self.rain_scaler.transform(features)
+        except ValueError:
+            features_scaled = self.rain_scaler.transform(features[self._v1_cols()])
+
+        prediction  = int(self.rain_model.predict(features_scaled)[0])
         probability = float(self.rain_model.predict_proba(features_scaled)[0][1])
-        
+
         return {
             "will_rain": bool(prediction),
             "rain_probability": round(probability * 100, 1),
             "model": "Gradient Boosting Classifier",
-            "advisory": "🌧️ Siapkan jas hujan dan peralatan anti-air!" if prediction else "☀️ Tidak ada prediksi hujan dalam 1 jam ke depan."
+            "advisory": "🌧️ Siapkan jas hujan dan peralatan anti-air!" if prediction else "☀️ Tidak ada prediksi hujan dalam 1 jam ke depan.",
         }
     
     def predict_risk_level(self, hour: int, month: int, day_of_year: int,
@@ -175,31 +217,28 @@ class DiengPredictor:
         """Prediksi tingkat risiko wisata berdasarkan kondisi cuaca."""
         if not self.models_loaded:
             return self._fallback_risk_prediction(current_temp, current_precip)
-        
-        temp_3h_ago = kwargs.get('temp_3h_ago', current_temp)
-        temp_6h_ago = kwargs.get('temp_6h_ago', current_temp)
+
+        temp_3h_ago  = kwargs.get('temp_3h_ago', current_temp)
+        temp_6h_ago  = kwargs.get('temp_6h_ago', current_temp)
         temp_24h_ago = kwargs.get('temp_24h_ago', current_temp)
-        
-        features = np.array([[
-            hour, day_of_year, month,
-            np.sin(2 * np.pi * hour / 24),
-            np.cos(2 * np.pi * hour / 24),
-            np.sin(2 * np.pi * month / 12),
-            np.cos(2 * np.pi * month / 12),
-            1 if datetime.now().weekday() >= 5 else 0,
-            current_temp, temp_3h_ago, temp_6h_ago, temp_24h_ago,
-            current_precip, current_precip * 0.8,
-            (current_temp + temp_3h_ago + temp_6h_ago) / 3,
-            np.std([current_temp, temp_3h_ago, temp_6h_ago]),
-            (current_temp + temp_24h_ago) / 2,
-            current_precip * 3,
-            current_precip * 12,
-            current_temp - temp_3h_ago,
-            current_temp - temp_6h_ago,
-        ]])
-        
-        features_scaled = self.risk_scaler.transform(features)
-        prediction = int(self.risk_model.predict(features_scaled)[0])
+
+        features = self._build_weather_features(
+            hour, month, day_of_year, current_temp, current_precip,
+            temp_3h_ago, temp_6h_ago, temp_24h_ago,
+            humidity=kwargs.get("humidity", 80.0),
+            dewpoint=kwargs.get("dewpoint", None),
+            windspeed=kwargs.get("windspeed", 10.0),
+            cloudcover=kwargs.get("cloudcover", 50.0),
+            visibility_km=kwargs.get("visibility_km", 5.0),
+            apparent_temp=kwargs.get("apparent_temp", None),
+        )
+
+        try:
+            features_scaled = self.risk_scaler.transform(features)
+        except ValueError:
+            features_scaled = self.risk_scaler.transform(features[self._v1_cols()])
+
+        prediction    = int(self.risk_model.predict(features_scaled)[0])
         probabilities = self.risk_model.predict_proba(features_scaled)[0]
         
         risk_labels = {0: "Aman", 1: "Waspada", 2: "Bahaya"}
@@ -231,33 +270,43 @@ class DiengPredictor:
                              surface: str, elevation: float,
                              curve_count: int, lighting: int,
                              vehicle: str, weather: str):
-        """
-        Prediksi keamanan rute wisata spesifik berdasarkan kondisi.
-        """
+        """Prediksi keamanan rute wisata spesifik berdasarkan kondisi."""
         if not self.models_loaded:
             return self._fallback_route_safety(gradient, vehicle)
-        
+
         vehicle_scores = {'motorcycle': 0.6, 'car': 0.8, 'bus': 0.4}
         vis_multiplier = {'cerah': 1.0, 'mendung': 0.8, 'hujan': 0.5, 'kabut': 0.3}
-        
+
         effective_vis = visibility * vis_multiplier.get(weather, 0.5)
         vehicle_score = vehicle_scores.get(vehicle, 0.6)
-        
+
         try:
-            surface_enc = self.le_surface.transform([surface])[0]
-            vehicle_enc = self.le_vehicle.transform([vehicle])[0]
-            weather_enc = self.le_weather.transform([weather])[0]
+            surface_enc = int(self.le_surface.transform([surface])[0])
         except ValueError:
             surface_enc = 0
+        try:
+            vehicle_enc = int(self.le_vehicle.transform([vehicle])[0])
+        except ValueError:
             vehicle_enc = 0
+        try:
+            weather_enc = int(self.le_weather.transform([weather])[0])
+        except ValueError:
             weather_enc = 0
-        
-        features = np.array([[
-            gradient, width, effective_vis, guardrail,
-            surface_enc, elevation, curve_count, lighting,
-            vehicle_enc, weather_enc, vehicle_score
-        ]])
-        
+
+        features = pd.DataFrame([{
+            'gradient': gradient,
+            'width': width,
+            'effective_visibility': effective_vis,
+            'guardrail': guardrail,
+            'surface_encoded': surface_enc,
+            'elevation': elevation,
+            'curve_count': curve_count,
+            'lighting': lighting,
+            'vehicle_encoded': vehicle_enc,
+            'weather_encoded': weather_enc,
+            'vehicle_score': vehicle_score,
+        }])
+
         features_scaled = self.route_scaler.transform(features)
         prediction = int(self.route_model.predict(features_scaled)[0])
         probabilities = self.route_model.predict_proba(features_scaled)[0]
@@ -279,6 +328,18 @@ class DiengPredictor:
             "model": "Random Forest Classifier"
         }
     
+    def _v1_cols(self):
+        """Kolom model v1 (21 features) untuk backward compatibility."""
+        return [
+            'hour', 'day_of_year', 'month',
+            'hour_sin', 'hour_cos', 'month_sin', 'month_cos', 'is_weekend',
+            'temp_lag_1h', 'temp_lag_3h', 'temp_lag_6h', 'temp_lag_24h',
+            'precip_lag_1h', 'precip_lag_3h',
+            'temp_rolling_mean_6h', 'temp_rolling_std_6h', 'temp_rolling_mean_24h',
+            'precip_rolling_sum_6h', 'precip_rolling_sum_24h',
+            'temp_change_1h', 'temp_change_3h',
+        ]
+
     # ─── FALLBACK METHODS (bila model belum di-train) ───
     
     def _fallback_temp_prediction(self, hour, month, current_temp):

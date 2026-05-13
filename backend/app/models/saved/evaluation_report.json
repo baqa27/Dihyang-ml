@@ -4,38 +4,48 @@
   "ai_engineer": "Ida Masruroh (APC466D6X0040)",
   "dataset": {
     "source": "Open-Meteo Historical Weather API",
+    "data_source_detail": "combined multi-year",
     "location": "Dieng Plateau (-7.2056, 109.8731)",
     "elevation": "2.060m",
-    "period": "2023-01-01 to 2023-12-31",
-    "total_records": 8760,
-    "features_engineered": 21
+    "total_records": 38184,
+    "features_engineered": 32,
+    "new_variables": [
+      "humidity",
+      "dewpoint",
+      "windspeed",
+      "cloudcover",
+      "visibility_km",
+      "apparent_temp",
+      "fog_risk_score",
+      "temp_dewpoint_spread"
+    ]
   },
   "models": {
     "temperature_prediction": {
       "type": "Random Forest Regressor",
-      "n_estimators": 100,
+      "n_estimators": 200,
       "test_split": "20%",
       "metrics": {
-        "mae": 0.0657014302687222,
-        "rmse": 0.1541519613467703,
-        "r2": 0.9950539276702852,
-        "cv_r2": 0.9944498656077968
+        "mae": 0.08733308456951074,
+        "rmse": 0.1306473925188992,
+        "r2": 0.9959356617861235,
+        "cv_r2": 0.9949611187118397
       }
     },
     "rain_prediction": {
       "type": "Gradient Boosting Classifier",
-      "n_estimators": 100,
+      "n_estimators": 200,
       "test_split": "20%",
       "metrics": {
-        "accuracy": 0.8707093821510298,
-        "precision": 0.8159340659340659,
-        "recall": 0.6513157894736842,
-        "f1": 0.724390243902439
+        "accuracy": 0.8566190912662041,
+        "precision": 0.806226956165506,
+        "recall": 0.7598455598455598,
+        "f1": 0.7823494335122242
       }
     },
     "risk_classification": {
       "type": "Gradient Boosting Classifier",
-      "n_estimators": 150,
+      "n_estimators": 200,
       "classes": [
         "Aman",
         "Waspada",
@@ -43,7 +53,7 @@
       ],
       "test_split": "20%",
       "metrics": {
-        "accuracy": 0.9856979405034325
+        "accuracy": 0.9794421893413644
       }
     }
   }

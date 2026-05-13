@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: var(--space-4xl) 0;
+  padding: 140px 0 var(--space-4xl);
 }
 
 .hero__bg {
@@ -28,7 +28,7 @@
 .hero__orb--1 {
   width: 500px;
   height: 500px;
-  background: rgba(0, 122, 138, 0.4);
+  background: rgba(44, 177, 192, 0.2);
   top: -100px;
   right: -100px;
   animation: float 8s ease-in-out infinite;
@@ -37,7 +37,7 @@
 .hero__orb--2 {
   width: 400px;
   height: 400px;
-  background: rgba(255, 186, 0, 0.2);
+  background: rgba(255, 123, 10, 0.15);
   bottom: -50px;
   left: -100px;
   animation: float 10s ease-in-out infinite reverse;
@@ -46,7 +46,7 @@
 .hero__orb--3 {
   width: 300px;
   height: 300px;
-  background: rgba(0, 180, 204, 0.3);
+  background: rgba(44, 177, 192, 0.15);
   top: 50%;
   left: 40%;
   animation: float 12s ease-in-out infinite;
@@ -82,8 +82,8 @@
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  background: rgba(0, 180, 204, 0.1);
-  border: 1px solid rgba(0, 180, 204, 0.2);
+  background: rgba(44, 177, 192, 0.1);
+  border: 1px solid rgba(44, 177, 192, 0.2);
   border-radius: var(--radius-full);
   font-size: 0.82rem;
   font-weight: 600;
@@ -154,8 +154,8 @@
 
 /* Weather Preview Widget */
 .weather-preview {
-  background: linear-gradient(135deg, rgba(0, 122, 138, 0.15), rgba(0, 180, 204, 0.05));
-  border-color: rgba(0, 180, 204, 0.15);
+  background: linear-gradient(135deg, rgba(44, 177, 192, 0.15), rgba(44, 177, 192, 0.05));
+  border-color: rgba(44, 177, 192, 0.15);
 }
 
 .weather-preview__header {
@@ -225,6 +225,58 @@
 
 .weather-preview__link:hover {
   gap: 10px;
+}
+
+.hero__ml-strip {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: var(--border-subtle);
+}
+
+.hero__ml-strip__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-400);
+  margin-bottom: 6px;
+}
+
+.hero__ml-strip__risk {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero__ml-strip__meta {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.hero__ml-strip__text {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.hero__ml-strip__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-400);
+  text-decoration: none;
+}
+
+.hero__ml-strip__link:hover {
+  text-decoration: underline;
 }
 
 /* Danger Alert */
@@ -445,9 +497,50 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding: var(--space-2xl) 0; }
+  .hero { padding: 100px 0 var(--space-2xl); }
   .hero__stats { gap: var(--space-md); }
   .features__grid { grid-template-columns: 1fr; }
   .safety-cta__card { padding: var(--space-xl); }
   .safety-cta__visual { display: none; }
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+[data-theme='light'] .hero__orb {
+  opacity: 0.12;
+}
+
+[data-theme='light'] .hero__grid-pattern {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+[data-theme='light'] .weather-preview {
+  background: linear-gradient(135deg, rgba(44, 177, 192, 0.06), rgba(44, 177, 192, 0.03));
+  border-color: rgba(44, 177, 192, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .danger-alert {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.02));
+  border-color: rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .hero__badge {
+  background: rgba(44, 177, 192, 0.08);
+  border-color: rgba(44, 177, 192, 0.25);
+}
+
+[data-theme='light'] .feature-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .safety-cta__card {
+  background: linear-gradient(135deg, rgba(255, 186, 0, 0.06), rgba(255, 140, 0, 0.03));
+  border-color: rgba(255, 186, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }

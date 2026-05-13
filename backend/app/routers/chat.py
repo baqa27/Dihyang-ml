@@ -4,11 +4,12 @@ Menggunakan Gemini API + Custom Knowledge Base untuk memberikan
 respons akurat tentang wisata Dieng.
 """
 
-from fastapi import APIRouter
-from pydantic import BaseModel
 import os
 import json
-import google.generativeai as genai
+import google.genai as genai
+from google.genai import types as genai_types
+from fastapi import APIRouter
+from pydantic import BaseModel
 from ..models.knowledge_base import (
     build_knowledge_context, RETRIBUSI_DATA, DANGER_ZONES,
     SAFE_ROUTES, DESTINATIONS, ACCOMMODATIONS, TRANSPORTATION,
@@ -22,8 +23,13 @@ class ChatRequest(BaseModel):
     history: list = []
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if GEMINI_API_KEY and GEMINI_API_KEY != "MASUKKAN_API_KEY_ANDA_DI_SINI":
-    genai.configure(api_key=GEMINI_API_KEY)
+_genai_client = None
+
+def _get_client():
+    global _genai_client
+    if _genai_client is None and GEMINI_API_KEY and GEMINI_API_KEY != "MASUKKAN_API_KEY_ANDA_DI_SINI":
+        _genai_client = genai.Client(api_key=GEMINI_API_KEY)
+    return _genai_client
 
 # System instruction + Knowledge Base injection
 KNOWLEDGE_CONTEXT = build_knowledge_context()
@@ -57,23 +63,30 @@ GAYA KOMUNIKASI:
 
 @router.post("")
 async def chat_with_dita(req: ChatRequest):
-    if not GEMINI_API_KEY or GEMINI_API_KEY == "MASUKKAN_API_KEY_ANDA_DI_SINI":
+    client = _get_client()
+    if not client:
         return handle_nlp_fallback(req.message)
-    
+
     try:
-        model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
-            system_instruction=SYSTEM_INSTRUCTION
-        )
-        
-        formatted_history = []
+        # Bangun history dalam format google.genai
+        history = []
         for msg in req.history:
             role = "user" if msg["role"] == "user" else "model"
-            formatted_history.append({"role": role, "parts": [msg["content"]]})
-        
-        chat = model.start_chat(history=formatted_history)
-        response = chat.send_message(req.message)
-        
+            history.append(genai_types.Content(
+                role=role,
+                parts=[genai_types.Part(text=msg["content"])]
+            ))
+
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=history + [genai_types.Content(
+                role="user",
+                parts=[genai_types.Part(text=req.message)]
+            )],
+            config=genai_types.GenerateContentConfig(
+                system_instruction=SYSTEM_INSTRUCTION,
+            ),
+        )
         return {"reply": response.text}
     except Exception as e:
         print(f"Gemini API Error: {e}")

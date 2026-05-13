@@ -318,6 +318,25 @@
   animation: spin 1s linear infinite;
 }
 
+/* Light Mode Overrides */
+[data-theme='light'] .chat__bubble code {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='light'] .chat__bubble th,
+[data-theme='light'] .chat__bubble td {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .chat__bubble th {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme='light'] .chat__message--user .chat__bubble {
+  background: linear-gradient(135deg, rgba(0, 122, 138, 0.12), rgba(0, 180, 204, 0.06));
+  border-color: rgba(0, 180, 204, 0.2);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .chat__container {

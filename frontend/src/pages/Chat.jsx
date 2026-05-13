@@ -4,8 +4,41 @@ import {
   CalendarDays, Loader2, Trash2, Mountain, ChevronDown
 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
-import { chatAPI } from '../services/api'
+import { chatAPI, weatherAPI, mlAPI } from '../services/api'
 import './Chat.css'
+
+function buildHybridWeatherReply(wx, ml) {
+  const lines = [
+    '### Cuaca & prediksi DITA (mode lokal)',
+    '',
+  ]
+  if (wx) {
+    lines.push(
+      `**Open-Meteo:** ${wx.temperature}°C · ${wx.condition ?? '—'} · angin ${wx.wind_speed ?? '—'} km/h · jarak pandang ${wx.visibility ?? '—'} km`
+    )
+  }
+  if (ml?.input) {
+    lines.push(
+      `**Input model ML:** ${ml.input.current_temperature_c}°C, presipitasi ${ml.input.current_precipitation_mm} mm`
+    )
+  }
+  if (ml?.temperature?.predicted_temperature != null) {
+    lines.push(
+      `**Suhu +1 jam (prediksi):** ${ml.temperature.predicted_temperature}°C (${ml.temperature.model ?? 'ML'})`
+    )
+  }
+  if (ml?.rain?.rain_probability != null) {
+    lines.push(`**Probabilitas hujan +1 jam:** ${ml.rain.rain_probability}%`)
+  }
+  if (ml?.risk) {
+    lines.push(`**Risiko wisata:** ${ml.risk.risk_icon ?? ''} **${ml.risk.risk_label}** — ${ml.risk.advisory ?? ''}`)
+  }
+  lines.push(
+    '',
+    '> Respons ini memadukan **API cuaca** dan **model ML** di perangkat Anda karena layanan chat jarak jauh tidak tersedia. Verifikasi kondisi lapangan sebelum berangkat.'
+  )
+  return lines.join('\n')
+}
 
 const quickActions = [
   { icon: <CloudSun size={16} />, label: 'Cuaca hari ini', prompt: 'Bagaimana cuaca di Dieng hari ini? Apakah aman untuk berwisata?' },
@@ -26,6 +59,7 @@ Saya bisa membantu Anda dengan:
 - 💰 **Biaya retribusi resmi** (anti-pungli!)
 - 📅 **Smart itinerary** yang adaptif cuaca
 - 🏔️ **Info destinasi** dan tips solo traveler
+- 📊 **Dokumentasi model ML** di Pusat Informasi → tab *Model AI DITA*
 
 Silakan tanya apa saja tentang wisata Dieng!`
 }
@@ -60,13 +94,26 @@ export default function Chat() {
 
     try {
       const history = messages
-        .filter(m => m !== welcomeMsg)
+        .filter((m, idx) => !(idx === 0 && m.role === 'assistant'))
         .map(m => ({ role: m.role, content: m.content }))
 
       const response = await chatAPI.sendMessage(userMsg, history)
       setMessages(prev => [...prev, { role: 'assistant', content: response.reply }])
     } catch (err) {
-      // Fallback demo response
+      const lowerMsg = userMsg.toLowerCase()
+      let hybrid = null
+      if (lowerMsg.includes('cuaca') || lowerMsg.includes('weather') || lowerMsg.includes('suhu')) {
+        try {
+          const [wx, ml] = await Promise.all([
+            weatherAPI.getCurrent(),
+            mlAPI.getQuickPrediction(),
+          ])
+          hybrid = buildHybridWeatherReply(wx, ml)
+        } catch {
+          hybrid = null
+        }
+      }
+
       const demoReplies = {
         cuaca: `Berdasarkan data terkini dari Open-Meteo, kondisi cuaca Dieng hari ini:
 
@@ -119,14 +166,15 @@ Beberapa hal yang bisa saya bantu:
 Silakan coba pertanyaan lainnya!`
       }
 
-      let reply = demoReplies.default
-      const lowerMsg = userMsg.toLowerCase()
-      if (lowerMsg.includes('cuaca') || lowerMsg.includes('weather') || lowerMsg.includes('suhu')) {
-        reply = demoReplies.cuaca
-      } else if (lowerMsg.includes('rute') || lowerMsg.includes('jalan') || lowerMsg.includes('arah')) {
-        reply = demoReplies.rute
-      } else if (lowerMsg.includes('biaya') || lowerMsg.includes('retribusi') || lowerMsg.includes('tiket') || lowerMsg.includes('harga')) {
-        reply = demoReplies.retribusi
+      let reply = hybrid || demoReplies.default
+      if (!hybrid) {
+        if (lowerMsg.includes('cuaca') || lowerMsg.includes('weather') || lowerMsg.includes('suhu')) {
+          reply = demoReplies.cuaca
+        } else if (lowerMsg.includes('rute') || lowerMsg.includes('jalan') || lowerMsg.includes('arah')) {
+          reply = demoReplies.rute
+        } else if (lowerMsg.includes('biaya') || lowerMsg.includes('retribusi') || lowerMsg.includes('tiket') || lowerMsg.includes('harga')) {
+          reply = demoReplies.retribusi
+        }
       }
 
       setMessages(prev => [...prev, { role: 'assistant', content: reply }])
@@ -241,7 +289,8 @@ Silakan coba pertanyaan lainnya!`
               </button>
             </div>
             <p className="chat__disclaimer">
-              DITA menggunakan AI untuk memberikan rekomendasi. Selalu verifikasi informasi penting secara mandiri.
+              DITA memakai Gemini untuk percakapan; cuaca &amp; risiko di Dashboard memakai model ML lokal + Open-Meteo.
+              Prototipe capstone — verifikasi informasi kritis di lapangan.
             </p>
           </div>
         </div>

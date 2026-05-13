@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (large files)
+app/data/*.json
+app/data/*.csv
+!app/data/.gitkeep
+
+# Models (if too large for git)
+# app/models/saved/*.pkl
+# app/models/saved/*.json
+
+# Logs
+*.log

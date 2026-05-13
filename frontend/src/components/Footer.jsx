@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mountain, Mail, MapPin, Phone, Code, ExternalLink } from 'lucide-react'
+import { Mountain, Mail, MapPin, Code } from 'lucide-react'
 import './Footer.css'
 
 export default function Footer() {
@@ -41,12 +41,12 @@ export default function Footer() {
           <div className="footer__section">
             <h4 className="footer__title">Destinasi Populer</h4>
             <div className="footer__links">
-              <a href="#" className="footer__link">Kawah Sikidang</a>
-              <a href="#" className="footer__link">Telaga Warna</a>
-              <a href="#" className="footer__link">Candi Arjuna</a>
-              <a href="#" className="footer__link">Bukit Sikunir</a>
-              <a href="#" className="footer__link">Batu Ratapan Angin</a>
-              <a href="#" className="footer__link">Dieng Plateau Theater</a>
+              <Link to="/explore" className="footer__link">Kawah Sikidang</Link>
+              <Link to="/explore" className="footer__link">Telaga Warna</Link>
+              <Link to="/explore" className="footer__link">Candi Arjuna</Link>
+              <Link to="/explore" className="footer__link">Bukit Sikunir</Link>
+              <Link to="/explore" className="footer__link">Batu Ratapan Angin</Link>
+              <Link to="/explore" className="footer__link">Dieng Plateau Theater</Link>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export default function Footer() {
             © 2026 Dihyang Web — Tim PJK-GM067 | Pijak × IBM SkillsBuild Capstone Project
           </p>
           <p className="footer__powered">
-            Powered by Gemini AI & Open-Meteo
+            Gemini (NLP) · Open-Meteo · ML lokal (scikit-learn)
           </p>
         </div>
       </div>

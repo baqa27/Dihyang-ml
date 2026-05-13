@@ -71,32 +71,19 @@ export default function Home() {
   const [mlPrediction, setMlPrediction] = useState(null)
 
   useEffect(() => {
-    // Fetch ML prediction for risk badge & advisory
-    mlAPI.getQuickPrediction()
-      .then(data => setMlPrediction(data))
-      .catch(() => {})
+    const fetchData = () => {
+      weatherAPI.getCurrent()
+        .then(setWeather)
+        .catch(() => {})
+      mlAPI.getQuickPrediction()
+        .then(data => setMlPrediction(data))
+        .catch(() => {})
+    }
 
-    // Fetch weather from API, fallback to ML-based estimate
-    weatherAPI.getCurrent()
-      .then(setWeather)
-      .catch(() => {
-        // Fallback: use ML-estimated temp based on current hour
-        const hour = new Date().getHours()
-        const baseTempByHour = {
-          0:9, 1:8.5, 2:8, 3:7.5, 4:7.5, 5:8, 6:9, 7:11, 8:13,
-          9:15, 10:17, 11:18, 12:19, 13:19.5, 14:19, 15:17, 16:15,
-          17:13, 18:12, 19:11, 20:10.5, 21:10, 22:9.5, 23:9
-        }
-        const estTemp = baseTempByHour[hour] || 14
-        setWeather({
-          temperature: estTemp,
-          humidity: hour >= 18 || hour <= 6 ? 92 : 78,
-          wind_speed: 10 + Math.round(Math.random() * 5),
-          condition: hour >= 15 && hour <= 17 ? 'Berkabut' : hour >= 13 && hour <= 16 ? 'Berawan' : 'Cerah Berawan',
-          visibility: hour >= 15 && hour <= 17 ? 2.5 : 5.8,
-          feels_like: Math.round(estTemp - 3),
-        })
-      })
+    fetchData()
+    // Refresh setiap 5 menit
+    const interval = setInterval(fetchData, 5 * 60 * 1000)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -184,6 +171,30 @@ export default function Home() {
                   <Link to="/dashboard" className="weather-preview__link">
                     Lihat Dashboard Lengkap <ArrowRight size={14} />
                   </Link>
+                  {mlPrediction?.risk && (
+                    <div className="hero__ml-strip">
+                      <div className="hero__ml-strip__head">
+                        <Zap size={14} />
+                        <span>Prediksi AI (ML)</span>
+                      </div>
+                      <p className="hero__ml-strip__risk">
+                        <span style={{ color: mlPrediction.risk.risk_color }}>{mlPrediction.risk.risk_icon}</span>{' '}
+                        {mlPrediction.risk.risk_label}
+                        {mlPrediction.temperature?.predicted_temperature != null && (
+                          <span className="hero__ml-strip__meta">
+                            {' · '}{mlPrediction.temperature.predicted_temperature}°C (+1 jam)
+                          </span>
+                        )}
+                      </p>
+                      <p className="hero__ml-strip__text">
+                        {(mlPrediction.risk.advisory || '').slice(0, 200)}
+                        {(mlPrediction.risk.advisory || '').length > 200 ? '…' : ''}
+                      </p>
+                      <Link to="/info?tab=model-ai" className="hero__ml-strip__link">
+                        Dokumentasi model <ChevronRight size={12} />
+                      </Link>
+                    </div>
+                  )}
                 </>
               )}
             </div>
