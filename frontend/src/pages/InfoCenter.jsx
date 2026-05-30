@@ -16,31 +16,50 @@ const infoCategories = [
 ]
 
 const retribusiData = [
-  { name: 'Kawah Sikidang', local: 20000, asing: 50000 },
-  { name: 'Kawah Candradimuka', local: 10000, asing: 20000 },
-  { name: 'Kawah Sileri', local: 15000, asing: 30000 },
-  { name: 'Kawah Nagasari', local: 10000, asing: 20000 },
-  { name: 'Candi Arjuna', local: 15000, asing: 30000 },
-  { name: 'Candi Gatotkaca', local: 10000, asing: 20000 },
-  { name: 'Candi Bima', local: 10000, asing: 20000 },
-  { name: 'Tiket Terusan (Sikidang + Arjuna)', local: 30000, asing: 75000 },
-  { name: 'Telaga Warna', local: 15000, asing: 30000 },
-  { name: 'Telaga Pengilon', local: 0, asing: 0, note: 'Gratis (via Telaga Warna)' },
-  { name: 'Telaga Merdada', local: 5000, asing: 10000 },
-  { name: 'Telaga Dringo', local: 5000, asing: 10000 },
-  { name: 'Bukit Sikunir', local: 15000, asing: 15000 },
-  { name: 'Batu Ratapan Angin', local: 10000, asing: 25000 },
-  { name: 'Bukit Pangonan', local: 10000, asing: 20000 },
-  { name: 'Gardu Pandang Tieng', local: 10000, asing: 15000 },
-  { name: 'Dieng Plateau Theater', local: 25000, asing: 50000 },
-  { name: 'Museum Kailasa', local: 10000, asing: 20000 },
-  { name: 'Sumur Jalatunda', local: 5000, asing: 10000 },
-  { name: 'Gua Semar', local: 5000, asing: 10000 },
-  { name: 'Goa Jaran', local: 5000, asing: 10000 },
-  { name: 'Air Terjun Sikarim', local: 5000, asing: 10000 },
-  { name: 'Camping Ground Sikunir', local: 25000, asing: 40000 },
-  { name: 'Padang Savana Dieng', local: 5000, asing: 10000 },
-  { name: 'Ladang Kentang Dieng', local: 5000, asing: 10000 },
+  // === Data dari CSV asli (riset lapangan tim PJK-GM067) ===
+  { name: 'Tiket Kawasan', local: 15000, asing: 50000, parkirMotor: 0, parkirMobil: 0, note: 'Wajib saat melintasi gerbang utama' },
+  { name: 'Pandangan Pertama', local: 10000, asing: 10000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Telaga Menjer', local: 5000, asing: 15000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Bukit Cinta', local: 15000, asing: 15000, parkirMotor: 5000, parkirMobil: 10000 },
+  { name: 'Kahyangan Skyline', local: 20000, asing: 20000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Bukit Saroja', local: 25000, asing: 25000, parkirMotor: 10000, parkirMobil: 20000 },
+  { name: 'Panama (Kebun Teh)', local: 10000, asing: 10000, parkirMotor: 3000, parkirMobil: 5000 },
+  { name: 'Swiss Van Java', local: 10000, asing: 10000, parkirMotor: 0, parkirMobil: 0 },
+  { name: 'Curug Sikarim', local: 15000, asing: 15000, parkirMotor: 5000, parkirMobil: 10000 },
+  { name: 'Telaga Cebong', local: 0, asing: 0, parkirMotor: 5000, parkirMobil: 15000, note: 'Gratis masuk, bayar parkir' },
+  { name: 'Bukit Sikunir', local: 15000, asing: 30000, parkirMotor: 5000, parkirMobil: 15000 },
+  { name: 'Gunung Bismo via Sikunang', local: 35000, asing: 35000, parkirMotor: 10000, parkirMobil: 20000 },
+  { name: 'Kawah Sikidang + Candi Arjuna (Pintu A)', local: 35000, asing: 50000, parkirMotor: 5000, parkirMobil: 10000, note: 'Tiket bundling' },
+  { name: 'Kawah Sikidang + Candi Arjuna (Pintu B)', local: 35000, asing: 50000, parkirMotor: 2000, parkirMobil: 10000, note: 'Akses alternatif, lebih dekat' },
+  { name: 'Candi Bima', local: 0, asing: 0, parkirMotor: 2000, parkirMobil: 5000, note: 'Gratis' },
+  { name: 'Dieng Plateau Theater', local: 10000, asing: 15000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Batu Pandang Ratapan Angin', local: 15000, asing: 20000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Telaga Warna', local: 27000, asing: 60000, parkirMotor: 5000, parkirMobil: 10000, note: 'Kawasan BKSDA' },
+  { name: 'Kebun Teh Tambi', local: 10000, asing: 10000, parkirMotor: 2000, parkirMobil: 7000 },
+  { name: 'Taman Langit', local: 15000, asing: 15000, parkirMotor: 5000, parkirMobil: 10000 },
+  { name: 'Watu Angkruk', local: 15000, asing: 15000, parkirMotor: 3000, parkirMobil: 7000 },
+  { name: 'Bukit Sikapuk', local: 15000, asing: 15000, parkirMotor: 3000, parkirMobil: 7000 },
+  { name: 'Gunung Pakuwaja via Parikesit', local: 30000, asing: 30000, parkirMotor: 10000, parkirMobil: 25000 },
+  { name: 'Gunung Prau via Igirmranak', local: 35000, asing: 30000, parkirMotor: 10000, parkirMobil: 25000 },
+  { name: 'Gunung Prau via Patakbanteng', local: 40000, asing: 40000, parkirMotor: 10000, parkirMobil: 20000 },
+  { name: 'Gunung Prau via Kali Lembu', local: 35000, asing: 35000, parkirMotor: 10000, parkirMobil: 25000 },
+  { name: 'Gunung Prau via Dieng', local: 30000, asing: 30000, parkirMotor: 10000, parkirMobil: 25000 },
+  { name: 'Tuk Bimolukar', local: 5000, asing: 5000, parkirMotor: 2000, parkirMobil: 2000 },
+  { name: 'Bukit Scoter', local: 15000, asing: 15000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Bukit Sipandu', local: 15000, asing: 15000, parkirMotor: 5000, parkirMobil: 15000 },
+  { name: 'D-Qiano Water Park', local: 15000, asing: 30000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Banyu Alam Hot Spring', local: 15000, asing: 15000, parkirMotor: 3000, parkirMobil: 5000 },
+  { name: 'Pemandian Air Panas Bitingan', local: 5000, asing: 5000, parkirMotor: 2000, parkirMobil: 0 },
+  { name: 'Museum Kailasa', local: 5000, asing: 30000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Candi Gatot Kaca', local: 0, asing: 0, parkirMotor: 2000, parkirMobil: 5000, note: 'Gratis' },
+  { name: 'Telaga Merdada', local: 5000, asing: 5000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Telaga Sewiwi', local: 0, asing: 0, parkirMotor: 2000, parkirMobil: 5000, note: 'Gratis' },
+  { name: 'Telaga Sedringo', local: 10000, asing: 15000, parkirMotor: 3000, parkirMobil: 5000 },
+  { name: 'Kawah Candradimuka', local: 15000, asing: 15000, parkirMotor: 2000, parkirMobil: 7000 },
+  { name: 'Kebun Teh Kertosari', local: 7000, asing: 7000, parkirMotor: 5000, parkirMobil: 10000 },
+  { name: 'Dieng Park', local: 15000, asing: 60000, parkirMotor: 5000, parkirMobil: 10000 },
+  { name: 'Kebun Teh Sikatok', local: 10000, asing: 10000, parkirMotor: 2000, parkirMobil: 5000 },
+  { name: 'Taman Rumah Peri', local: 10000, asing: 10000, parkirMotor: 2000, parkirMobil: 5000 },
 ]
 
 const safetyTips = [
@@ -117,14 +136,21 @@ export default function InfoCenter() {
                         <th>Destinasi Wisata</th>
                         <th>Wisatawan Lokal (IDR)</th>
                         <th>Wisatawan Asing (IDR)</th>
+                        <th>Parkir Motor</th>
+                        <th>Parkir Mobil</th>
                       </tr>
                     </thead>
                     <tbody>
                       {retribusiData.map((item, i) => (
                         <tr key={i}>
-                          <td>{item.name}{item.note ? <span style={{fontSize:'0.75rem',color:'var(--text-muted)',display:'block'}}>{item.note}</span> : null}</td>
+                          <td>
+                            {item.name}
+                            {item.note ? <span style={{fontSize:'0.75rem',color:'var(--text-muted)',display:'block'}}>{item.note}</span> : null}
+                          </td>
                           <td>{item.local === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.local.toLocaleString('id-ID')}`}</td>
                           <td>{item.asing === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.asing.toLocaleString('id-ID')}`}</td>
+                          <td>{item.parkirMotor === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.parkirMotor.toLocaleString('id-ID')}`}</td>
+                          <td>{item.parkirMobil === 0 ? <span style={{color:'var(--success-300)'}}>Gratis</span> : `Rp ${item.parkirMobil.toLocaleString('id-ID')}`}</td>
                         </tr>
                       ))}
                     </tbody>

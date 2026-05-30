@@ -274,480 +274,119 @@ def scrape_retribusi():
     """
     Data retribusi resmi Dieng - hasil riset lapangan tim PJK-GM067.
     Divalidasi langsung ke loket wisata April 2026.
-    UPDATE: Ditambahkan lebih banyak destinasi wisata Dieng.
+    Membaca dari file wisata_dieng.csv jika tersedia, atau mengembalikan data terstruktur.
     """
     print("\n" + "=" * 60)
     print("DITA Retribusi Scraper - Data Lapangan Tim")
     print("=" * 60)
-
-    retribusi = [
-        # Kawah & Fenomena Alam
-        {
-            "id": 1,
-            "name": "Kawah Sikidang",
-            "category": "Alam",
-            "retribusi_lokal": 20000,
-            "retribusi_asing": 50000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2125, "lon": 109.9064},
-            "notes": "Kawah aktif dengan fumarola. Tiket terusan tersedia bersama Candi Arjuna",
-            "description": "Kawah vulkanik aktif dengan aktivitas fumarola dan belerang. Salah satu ikon wisata Dieng.",
-        },
-        {
-            "id": 2,
-            "name": "Kawah Candradimuka",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2042, "lon": 109.9125},
-            "notes": "Kawah legendaris dalam cerita Mahabharata",
-            "description": "Kawah dengan legenda Mahabharata. Trek ringan dengan pemandangan mistis.",
-        },
-        {
-            "id": 3,
-            "name": "Kawah Sileri",
-            "category": "Alam",
-            "retribusi_lokal": 15000,
-            "retribusi_asing": 30000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.1986, "lon": 109.9278},
-            "notes": "Kawah terbesar di Dieng. Hati-hati gas beracun!",
-            "description": "Kawah terbesar dan paling aktif di Dieng. Wajib ikuti jalur aman.",
-        },
-        
-        # Candi & Budaya
-        {
-            "id": 4,
-            "name": "Candi Arjuna",
-            "category": "Budaya",
-            "retribusi_lokal": 15000,
-            "retribusi_asing": 30000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2069, "lon": 109.9103},
-            "notes": "Kompleks candi Hindu tertua di Jawa. Tiket terusan Sikidang+Arjuna Rp 30.000",
-            "description": "Kompleks 5 candi Hindu dari abad ke-7. Arsitektur klasik Jawa Tengah.",
-        },
-        {
-            "id": 5,
-            "name": "Candi Gatotkaca",
-            "category": "Budaya",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2097, "lon": 109.9089},
-            "notes": "Candi tunggal dengan relief indah",
-            "description": "Candi Hindu dengan relief Gatotkaca. Lokasi dekat Candi Arjuna.",
-        },
-        {
-            "id": 6,
-            "name": "Candi Bima",
-            "category": "Budaya",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2153, "lon": 109.9142},
-            "notes": "Candi unik dengan arsitektur berbeda",
-            "description": "Candi dengan arsitektur unik berbeda dari candi lain di Dieng.",
-        },
-        
-        # Telaga
-        {
-            "id": 7,
-            "name": "Telaga Warna",
-            "category": "Alam",
-            "retribusi_lokal": 15000,
-            "retribusi_asing": 30000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2167, "lon": 109.9150},
-            "notes": "Telaga dengan fenomena perubahan warna. Termasuk akses ke Telaga Pengilon",
-            "description": "Telaga dengan fenomena warna air yang berubah-ubah. View point indah.",
-        },
-        {
-            "id": 8,
-            "name": "Telaga Pengilon",
-            "category": "Alam",
-            "retribusi_lokal": 0,
-            "retribusi_asing": 0,
-            "parking_motor": 0,
-            "parking_mobil": 0,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2175, "lon": 109.9167},
-            "notes": "Gratis, akses via Telaga Warna. Air jernih seperti cermin",
-            "description": "Telaga dengan air jernih seperti cermin. Spot foto favorit.",
-        },
-        {
-            "id": 9,
-            "name": "Telaga Merdada",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2189, "lon": 109.9178},
-            "notes": "Telaga tenang dengan pemandangan pegunungan",
-            "description": "Telaga tenang di tengah pegunungan. Cocok untuk relaksasi.",
-        },
-        {
-            "id": 10,
-            "name": "Telaga Dringo",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2203, "lon": 109.9156},
-            "notes": "Telaga dengan legenda lokal",
-            "description": "Telaga dengan cerita legenda masyarakat setempat.",
-        },
-        
-        # View Point & Sunrise
-        {
-            "id": 11,
-            "name": "Bukit Sikunir",
-            "category": "Alam",
-            "retribusi_lokal": 15000,
-            "retribusi_asing": 15000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "03:00",
-            "close_hour": "12:00",
-            "coordinates": {"lat": -7.2250, "lon": 109.9000},
-            "notes": "Sunrise terbaik di Dieng. Buka dini hari. Harga sama lokal/asing. Trek 30 menit",
-            "description": "Spot sunrise terbaik di Dieng. Golden sunrise di atas awan. Wajib datang subuh!",
-        },
-        {
-            "id": 12,
-            "name": "Batu Ratapan Angin",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 25000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2108, "lon": 109.9167},
-            "notes": "View point terbaik untuk foto panorama dataran Dieng",
-            "description": "View point dengan panorama 360° dataran Dieng. Spot foto Instagram!",
-        },
-        {
-            "id": 13,
-            "name": "Bukit Pangonan",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "06:00",
-            "close_hour": "18:00",
-            "coordinates": {"lat": -7.2267, "lon": 109.9022},
-            "notes": "Alternatif sunrise selain Sikunir. Lebih sepi",
-            "description": "Bukit dengan view sunrise dan sunset. Lebih tenang dari Sikunir.",
-        },
-        
-        # Edukasi & Museum
-        {
-            "id": 14,
-            "name": "Dieng Plateau Theater",
-            "category": "Edukasi",
-            "retribusi_lokal": 25000,
-            "retribusi_asing": 50000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "08:00",
-            "close_hour": "16:00",
-            "coordinates": {"lat": -7.2083, "lon": 109.9056},
-            "notes": "Film 4D sejarah Dieng, durasi ~30 menit. Tempat berteduh saat kabut",
-            "description": "Teater 4D dengan film sejarah dan geologi Dieng. Edukatif dan menarik.",
-        },
-        {
-            "id": 15,
-            "name": "Museum Kailasa",
-            "category": "Edukasi",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "08:00",
-            "close_hour": "16:00",
-            "coordinates": {"lat": -7.2075, "lon": 109.9058},
-            "notes": "Museum arkeologi dan geologi Dieng. Koleksi artefak candi",
-            "description": "Museum dengan koleksi artefak dari candi-candi Dieng dan informasi geologi.",
-        },
-        
-        # Paket Wisata
-        {
-            "id": 16,
-            "name": "Tiket Terusan (Sikidang + Arjuna)",
-            "category": "Paket",
-            "retribusi_lokal": 30000,
-            "retribusi_asing": 75000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2069, "lon": 109.9103},
-            "notes": "Lebih hemat Rp 5.000 dibanding beli terpisah",
-            "description": "Paket hemat untuk mengunjungi 2 destinasi utama Dieng.",
-        },
-        
-        # Wisata Alam Lainnya
-        {
-            "id": 17,
-            "name": "Sumur Jalatunda",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2119, "lon": 109.9094},
-            "notes": "Sumur kuno dengan air jernih",
-            "description": "Sumur bersejarah dengan air jernih. Dipercaya memiliki khasiat.",
-        },
-        {
-            "id": 18,
-            "name": "Gua Semar",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2131, "lon": 109.9111},
-            "notes": "Gua dengan legenda Semar. Spot meditasi",
-            "description": "Gua alami dengan legenda pewayangan. Tempat meditasi dan spiritual.",
-        },
-        {
-            "id": 19,
-            "name": "Bukit Sidengkeng",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "06:00",
-            "close_hour": "18:00",
-            "coordinates": {"lat": -7.2289, "lon": 109.8978},
-            "notes": "Bukit dengan view telaga dan pegunungan",
-            "description": "Bukit dengan pemandangan telaga-telaga Dieng dari ketinggian.",
-        },
-        {
-            "id": 20,
-            "name": "Air Terjun Sikarim",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2342, "lon": 109.8956},
-            "notes": "Air terjun kecil di jalur Sikarim. Akses via trek",
-            "description": "Air terjun kecil dengan trek menantang. Cocok untuk petualangan.",
-        },
-        
-        # Destinasi Tambahan — diperluas Mei 2026
-        {
-            "id": 21,
-            "name": "Kawah Nagasari",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2011, "lon": 109.9205},
-            "notes": "Kawah kecil yang masih aktif, dekat Kawah Sileri",
-            "description": "Kawah kecil dengan aktivitas vulkanik. Akses mudah dari Kawah Sileri.",
-        },
-        {
-            "id": 22,
-            "name": "Gardu Pandang Tieng",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 15000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "06:00",
-            "close_hour": "18:00",
-            "coordinates": {"lat": -7.2100, "lon": 109.9050},
-            "notes": "Gardu pandang dengan pemandangan lembah Tieng. Sering berkabut sore hari",
-            "description": "View point dengan panorama lembah Tieng dan pegunungan sekitar Dieng.",
-        },
-        {
-            "id": 23,
-            "name": "Goa Jaran",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "16:00",
-            "coordinates": {"lat": -7.2145, "lon": 109.9081},
-            "notes": "Gua kecil bersejarah. Akses dari kawasan Candi Arjuna",
-            "description": "Gua alami di kawasan candi. Situs arkeologi dengan legenda kuda mistis.",
-        },
-        {
-            "id": 24,
-            "name": "Embung Kali Semar",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 3000,
-            "open_hour": "06:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2156, "lon": 109.9044},
-            "notes": "Danau buatan kecil dengan pemandangan tenang",
-            "description": "Danau kecil buatan yang tenang. Spot foto dengan latar pegunungan.",
-        },
-        {
-            "id": 25,
-            "name": "Ladang Kentang Dieng",
-            "category": "Agrowisata",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 3000,
-            "open_hour": "06:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2194, "lon": 109.9033},
-            "notes": "Wisata edukasi agrikultur. Bisa petik kentang langsung",
-            "description": "Ladang kentang khas Dieng. Wisata edukasi pertanian dataran tinggi.",
-        },
-        {
-            "id": 26,
-            "name": "Telaga Balekambang",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "17:00",
-            "coordinates": {"lat": -7.2211, "lon": 109.9189},
-            "notes": "Telaga kecil yang tenang. Jarang dikunjungi wisatawan",
-            "description": "Telaga tersembunyi di kawasan Dieng. Suasana alami dan sepi.",
-        },
-        {
-            "id": 27,
-            "name": "Batu Pandang Ratapan Angin",
-            "category": "Alam",
-            "retribusi_lokal": 0,
-            "retribusi_asing": 0,
-            "parking_motor": 0,
-            "parking_mobil": 0,
-            "open_hour": "00:00",
-            "close_hour": "23:59",
-            "coordinates": {"lat": -7.2115, "lon": 109.9171},
-            "notes": "Spot foto gratis. View sunrise dan sunset",
-            "description": "Batu besar untuk view point. Gratis akses, lokasi dekat Batu Ratapan Angin.",
-        },
-        {
-            "id": 28,
-            "name": "Pasar Carica Dieng",
-            "category": "Kuliner",
-            "retribusi_lokal": 0,
-            "retribusi_asing": 0,
-            "parking_motor": 0,
-            "parking_mobil": 0,
-            "open_hour": "06:00",
-            "close_hour": "18:00",
-            "coordinates": {"lat": -7.2067, "lon": 109.9108},
-            "notes": "Pusat oleh-oleh carica, keripik kentang, dan purwaceng",
-            "description": "Pasar oleh-oleh khas Dieng. Wajib beli carica dan keripik kentang Dieng.",
-        },
-        {
-            "id": 29,
-            "name": "Jalur Setapak Kawah Sileri",
-            "category": "Alam",
-            "retribusi_lokal": 10000,
-            "retribusi_asing": 20000,
-            "parking_motor": 3000,
-            "parking_mobil": 5000,
-            "open_hour": "07:00",
-            "close_hour": "16:00",
-            "coordinates": {"lat": -7.1992, "lon": 109.9268},
-            "notes": "Trek pendek menuju Kawah Sileri. WAJIB ikuti jalur resmi",
-            "description": "Jalur trekking menuju Kawah Sileri. Pemandangan vulkanik spektakuler.",
-        },
-        {
-            "id": 30,
-            "name": "Camping Ground Sikunir",
-            "category": "Rekreasi",
-            "retribusi_lokal": 25000,
-            "retribusi_asing": 40000,
-            "parking_motor": 5000,
-            "parking_mobil": 10000,
-            "open_hour": "00:00",
-            "close_hour": "23:59",
-            "coordinates": {"lat": -7.2239, "lon": 109.8994},
-            "notes": "Area camping di kaki Bukit Sikunir. Toilet tersedia. Bawa sleeping bag tebal!",
-            "description": "Area camping dekat Bukit Sikunir. Pengalaman bermalam di dataran tinggi Dieng.",
-        },
-        {
-            "id": 31,
-            "name": "Padang Savana Dieng",
-            "category": "Alam",
-            "retribusi_lokal": 5000,
-            "retribusi_asing": 10000,
-            "parking_motor": 2000,
-            "parking_mobil": 5000,
-            "open_hour": "06:00",
-            "close_hour": "18:00",
-            "coordinates": {"lat": -7.2275, "lon": 109.9011},
-            "notes": "Padang rumput luas dengan view Gunung Sindoro-Sumbing",
-            "description": "Hamparan padang rumput dengan pemandangan Gunung Sindoro dan Sumbing.",
-        },
-        {
-            "id": 32,
-            "name": "Desa Wisata Sembungan",
-            "category": "Budaya",
-            "retribusi_lokal": 0,
-            "retribusi_asing": 0,
-            "parking_motor": 0,
-            "parking_mobil": 0,
-            "open_hour": "00:00",
-            "close_hour": "23:59",
-            "coordinates": {"lat": -7.2233, "lon": 109.8969},
-            "notes": "Desa tertinggi di Pulau Jawa. Suasana asri dan udara segar",
-            "description": "Desa tertinggi di Pulau Jawa (2.300 mdpl). Kehidupan masyarakat petani dataran tinggi.",
-        },
-    ]
-
+    
+    import csv
+    csv_path = os.path.join(DATA_DIR, "wisata_dieng.csv")
     path = os.path.join(DATA_DIR, "dieng_retribusi.json")
-    with open(path, "w") as f:
+    
+    if os.path.exists(csv_path):
+        print(f"  Reading from CSV: {csv_path}")
+        # Estimasi koordinat untuk setiap destinasi
+        COORDINATES = {
+            "Tiket Kawasan": {"lat": -7.2069, "lon": 109.9100},
+            "Pandangan Petama": {"lat": -7.2580, "lon": 109.9250},
+            "Telaga Menjer": {"lat": -7.2600, "lon": 109.9200},
+            "Bukit Cinta": {"lat": -7.2550, "lon": 109.9180},
+            "Kahyangan Skyline": {"lat": -7.2570, "lon": 109.9220},
+            "Bukit Saroja": {"lat": -7.2350, "lon": 109.8800},
+            "Panama": {"lat": -7.2450, "lon": 109.8900},
+            "Swiss Van Java": {"lat": -7.2500, "lon": 109.9100},
+            "Curug Sikarim": {"lat": -7.2300, "lon": 109.8920},
+            "Telaga Cebong": {"lat": -7.2240, "lon": 109.8990},
+            "Bukit Sikunir": {"lat": -7.2250, "lon": 109.9000},
+            "Gunung Bismo Via Sikunang": {"lat": -7.2400, "lon": 109.8700},
+            "Kawah Sikidang Pintu A dan Komplek Candi Arjuna": {"lat": -7.2125, "lon": 109.9064},
+            "Kawah Sikidang Pintu B dan Komplek Candi Arjuna": {"lat": -7.2130, "lon": 109.9070},
+            "Candi Bima": {"lat": -7.2153, "lon": 109.9142},
+            "Dieng Pelataue Theater": {"lat": -7.2083, "lon": 109.9056},
+            "Batu Pandang Ratapan Angin": {"lat": -7.2108, "lon": 109.9167},
+            "Telaga Warna": {"lat": -7.2167, "lon": 109.9150},
+            "Kebun Teh Tambi": {"lat": -7.2700, "lon": 109.8500},
+            "Taman Langit": {"lat": -7.2200, "lon": 109.8850},
+            "Watu Angkruk": {"lat": -7.2200, "lon": 109.8870},
+            "Bukit Sikapuk": {"lat": -7.2180, "lon": 109.8830},
+            "Gunung Pakuwaja via Parikesit": {"lat": -7.2100, "lon": 109.8750},
+            "Gunung Prau via Igirmranak": {"lat": -7.1900, "lon": 109.9200},
+            "Gunung Prau via Patakbanteng": {"lat": -7.1850, "lon": 109.9150},
+            "Gunung Prau via Kali Lembu": {"lat": -7.1920, "lon": 109.9100},
+            "Gunung Paru via Dieng": {"lat": -7.1950, "lon": 109.9050},
+            "Tuk Bimolukar": {"lat": -7.2119, "lon": 109.9094},
+            "Bukit Scoter": {"lat": -7.2060, "lon": 109.9080},
+            "Bukit Sipandu": {"lat": -7.2400, "lon": 109.9300},
+            "D-Qiano Water Park": {"lat": -7.2050, "lon": 109.9020},
+            "Banyu Alam Hot Spring": {"lat": -7.2030, "lon": 109.9000},
+            "Pemandian Air Panas Bitingan": {"lat": -7.2090, "lon": 109.9120},
+            "Museum Kailasa": {"lat": -7.2075, "lon": 109.9058},
+            "Candi Gatot Kaca": {"lat": -7.2097, "lon": 109.9089},
+            "Telaga Merdada": {"lat": -7.2189, "lon": 109.9178},
+            "Telaga Sewiwi": {"lat": -7.2195, "lon": 109.9200},
+            "Telaga Sedringo": {"lat": -7.2220, "lon": 109.9250},
+            "Kawah Candradimuka": {"lat": -7.2042, "lon": 109.9125},
+            "Kebun Teh Kertosari": {"lat": -7.2650, "lon": 109.8600},
+            "Dieng Park": {"lat": -7.2160, "lon": 109.9140},
+            "Kebun Teh Sikatok": {"lat": -7.2680, "lon": 109.8550},
+            "Taman Rumah Peri": {"lat": -7.2040, "lon": 109.9040},
+        }
+        
+        def categorize(name: str) -> str:
+            n = name.lower()
+            if "kawah" in n: return "Alam - Kawah"
+            if "telaga" in n: return "Alam - Telaga"
+            if any(k in n for k in ["gunung", "bukit", "pandangan", "pandang"]): return "Alam - Pendakian/Viewpoint"
+            if any(k in n for k in ["candi", "museum", "theater", "pelataue"]): return "Budaya/Edukasi"
+            if any(k in n for k in ["kebun teh", "panama"]): return "Agrowisata"
+            if any(k in n for k in ["water park", "hot spring", "pemandian"]): return "Rekreasi Air"
+            if "curug" in n: return "Alam - Air Terjun"
+            if "taman" in n: return "Rekreasi"
+            if "tiket kawasan" in n: return "Umum"
+            return "Alam"
+
+        retribusi = []
+        with open(csv_path, "r", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f, delimiter=";")
+            for idx, row in enumerate(reader, start=1):
+                name = row.get("Nama Tempat Wisata", "").strip()
+                if not name:
+                    continue
+                wni = int(row.get("Tiket WNI (Rp.)", "0").strip() or 0)
+                wna = int(row.get("Tiket WNA (Rp.)", "0").strip() or 0)
+                parkir_r2 = int(row.get("Parkir Roda 2", "0").strip() or 0)
+                parkir_r4 = int(row.get("Parkir Roda 4", "0").strip() or 0)
+                keterangan = row.get("Keterangan", "").strip()
+                
+                coords = COORDINATES.get(name, {"lat": -7.2100, "lon": 109.9100})
+                
+                entry = {
+                    "id": idx,
+                    "name": name,
+                    "category": categorize(name),
+                    "retribusi_lokal": wni,
+                    "retribusi_asing": wna,
+                    "parking_motor": parkir_r2,
+                    "parking_mobil": parkir_r4,
+                    "open_hour": "07:00",
+                    "close_hour": "17:00",
+                    "coordinates": coords,
+                    "notes": keterangan[:100] if len(keterangan) > 100 else keterangan,
+                    "description": keterangan,
+                }
+                retribusi.append(entry)
+    else:
+        # Fallback to loading the JSON file directly if it exists, so we don't break/overwrite it with old hardcoded list
+        if os.path.exists(path):
+            print(f"  wisata_dieng.csv not found. Loading existing: {path}")
+            with open(path, "r", encoding="utf-8") as f:
+                retribusi = json.load(f)
+        else:
+            print("  Warning: No source data found for retribusi.")
+            retribusi = []
+            
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(retribusi, f, indent=2, ensure_ascii=False)
     print(f"  {len(retribusi)} destinasi disimpan: {path}")
     return retribusi

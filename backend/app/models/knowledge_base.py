@@ -19,32 +19,50 @@ Author: Ida Masruroh (AI Engineer) & Muhammad Sultan Baqa (Back-End)
 # 1. DATA RETRIBUSI RESMI (terverifikasi April 2026)
 # ─────────────────────────────────────────────
 RETRIBUSI_DATA = {
-    "Kawah Sikidang": {"lokal": 20000, "asing": 50000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Kawah Candradimuka": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Kawah Sileri": {"lokal": 15000, "asing": 30000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Kawah Nagasari": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Candi Arjuna": {"lokal": 15000, "asing": 30000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Candi Gatotkaca": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Candi Bima": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Telaga Warna": {"lokal": 15000, "asing": 30000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Telaga Pengilon": {"lokal": 0, "asing": 0, "parkir_motor": 0, "parkir_mobil": 0},
-    "Telaga Merdada": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Telaga Dringo": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Telaga Balekambang": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Bukit Sikunir": {"lokal": 15000, "asing": 15000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Batu Ratapan Angin": {"lokal": 10000, "asing": 25000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Bukit Pangonan": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Dieng Plateau Theater": {"lokal": 25000, "asing": 50000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Museum Kailasa": {"lokal": 10000, "asing": 20000, "parkir_motor": 3000, "parkir_mobil": 5000},
-    "Tiket Terusan (Sikidang+Arjuna)": {"lokal": 30000, "asing": 75000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Sumur Jalatunda": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Gua Semar": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Goa Jaran": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Air Terjun Sikarim": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Camping Ground Sikunir": {"lokal": 25000, "asing": 40000, "parkir_motor": 5000, "parkir_mobil": 10000},
-    "Padang Savana Dieng": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
-    "Ladang Kentang Dieng": {"lokal": 5000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 3000},
-    "Gardu Pandang Tieng": {"lokal": 10000, "asing": 15000, "parkir_motor": 3000, "parkir_mobil": 5000},
+    # === Data dari CSV asli (riset lapangan tim PJK-GM067) ===
+    "Tiket Kawasan": {"lokal": 15000, "asing": 50000, "parkir_motor": 0, "parkir_mobil": 0},
+    "Pandangan Pertama": {"lokal": 10000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Telaga Menjer": {"lokal": 5000, "asing": 15000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Bukit Cinta": {"lokal": 15000, "asing": 15000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Kahyangan Skyline": {"lokal": 20000, "asing": 20000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Bukit Saroja": {"lokal": 25000, "asing": 25000, "parkir_motor": 10000, "parkir_mobil": 20000},
+    "Panama (Kebun Teh)": {"lokal": 10000, "asing": 10000, "parkir_motor": 3000, "parkir_mobil": 5000},
+    "Swiss Van Java": {"lokal": 10000, "asing": 10000, "parkir_motor": 0, "parkir_mobil": 0},
+    "Curug Sikarim": {"lokal": 15000, "asing": 15000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Telaga Cebong": {"lokal": 0, "asing": 0, "parkir_motor": 5000, "parkir_mobil": 15000},
+    "Bukit Sikunir": {"lokal": 15000, "asing": 30000, "parkir_motor": 5000, "parkir_mobil": 15000},
+    "Gunung Bismo Via Sikunang": {"lokal": 35000, "asing": 35000, "parkir_motor": 10000, "parkir_mobil": 20000},
+    "Kawah Sikidang + Candi Arjuna (Pintu A)": {"lokal": 35000, "asing": 50000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Kawah Sikidang + Candi Arjuna (Pintu B)": {"lokal": 35000, "asing": 50000, "parkir_motor": 2000, "parkir_mobil": 10000},
+    "Candi Bima": {"lokal": 0, "asing": 0, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Dieng Plateau Theater": {"lokal": 10000, "asing": 15000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Batu Pandang Ratapan Angin": {"lokal": 15000, "asing": 20000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Telaga Warna": {"lokal": 27000, "asing": 60000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Kebun Teh Tambi": {"lokal": 10000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 7000},
+    "Taman Langit": {"lokal": 15000, "asing": 15000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Watu Angkruk": {"lokal": 15000, "asing": 15000, "parkir_motor": 3000, "parkir_mobil": 7000},
+    "Bukit Sikapuk": {"lokal": 15000, "asing": 15000, "parkir_motor": 3000, "parkir_mobil": 7000},
+    "Gunung Pakuwaja via Parikesit": {"lokal": 30000, "asing": 30000, "parkir_motor": 10000, "parkir_mobil": 25000},
+    "Gunung Prau via Igirmranak": {"lokal": 35000, "asing": 30000, "parkir_motor": 10000, "parkir_mobil": 25000},
+    "Gunung Prau via Patakbanteng": {"lokal": 40000, "asing": 40000, "parkir_motor": 10000, "parkir_mobil": 20000},
+    "Gunung Prau via Kali Lembu": {"lokal": 35000, "asing": 35000, "parkir_motor": 10000, "parkir_mobil": 25000},
+    "Gunung Prau via Dieng": {"lokal": 30000, "asing": 30000, "parkir_motor": 10000, "parkir_mobil": 25000},
+    "Tuk Bimolukar": {"lokal": 5000, "asing": 5000, "parkir_motor": 2000, "parkir_mobil": 2000},
+    "Bukit Scoter": {"lokal": 15000, "asing": 15000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Bukit Sipandu": {"lokal": 15000, "asing": 15000, "parkir_motor": 5000, "parkir_mobil": 15000},
+    "D-Qiano Water Park": {"lokal": 15000, "asing": 30000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Banyu Alam Hot Spring": {"lokal": 15000, "asing": 15000, "parkir_motor": 3000, "parkir_mobil": 5000},
+    "Pemandian Air Panas Bitingan": {"lokal": 5000, "asing": 5000, "parkir_motor": 2000, "parkir_mobil": 0},
+    "Museum Kailasa": {"lokal": 5000, "asing": 30000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Candi Gatot Kaca": {"lokal": 0, "asing": 0, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Telaga Merdada": {"lokal": 5000, "asing": 5000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Telaga Sewiwi": {"lokal": 0, "asing": 0, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Telaga Sedringo": {"lokal": 10000, "asing": 15000, "parkir_motor": 3000, "parkir_mobil": 5000},
+    "Kawah Candradimuka": {"lokal": 15000, "asing": 15000, "parkir_motor": 2000, "parkir_mobil": 7000},
+    "Kebun Teh Kertosari": {"lokal": 7000, "asing": 7000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Dieng Park": {"lokal": 15000, "asing": 60000, "parkir_motor": 5000, "parkir_mobil": 10000},
+    "Kebun Teh Sikatok": {"lokal": 10000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
+    "Taman Rumah Peri": {"lokal": 10000, "asing": 10000, "parkir_motor": 2000, "parkir_mobil": 5000},
 }
 
 # ─────────────────────────────────────────────
@@ -98,177 +116,51 @@ SAFE_ROUTES = {
 }
 
 # ─────────────────────────────────────────────
-# 3. DATA DESTINASI WISATA
+# 3. DATA DESTINASI WISATA (dari CSV asli + data existing)
 # ─────────────────────────────────────────────
 DESTINATIONS = [
-    {
-        "name": "Kawah Sikidang",
-        "type": "Alam",
-        "description": "Kawah vulkanik aktif dengan fumarola belerang. Salah satu kawah paling aktif di Dieng.",
-        "tips": "Jaga jarak minimal 2 meter dari lubang kawah. Jangan sentuh air kawah. Waktu kunjungan ideal: pagi hari.",
-        "duration": "45-60 menit",
-        "coordinates": {"lat": -7.2125, "lng": 109.9064}
-    },
-    {
-        "name": "Kawah Candradimuka",
-        "type": "Alam",
-        "description": "Kawah legendaris dalam cerita Mahabharata. Trek ringan dengan pemandangan mistis.",
-        "tips": "Kawah tidak selalu aktif. Cocok dikombinasikan dengan kunjungan ke Candi Arjuna.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2042, "lng": 109.9125}
-    },
-    {
-        "name": "Kawah Sileri",
-        "type": "Alam",
-        "description": "Kawah terbesar dan paling aktif di Dieng. Luapan lumpur panas pernah terjadi.",
-        "tips": "WAJIB ikuti jalur resmi! Jangan mendekati bibir kawah. Hati-hati gas beracun.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.1986, "lng": 109.9278}
-    },
-    {
-        "name": "Kawah Nagasari",
-        "type": "Alam",
-        "description": "Kawah kecil dengan aktivitas vulkanik. Akses mudah dari Kawah Sileri.",
-        "tips": "Bisa dikunjungi bersamaan dengan Kawah Sileri. Jaga jarak dari lubang aktif.",
-        "duration": "20-30 menit",
-        "coordinates": {"lat": -7.2011, "lng": 109.9205}
-    },
-    {
-        "name": "Telaga Warna",
-        "type": "Alam",
-        "description": "Telaga dengan fenomena warna air yang berubah-ubah karena kandungan belerang dan mineral.",
-        "tips": "Bawa kamera! Warna terbaik saat pagi cerah. Trek ringan ~30 menit mengelilingi telaga.",
-        "duration": "60-90 menit",
-        "coordinates": {"lat": -7.2167, "lng": 109.9150}
-    },
-    {
-        "name": "Telaga Pengilon",
-        "type": "Alam",
-        "description": "Telaga jernih seperti cermin. Gratis akses via Telaga Warna.",
-        "tips": "Spot foto terbaik saat pagi cerah. Air jernih memantulkan langit.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2175, "lng": 109.9167}
-    },
-    {
-        "name": "Telaga Merdada",
-        "type": "Alam",
-        "description": "Telaga tenang di tengah pegunungan. Cocok untuk relaksasi.",
-        "tips": "Suasana lebih sepi dari Telaga Warna. Cocok untuk ketenangan.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2189, "lng": 109.9178}
-    },
-    {
-        "name": "Candi Arjuna",
-        "type": "Budaya",
-        "description": "Kompleks candi Hindu tertua di Jawa (abad ke-7). Terdiri dari 5 candi utama.",
-        "tips": "Sewa guide lokal Rp50.000 untuk penjelasan sejarah lengkap. Buka pagi-sore.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2069, "lng": 109.9103}
-    },
-    {
-        "name": "Candi Gatotkaca",
-        "type": "Budaya",
-        "description": "Candi Hindu dengan relief Gatotkaca. Lokasi dekat Candi Arjuna.",
-        "tips": "Kunjungi bersamaan dengan Candi Arjuna. Perhatikan detail relief.",
-        "duration": "20-30 menit",
-        "coordinates": {"lat": -7.2097, "lng": 109.9089}
-    },
-    {
-        "name": "Candi Bima",
-        "type": "Budaya",
-        "description": "Candi dengan arsitektur unik berbeda dari candi lain di Dieng.",
-        "tips": "Arsitektur mirip candi India Selatan. Lokasi agak terpisah dari kompleks utama.",
-        "duration": "20-30 menit",
-        "coordinates": {"lat": -7.2153, "lng": 109.9142}
-    },
-    {
-        "name": "Bukit Sikunir",
-        "type": "Alam",
-        "description": "Golden Sunrise terbaik di Jawa. Trek 30 menit dari parkiran ke puncak.",
-        "tips": "Berangkat jam 03:30-04:00 subuh. Bawa jaket SANGAT tebal (suhu bisa 3-5°C). Senter/headlamp wajib. Sepatu hiking anti-slip.",
-        "duration": "2-3 jam (termasuk trek)",
-        "coordinates": {"lat": -7.2250, "lng": 109.9000}
-    },
-    {
-        "name": "Batu Ratapan Angin",
-        "type": "Alam",
-        "description": "View point dengan panorama lembah dan pegunungan Dieng 360 derajat.",
-        "tips": "Angin sangat kencang! Pegang topi dan barang berharga. Cocok untuk foto landscape.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2108, "lng": 109.9167}
-    },
-    {
-        "name": "Bukit Pangonan",
-        "type": "Alam",
-        "description": "Alternatif sunrise selain Sikunir. Lebih sepi dan tenang.",
-        "tips": "Cocok untuk yang tidak suka keramaian. View sunset juga bagus.",
-        "duration": "1-2 jam",
-        "coordinates": {"lat": -7.2267, "lng": 109.9022}
-    },
-    {
-        "name": "Dieng Plateau Theater",
-        "type": "Edukasi",
-        "description": "Teater 4D dengan film sejarah dan geologi Dieng. Edukatif dan menarik.",
-        "tips": "Durasi ~30 menit. Tempat berteduh yang bagus saat kabut atau hujan.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2083, "lng": 109.9056}
-    },
-    {
-        "name": "Museum Kailasa",
-        "type": "Edukasi",
-        "description": "Museum dengan koleksi artefak dari candi-candi Dieng dan informasi geologi.",
-        "tips": "Kunjungi sebelum ke candi untuk pemahaman sejarah yang lebih baik.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2075, "lng": 109.9058}
-    },
-    {
-        "name": "Sumur Jalatunda",
-        "type": "Alam",
-        "description": "Sumur bersejarah dengan air jernih. Dipercaya memiliki khasiat.",
-        "tips": "Situs spiritual. Hormati adat setempat saat berkunjung.",
-        "duration": "15-20 menit",
-        "coordinates": {"lat": -7.2119, "lng": 109.9094}
-    },
-    {
-        "name": "Gua Semar",
-        "type": "Alam",
-        "description": "Gua alami dengan legenda pewayangan. Tempat meditasi dan spiritual.",
-        "tips": "Bawa senter. Gua tidak terlalu dalam. Sering digunakan untuk meditasi.",
-        "duration": "20-30 menit",
-        "coordinates": {"lat": -7.2131, "lng": 109.9111}
-    },
-    {
-        "name": "Camping Ground Sikunir",
-        "type": "Rekreasi",
-        "description": "Area camping dekat Bukit Sikunir. Pengalaman bermalam di dataran tinggi.",
-        "tips": "Bawa sleeping bag tebal! Suhu bisa turun hingga 3°C. Toilet tersedia.",
-        "duration": "Overnight",
-        "coordinates": {"lat": -7.2239, "lng": 109.8994}
-    },
-    {
-        "name": "Padang Savana Dieng",
-        "type": "Alam",
-        "description": "Hamparan padang rumput dengan pemandangan Gunung Sindoro dan Sumbing.",
-        "tips": "Spot foto landscape terbaik. Datang pagi atau sore untuk cahaya bagus.",
-        "duration": "30-60 menit",
-        "coordinates": {"lat": -7.2275, "lng": 109.9011}
-    },
-    {
-        "name": "Desa Wisata Sembungan",
-        "type": "Budaya",
-        "description": "Desa tertinggi di Pulau Jawa (2.300 mdpl). Kehidupan petani dataran tinggi.",
-        "tips": "Mampir ke kedai kopi lokal. Suasana desa yang asri dan masyarakat ramah.",
-        "duration": "1-2 jam",
-        "coordinates": {"lat": -7.2233, "lng": 109.8969}
-    },
-    {
-        "name": "Pasar Carica Dieng",
-        "type": "Kuliner",
-        "description": "Pasar oleh-oleh khas Dieng. Wajib beli carica dan keripik kentang.",
-        "tips": "Harga bisa ditawar. Beli carica dalam sirup dan keripik kentang Dieng.",
-        "duration": "30-45 menit",
-        "coordinates": {"lat": -7.2067, "lng": 109.9108}
-    },
+    # === Dari CSV riset lapangan ===
+    {"name": "Pandangan Pertama", "type": "Alam", "description": "Menawarkan sisi lain untuk menikmati keindahan lanskap Telaga Menjer dari atas. Area ini juga menyediakan lahan camping dan rekreasi luar ruang.", "tips": "Cocok untuk camping dan menikmati panorama Telaga Menjer.", "duration": "30-60 menit", "coordinates": {"lat": -7.2580, "lng": 109.9250}},
+    {"name": "Telaga Menjer", "type": "Alam", "description": "Danau vulkanik terluas di area Garung. Pengunjung bisa menyewa perahu kayu Rp 20.000 atau berfoto dengan latar pegunungan.", "tips": "Sewa perahu Rp 20.000. Datang pagi untuk cahaya terbaik.", "duration": "45-60 menit", "coordinates": {"lat": -7.2600, "lng": 109.9200}},
+    {"name": "Bukit Cinta", "type": "Alam", "description": "Spot rekreasi dan berfoto dengan sudut pandang dari ketinggian yang menghadap langsung ke Telaga Menjer.", "tips": "Spot foto populer. Bawa kamera!", "duration": "30-45 menit", "coordinates": {"lat": -7.2550, "lng": 109.9180}},
+    {"name": "Kahyangan Skyline", "type": "Rekreasi", "description": "Destinasi modern bernuansa outdoor. Memiliki ikon jembatan kaca dan jaring gantung sebagai spot foto.", "tips": "Hati-hati di jembatan kaca. Spot foto Instagram terbaik.", "duration": "45-60 menit", "coordinates": {"lat": -7.2570, "lng": 109.9220}},
+    {"name": "Bukit Saroja", "type": "Alam", "description": "Wisata alam via Desa Tieng. Trek relatif mudah, cocok untuk hiking santai. Lokasi terbaik untuk menikmati sunrise.", "tips": "Berangkat subuh untuk sunrise. Trek mudah cocok pemula.", "duration": "2-3 jam", "coordinates": {"lat": -7.2350, "lng": 109.8800}},
+    {"name": "Panama (Kebun Teh)", "type": "Agrowisata", "description": "Kebun Teh Panama dengan fasilitas boardwalk di tengah hamparan kebun teh untuk pejalan kaki dan spot foto.", "tips": "Nikmati boardwalk di tengah kebun teh. Cocok untuk foto.", "duration": "30-60 menit", "coordinates": {"lat": -7.2450, "lng": 109.8900}},
+    {"name": "Swiss Van Java", "type": "Alam", "description": "Area viewpoint dengan lanskap pegunungan hijau yang sering disandingkan dengan keindahan pedesaan Swiss.", "tips": "Spot foto landscape terbaik. Gratis parkir.", "duration": "20-30 menit", "coordinates": {"lat": -7.2500, "lng": 109.9100}},
+    {"name": "Curug Sikarim", "type": "Alam", "description": "Air terjun eksotis dengan debit air deras. Akses jalannya menanjak tajam dan cukup ekstrem.", "tips": "Pastikan kendaraan prima! Akses jalan menanjak tajam dan ekstrem.", "duration": "45-60 menit", "coordinates": {"lat": -7.2300, "lng": 109.8920}},
+    {"name": "Telaga Cebong", "type": "Alam", "description": "Titik kumpul utama dan camping ground bagi wisatawan yang bersiap mendaki Bukit Sikunir saat subuh.", "tips": "Base camp Sikunir. Gratis tiket masuk, bayar parkir saja.", "duration": "30 menit", "coordinates": {"lat": -7.2240, "lng": 109.8990}},
+    {"name": "Bukit Sikunir", "type": "Alam", "description": "Destinasi terpopuler untuk berburu Golden Sunrise. Jalur pendakiannya berupa anak tangga, memakan waktu 30-45 menit.", "tips": "Berangkat 03:30-04:00 subuh. Jaket SANGAT tebal wajib (3-5°C). Headlamp wajib.", "duration": "2-3 jam", "coordinates": {"lat": -7.2250, "lng": 109.9000}},
+    {"name": "Kawah Sikidang + Candi Arjuna", "type": "Alam/Budaya", "description": "Tiket bundling untuk dua ikon wisata Dieng. Pintu A terintegrasi dengan kios oleh-oleh, Pintu B lebih dekat.", "tips": "Pintu B lebih cocok untuk lansia. Jaga jarak 2m dari kawah.", "duration": "60-90 menit", "coordinates": {"lat": -7.2125, "lng": 109.9064}},
+    {"name": "Candi Bima", "type": "Budaya", "description": "Candi dengan corak arsitektur khas India Utara. Berlokasi tepat di pinggir jalan utama. Gratis tanpa tiket.", "tips": "Gratis! Arsitektur unik berbeda dari candi Dieng lainnya.", "duration": "15-20 menit", "coordinates": {"lat": -7.2153, "lng": 109.9142}},
+    {"name": "Dieng Plateau Theater", "type": "Edukasi", "description": "Teater bioskop mini yang memutar film dokumenter tentang sejarah letusan gunung, geografi, dan budaya Dieng.", "tips": "Durasi ~30 menit. Tempat berteduh bagus saat kabut/hujan.", "duration": "30-45 menit", "coordinates": {"lat": -7.2083, "lng": 109.9056}},
+    {"name": "Batu Pandang Ratapan Angin", "type": "Alam", "description": "Destinasi favorit berisi bebatuan tebing menjulang. Titik terbaik melihat gradasi warna Telaga Warna dan Pengilon dari atas.", "tips": "Angin sangat kencang! Pegang topi dan barang berharga.", "duration": "30-45 menit", "coordinates": {"lat": -7.2108, "lng": 109.9167}},
+    {"name": "Telaga Warna", "type": "Alam", "description": "Danau vulkanik di kawasan konservasi BKSDA yang airnya memantulkan warna berbeda karena kandungan sulfur. Area rimbun dan sakral.", "tips": "Bawa kamera! Warna terbaik saat pagi cerah. Trek ~30 menit.", "duration": "60-90 menit", "coordinates": {"lat": -7.2167, "lng": 109.9150}},
+    {"name": "Kebun Teh Tambi", "type": "Agrowisata", "description": "Wisata agro peninggalan Belanda. Bisa berkeliling kebun teh atau mengikuti tur pabrik teh (biaya terpisah).", "tips": "Tur pabrik teh tersedia dengan biaya terpisah.", "duration": "60-90 menit", "coordinates": {"lat": -7.2700, "lng": 109.8500}},
+    {"name": "Taman Langit", "type": "Alam", "description": "Area wisata dataran tinggi untuk bersantai menikmati lanskap perbukitan. Sangat direkomendasikan untuk sunrise dan sunset.", "tips": "Cocok untuk sunrise dan sunset. Pemandangan hampir sama indahnya dengan Watu Angkruk.", "duration": "30-60 menit", "coordinates": {"lat": -7.2200, "lng": 109.8850}},
+    {"name": "Watu Angkruk", "type": "Alam", "description": "Destinasi populer untuk sunrise tanpa perlu mendaki jauh. Tersedia jembatan kaca (glass skywalk) dan kereta kencana tembaga.", "tips": "Sunrise tanpa hiking! Ada glass skywalk dan kereta kencana.", "duration": "45-60 menit", "coordinates": {"lat": -7.2200, "lng": 109.8870}},
+    {"name": "Bukit Sikapuk", "type": "Alam", "description": "Area lereng bukit dengan pemandangan hamparan awan dan pegunungan. Alternatif tenang untuk sunrise dan berfoto.", "tips": "Lebih sepi dari Sikunir. Cocok yang tidak suka keramaian.", "duration": "45-60 menit", "coordinates": {"lat": -7.2180, "lng": 109.8830}},
+    {"name": "Gunung Prau", "type": "Alam", "description": "Gunung populer dengan sabana di puncak. Tersedia 4 jalur pendakian: Patakbanteng (paling populer), Igirmranak, Kali Lembu, dan via Dieng.", "tips": "Via Patakbanteng paling populer tapi menanjak. Tarif parkir berlaku inap.", "duration": "5-8 jam", "coordinates": {"lat": -7.1850, "lng": 109.9150}},
+    {"name": "Gunung Pakuwaja", "type": "Alam", "description": "Jalur pendakian menuju batu vertikal raksasa yang dipercaya sebagai 'paku' penguat Pulau Jawa.", "tips": "Tarif parkir berlaku untuk inap/camping.", "duration": "4-6 jam", "coordinates": {"lat": -7.2100, "lng": 109.8750}},
+    {"name": "Gunung Bismo", "type": "Alam", "description": "Jalur pendakian via Sikunang yang relatif lebih singkat.", "tips": "Biaya parkir dihitung tarif menginap (camping).", "duration": "5-7 jam", "coordinates": {"lat": -7.2400, "lng": 109.8700}},
+    {"name": "Tuk Bimolukar", "type": "Budaya", "description": "Mata air kuno yang disucikan dan bersejarah. Airnya sangat dingin, dipercaya membuat awet muda.", "tips": "Hormati adat setempat. Air sangat dingin!", "duration": "15-20 menit", "coordinates": {"lat": -7.2119, "lng": 109.9094}},
+    {"name": "Bukit Scoter", "type": "Alam", "description": "Bukit landai dekat pusat desa Dieng Kulon. Spot santai melihat lanskap desa, persawahan, dan kawasan candi.", "tips": "Sangat dekat pusat desa. Cocok untuk santai.", "duration": "30-45 menit", "coordinates": {"lat": -7.2060, "lng": 109.9080}},
+    {"name": "Bukit Sipandu", "type": "Alam", "description": "Di perbatasan Banjarnegara dan Batang. Menawarkan sabana dan padang rumput ilalang dengan view pegunungan utara Jawa.", "tips": "View pegunungan utara Jawa. Bawa jaket.", "duration": "1-2 jam", "coordinates": {"lat": -7.2400, "lng": 109.9300}},
+    {"name": "D-Qiano Water Park", "type": "Rekreasi", "description": "Taman rekreasi air terbesar di Dieng. Kolam renang air panas bumi alami dengan berbagai fasilitas seluncuran.", "tips": "Bawa baju ganti dan handuk. Air panas alami!", "duration": "2-3 jam", "coordinates": {"lat": -7.2050, "lng": 109.9020}},
+    {"name": "Banyu Alam Hot Spring", "type": "Rekreasi", "description": "Pemandian air panas alami yang ideal untuk berendam merelaksasikan otot di cuaca Dieng yang dingin.", "tips": "Cocok setelah hiking. Bawa handuk.", "duration": "1-2 jam", "coordinates": {"lat": -7.2030, "lng": 109.9000}},
+    {"name": "Pemandian Air Panas Bitingan", "type": "Rekreasi", "description": "Pemandian tradisional berbahan dasar mata air panas vulkanik yang dikelola komunal oleh warga lokal.", "tips": "Harga murah Rp 5.000. Dikelola warga lokal.", "duration": "1-2 jam", "coordinates": {"lat": -7.2090, "lng": 109.9120}},
+    {"name": "Museum Kailasa", "type": "Edukasi", "description": "Museum geologi dan sejarah terlengkap di Dieng. Menyimpan artefak candi, informasi letusan kawah, dan kehidupan sosial budaya.", "tips": "Kunjungi sebelum ke candi untuk pemahaman sejarah lebih baik.", "duration": "30-45 menit", "coordinates": {"lat": -7.2075, "lng": 109.9058}},
+    {"name": "Candi Gatot Kaca", "type": "Budaya", "description": "Situs peninggalan Mataram Kuno, candi tunggal. Gratis karena letaknya di ruang terbuka tepi jalan.", "tips": "Gratis! Kunjungi bersamaan dengan Candi Arjuna.", "duration": "15-20 menit", "coordinates": {"lat": -7.2097, "lng": 109.9089}},
+    {"name": "Telaga Merdada", "type": "Alam", "description": "Telaga terluas di kawasan Dieng. Tidak beracun, sering digunakan untuk kayak dan irigasi pertanian.", "tips": "Aman untuk kayak. Suasana lebih sepi dari Telaga Warna.", "duration": "30-45 menit", "coordinates": {"lat": -7.2189, "lng": 109.9178}},
+    {"name": "Telaga Sewiwi", "type": "Alam", "description": "Telaga kecil nan rindang yang biasanya dinikmati saat melintas. Belum banyak infrastruktur komersial.", "tips": "Gratis! Pemandangan hening dan alami.", "duration": "15-20 menit", "coordinates": {"lat": -7.2195, "lng": 109.9200}},
+    {"name": "Telaga Sedringo", "type": "Alam", "description": "Sering disebut Telaga Dringo. Akses ekstrem namun pemandangan indah bak Ranu Kumbolo, surga camping.", "tips": "Akses jalan ekstrem! Pastikan kendaraan prima. Cocok camping.", "duration": "1-2 jam", "coordinates": {"lat": -7.2220, "lng": 109.9250}},
+    {"name": "Kawah Candradimuka", "type": "Alam", "description": "Kawah legendaris dikaitkan dengan mitos Gatotkaca. Suasana masih natural dan tersembunyi.", "tips": "Kawah tidak selalu aktif. Suasana mistis dan natural.", "duration": "30-45 menit", "coordinates": {"lat": -7.2042, "lng": 109.9125}},
+    {"name": "Kebun Teh Kertosari", "type": "Agrowisata", "description": "Wisata agro alternatif berupa hamparan perkebunan teh yang menghijau dengan udara sejuk.", "tips": "Lebih sepi dari Tambi. Cocok untuk bersantai.", "duration": "30-60 menit", "coordinates": {"lat": -7.2650, "lng": 109.8600}},
+    {"name": "Dieng Park", "type": "Alam", "description": "Kawasan bukit dengan titik pantau strategis untuk Telaga Warna dari atas. Ideal untuk sunrise dan sunset.", "tips": "Cocok untuk sunrise DAN sunset. View Telaga Warna dari atas.", "duration": "45-60 menit", "coordinates": {"lat": -7.2160, "lng": 109.9140}},
+    {"name": "Kebun Teh Sikatok", "type": "Agrowisata", "description": "Destinasi agro dengan titian jembatan kayu memanjang yang estetik untuk spot berfoto.", "tips": "Jembatan kayu estetik untuk foto.", "duration": "30-60 menit", "coordinates": {"lat": -7.2680, "lng": 109.8550}},
+    {"name": "Taman Rumah Peri", "type": "Rekreasi", "description": "Tempat wisata ramah anak dan keluarga dengan spot foto rumah-rumah kurcaci dan dekorasi miniatur ala negeri dongeng.", "tips": "Sangat cocok untuk keluarga dan anak-anak.", "duration": "30-60 menit", "coordinates": {"lat": -7.2040, "lng": 109.9040}},
+    # === Data existing (tidak ada di CSV) ===
+    {"name": "Desa Wisata Sembungan", "type": "Budaya", "description": "Desa tertinggi di Pulau Jawa (2.300 mdpl). Kehidupan petani dataran tinggi.", "tips": "Mampir ke kedai kopi lokal. Suasana asri.", "duration": "1-2 jam", "coordinates": {"lat": -7.2233, "lng": 109.8969}},
+    {"name": "Pasar Carica Dieng", "type": "Kuliner", "description": "Pasar oleh-oleh khas Dieng. Wajib beli carica dan keripik kentang.", "tips": "Harga bisa ditawar. Beli carica dalam sirup.", "duration": "30-45 menit", "coordinates": {"lat": -7.2067, "lng": 109.9108}},
 ]
 
 # ─────────────────────────────────────────────

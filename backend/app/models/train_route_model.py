@@ -13,6 +13,9 @@ Author      : Tim PJK-GM067 (Ida Masruroh — AI Engineer)
 """
 
 import os
+import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 import json
 import numpy as np
 import pandas as pd
