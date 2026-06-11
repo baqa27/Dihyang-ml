@@ -1,15 +1,38 @@
 """
 DITA Realtime WebSocket Router
 Push notifikasi cuaca realtime ke frontend.
+Dengan Authentication & Security
 """
 
 import json
 import asyncio
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+import logging
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, status
 from typing import List
 from datetime import datetime
 
+from ..config import settings
+
 router = APIRouter()
+logger = logging.getLogger(__name__)
+
+async def verify_ws_token(websocket: WebSocket) -> bool:
+    """Verify WebSocket connection token"""
+    token = websocket.query_params.get("token")
+    
+    # In development, allow connections without token
+    if settings.is_development():
+        logger.info("🔓 Development mode: WebSocket connection allowed without token")
+        return True
+    
+    # In production, require valid token
+    if not token or token != settings.WS_SECRET_TOKEN:
+        logger.warning(f"⚠️ Invalid WebSocket token from {websocket.client.host if websocket.client else 'unknown'}")
+        await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+        return False
+    
+    logger.info(f"✅ Valid WebSocket token from {websocket.client.host if websocket.client else 'unknown'}")
+    return True
 
 # Connection manager untuk broadcast ke semua client
 class ConnectionManager:
@@ -19,12 +42,12 @@ class ConnectionManager:
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.append(websocket)
-        print(f"[WebSocket] Client connected - Total: {len(self.active_connections)}")
+        logger.info(f"🔌 WebSocket client connected - Total: {len(self.active_connections)}")
     
     def disconnect(self, websocket: WebSocket):
         if websocket in self.active_connections:
             self.active_connections.remove(websocket)
-            print(f"[WebSocket] Client disconnected - Total: {len(self.active_connections)}")
+            logger.info(f"🔌 WebSocket client disconnected - Total: {len(self.active_connections)}")
     
     async def broadcast(self, message: dict):
         """Broadcast message ke semua connected clients."""
@@ -49,6 +72,10 @@ dashboard_manager = ConnectionManager()
 @router.websocket("/ws/weather")
 async def weather_websocket(websocket: WebSocket):
     """WebSocket untuk weather updates saja."""
+    # Verify token first
+    if not await verify_ws_token(websocket):
+        return
+    
     await weather_manager.connect(websocket)
     
     try:
@@ -83,14 +110,19 @@ async def weather_websocket(websocket: WebSocket):
                 
     except WebSocketDisconnect:
         weather_manager.disconnect(websocket)
+        logger.info("🔌 Weather WebSocket disconnected normally")
     except Exception as e:
-        print(f"[WebSocket Weather] Error: {e}")
+        logger.error(f"❌ WebSocket Weather Error: {e}")
         weather_manager.disconnect(websocket)
 
 
 @router.websocket("/ws/predictions")
 async def predictions_websocket(websocket: WebSocket):
     """WebSocket untuk ML predictions updates."""
+    # Verify token first
+    if not await verify_ws_token(websocket):
+        return
+    
     await predictions_manager.connect(websocket)
     
     try:
@@ -133,14 +165,19 @@ async def predictions_websocket(websocket: WebSocket):
                 
     except WebSocketDisconnect:
         predictions_manager.disconnect(websocket)
+        logger.info("🔌 Predictions WebSocket disconnected normally")
     except Exception as e:
-        print(f"[WebSocket Predictions] Error: {e}")
+        logger.error(f"❌ WebSocket Predictions Error: {e}")
         predictions_manager.disconnect(websocket)
 
 
 @router.websocket("/ws/dashboard")
 async def dashboard_websocket(websocket: WebSocket):
     """WebSocket untuk dashboard - kombinasi weather + predictions."""
+    # Verify token first
+    if not await verify_ws_token(websocket):
+        return
+    
     await dashboard_manager.connect(websocket)
     
     try:
@@ -223,8 +260,9 @@ async def dashboard_websocket(websocket: WebSocket):
                 
     except WebSocketDisconnect:
         dashboard_manager.disconnect(websocket)
+        logger.info("🔌 Dashboard WebSocket disconnected normally")
     except Exception as e:
-        print(f"[WebSocket Dashboard] Error: {e}")
+        logger.error(f"❌ WebSocket Dashboard Error: {e}")
         dashboard_manager.disconnect(websocket)
 
 

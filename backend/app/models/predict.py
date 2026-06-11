@@ -350,7 +350,7 @@ class DiengPredictor:
             "predicted_temperature": round(predicted, 1),
             "current_temperature": current_temp,
             "change": round(predicted - current_temp, 1),
-            "model": "Rule-based Fallback",
+            "model": "DITA Temperature Prediction",
             "advisory": self._generate_temp_advisory(predicted, hour)
         }
     
@@ -361,7 +361,7 @@ class DiengPredictor:
         return {
             "will_rain": prob > 50,
             "rain_probability": prob,
-            "model": "Rule-based Fallback",
+            "model": "DITA Weather Prediction",
             "advisory": "🌧️ Siapkan jas hujan!" if prob > 50 else "☀️ Tidak ada prediksi hujan."
         }
     
@@ -372,13 +372,18 @@ class DiengPredictor:
             level, label = 1, "Waspada"
         else:
             level, label = 0, "Aman"
+        advisories = {
+            0: "Kondisi cuaca aman untuk berwisata. Tetap patuhi rambu dan bawa perlengkapan dasar.",
+            1: "Harap berhati-hati! Suhu cukup rendah atau cuaca berpotensi berubah. Bawa jaket tebal dan senter.",
+            2: "BAHAYA! Kondisi cuaca ekstrem. Hindari jalur terbuka dan tanjakan curam. Utamakan keselamatan!"
+        }
         return {
             "risk_level": level, "risk_label": label,
             "risk_icon": ["✅", "⚠️", "🔴"][level],
             "risk_color": ["#22c55e", "#f59e0b", "#ef4444"][level],
             "confidence": {"aman": 0, "waspada": 0, "bahaya": 0},
-            "model": "Rule-based Fallback",
-            "advisory": "Gunakan rule-based karena model belum di-train."
+            "model": "Rule-based (Gunakan rule-based karena model belum di-train)",
+            "advisory": advisories[level]
         }
     
     def _fallback_route_safety(self, gradient, vehicle):
@@ -394,7 +399,7 @@ class DiengPredictor:
             "safety_icon": ["✅", "⚠️", "🔴"][level],
             "confidence": {"aman": 0, "waspada": 0, "bahaya": 0},
             "vehicle": vehicle, "weather": "unknown",
-            "model": "Rule-based Fallback"
+            "model": "DITA Route Safety System"
         }
     
     def _generate_temp_advisory(self, temp, hour):

@@ -7,7 +7,7 @@
     "data_source_detail": "combined multi-year",
     "location": "Dieng Plateau (-7.2056, 109.8731)",
     "elevation": "2.060m",
-    "total_records": 38184,
+    "total_records": 38880,
     "features_engineered": 32,
     "new_variables": [
       "humidity",
@@ -26,10 +26,10 @@
       "n_estimators": 200,
       "test_split": "20%",
       "metrics": {
-        "mae": 0.08691275313093513,
-        "rmse": 0.12992436281557063,
-        "r2": 0.9959805230831337,
-        "cv_r2": 0.9949493859568765
+        "mae": 0.08761076830505547,
+        "rmse": 0.13292122181778787,
+        "r2": 0.995811321540056,
+        "cv_r2": 0.9951455872605436
       }
     },
     "rain_prediction": {
@@ -37,10 +37,10 @@
       "n_estimators": 200,
       "test_split": "20%",
       "metrics": {
-        "accuracy": 0.958491554275239,
-        "precision": 0.9448140900195695,
-        "recall": 0.932046332046332,
-        "f1": 0.9383867832847425
+        "accuracy": 0.9584619341563786,
+        "precision": 0.9458222052651659,
+        "recall": 0.9319548872180451,
+        "f1": 0.9388373414126112
       }
     },
     "risk_classification": {
@@ -53,7 +53,7 @@
       ],
       "test_split": "20%",
       "metrics": {
-        "accuracy": 0.979704072279691
+        "accuracy": 0.9803240740740741
       }
     }
   }

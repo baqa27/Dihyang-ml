@@ -481,3 +481,16 @@ if __name__ == "__main__":
     print(f"  Risk Accuracy   : {risk_m['accuracy']:.4f}")
     print(f"  Dataset records : {len(df):,}")
     print("=" * 60)
+    
+    # === VERSIONING: Save models ===
+    try:
+        from .model_versioning import get_version_manager
+        vm = get_version_manager()
+        
+        vm.save_version("temperature", temp_m, f"Dataset: {len(df):,} records")
+        vm.save_version("rain", rain_m, f"Dataset: {len(df):,} records")
+        vm.save_version("risk", risk_m, f"Dataset: {len(df):,} records")
+        
+        print("\n✅ Model versions saved to archive!")
+    except Exception as e:
+        print(f"⚠️ Versioning error (non-critical): {e}")

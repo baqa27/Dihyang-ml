@@ -55,6 +55,7 @@ def generate_route_dataset():
         {"name": "Dieng Kulon - Kawah Sikidang", "gradient": 5, "width": 5.0, "visibility": 6, "guardrail": 1, "surface": "aspal", "elevation": 2060, "curve_count": 3, "lighting": 1},
         {"name": "Dieng Kulon - Candi Arjuna", "gradient": 3, "width": 4.5, "visibility": 7, "guardrail": 1, "surface": "aspal", "elevation": 2060, "curve_count": 2, "lighting": 1},
         {"name": "Dieng Kulon - Telaga Warna", "gradient": 7, "width": 4.0, "visibility": 5, "guardrail": 1, "surface": "aspal", "elevation": 2050, "curve_count": 4, "lighting": 0},
+        {"name": "Tanjakan Watu Angkruk", "gradient": 15, "width": 5.5, "visibility": 7, "guardrail": 1, "surface": "aspal", "elevation": 1900, "curve_count": 8, "lighting": 1},
         
         # Jalur Menengah (Waspada)
         {"name": "Jalur Gardu Pandang", "gradient": 18, "width": 3.5, "visibility": 3, "guardrail": 0, "surface": "aspal", "elevation": 2100, "curve_count": 12, "lighting": 0},
@@ -65,7 +66,6 @@ def generate_route_dataset():
         
         # Jalur Berbahaya (Bahaya)
         {"name": "Tanjakan Sikarim", "gradient": 45, "width": 3.0, "visibility": 2, "guardrail": 0, "surface": "aspal", "elevation": 1800, "curve_count": 15, "lighting": 0},
-        {"name": "Tanjakan Watu Angkruk (15%)", "gradient": 35, "width": 3.5, "visibility": 3, "guardrail": 0, "surface": "aspal", "elevation": 1900, "curve_count": 12, "lighting": 0},
         {"name": "Jalur Alternatif Batur", "gradient": 30, "width": 2.5, "visibility": 2, "guardrail": 0, "surface": "tanah", "elevation": 1700, "curve_count": 18, "lighting": 0},
         {"name": "Turunan Sikarim (malam)", "gradient": 45, "width": 3.0, "visibility": 1, "guardrail": 0, "surface": "aspal", "elevation": 1800, "curve_count": 15, "lighting": 0},
         {"name": "Jalur Lingkar Tebing", "gradient": 25, "width": 2.5, "visibility": 2, "guardrail": 0, "surface": "batu", "elevation": 2000, "curve_count": 20, "lighting": 0},
@@ -233,3 +233,16 @@ if __name__ == '__main__':
     print(f"   Accuracy: {metrics['accuracy']:.4f}")
     print(f"   CV Accuracy: {metrics['cv_accuracy']:.4f}")
     print("=" * 60)
+    
+    # === VERSIONING: Save model ===
+    try:
+        import sys
+        sys.path.insert(0, os.path.dirname(__file__))
+        from model_versioning import get_version_manager
+        
+        vm = get_version_manager()
+        vm.save_version("route", metrics, f"Dataset: {len(df)} samples")
+        
+        print("\n✅ Model version saved to archive!")
+    except Exception as e:
+        print(f"⚠️ Versioning error (non-critical): {e}")

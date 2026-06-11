@@ -1,7 +1,4 @@
-"""
-Script konversi Data-Wisata-Dieng.csv → dieng_retribusi.json
-Menghasilkan format JSON yang sesuai dengan kebutuhan backend DITA.
-"""
+
 import csv
 import json
 import os

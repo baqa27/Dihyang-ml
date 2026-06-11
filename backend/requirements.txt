@@ -13,3 +13,8 @@ notebook==7.4.3
 ipykernel==6.30.0
 websockets==14.1
 requests==2.32.3
+thefuzz
+python-Levenshtein
+chromadb
+openai
+slowapi==0.1.9
