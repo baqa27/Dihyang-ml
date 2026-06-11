@@ -25,10 +25,28 @@ CAPSTONE/
 │   │   ├── main.py             # Entry point utama API
 │   │   ├── config.py           # Konfigurasi sistem & Environment
 │   │   ├── models/             # Modul AI & Machine Learning
-│   │   │   ├── saved/          # Berkas model latih (.pkl) & laporan
-│   │   │   │   ├── evaluation_report.json
-│   │   │   │   ├── itinerary_model_report.json
-│   │   │   │   └── [model_name].pkl
+│   │   │   ├── saved/          # Berkas model latih (.pkl) & laporan evaluasi
+│   │   │   │   ├── evaluation_report.json          # Metrik evaluasi Model 1, 2, & 3
+│   │   │   │   ├── itinerary_model_report.json     # Metrik evaluasi Model 5
+│   │   │   │   ├── itinerary_recommender.pkl       # Random Forest Recommendation Model
+│   │   │   │   ├── itinerary_scaler.pkl
+│   │   │   │   ├── itinerary_training_sample.csv
+│   │   │   │   ├── rain_classifier.pkl             # Gradient Boosting Rain Classifier
+│   │   │   │   ├── rain_scaler.pkl
+│   │   │   │   ├── risk_classifier.pkl             # Gradient Boosting Risk Classifier
+│   │   │   │   ├── risk_scaler.pkl
+│   │   │   │   ├── route_safety_model.pkl          # Random Forest Route Safety Classifier
+│   │   │   │   ├── route_scaler.pkl
+│   │   │   │   ├── temperature_model.pkl           # Random Forest Temperature Regressor
+│   │   │   │   ├── temp_scaler.pkl
+│   │   │   │   ├── le_budget_itinerary.pkl         # Label Encoders
+│   │   │   │   ├── le_physical_itinerary.pkl
+│   │   │   │   ├── le_style_itinerary.pkl
+│   │   │   │   ├── le_surface.pkl
+│   │   │   │   ├── le_type_itinerary.pkl
+│   │   │   │   ├── le_vehicle.pkl
+│   │   │   │   ├── le_vehicle_itinerary.pkl
+│   │   │   │   └── le_weather.pkl
 │   │   │   ├── predict.py      # Engine inferensi ML
 │   │   │   ├── knowledge_base.py # KB kustom untuk NLP Chatbot
 │   │   │   ├── rag_engine.py   # RAG Context retrieval
@@ -44,8 +62,18 @@ CAPSTONE/
 │   │   │   ├── destinations.py # Galeri destinasi wisata
 │   │   │   ├── predictions.py  # Inferensi ML predictions
 │   │   │   └── realtime.py     # Kontrol WebSocket & retrain scheduler
-│   │   └── data/               # Basis data Chroma DB & berkas statis
+│   │   └── data/               # Basis data Chroma DB & berkas dataset
 │   │       ├── chroma_db/      # Vektor data untuk chatbot RAG
+│   │       ├── data_wisata.csv
+│   │       ├── dieng_historical_2022.json
+│   │       ├── dieng_historical_2023.json
+│   │       ├── dieng_historical_2024.json
+│   │       ├── dieng_historical_2025.json
+│   │       ├── dieng_historical_2026.json
+│   │       ├── dieng_historical_combined.json
+│   │       ├── dieng_realtime_current.json
+│   │       ├── dieng_retribusi.json
+│   │       ├── dieng_route_dataset.csv
 │   │       └── convert_csv_to_json.py
 │   ├── notebooks/              # Jupyter Notebooks untuk analisis AI/ML
 │   │   ├── 01_EDA_weather.ipynb
@@ -68,6 +96,11 @@ CAPSTONE/
 │       │   │   ├── RouteNavigation.tsx
 │       │   │   ├── SmartItinerary.tsx
 │       │   │   ├── ChatbotSection.tsx
+│       │   │   ├── FloatingChatbot.tsx
+│       │   │   ├── Footer.tsx
+│       │   │   ├── Navbar.tsx
+│       │   │   ├── NotificationPanel.tsx
+│       │   │   ├── ThemeProvider.tsx
 │       │   │   └── InfoCenter.tsx
 │       │   └── hooks/          # React Custom Hooks
 │       │       └── useThemeColors.ts
@@ -84,10 +117,11 @@ CAPSTONE/
 
 | # | Model | Algorithm | Metric | Score |
 |---|-------|-----------|--------|-------|
-| 1 | Temperature Prediction | Random Forest Regressor | R² | **0.9951** |
-| 2 | Rain Prediction | Gradient Boosting Classifier | F1 | **0.7244** |
-| 3 | Tourism Risk Classification | Gradient Boosting Classifier | Accuracy | **98.57%** |
-| 4 | Route Safety Classification | Random Forest Classifier | Accuracy | **100%** |
+| 1 | Temperature Prediction | Random Forest Regressor | R² | **0.9958** (CV: **0.9951**) |
+| 2 | Rain Prediction | Gradient Boosting Classifier | Accuracy / F1 | **95.85%** / **93.88%** |
+| 3 | Tourism Risk Classification | Gradient Boosting Classifier | Accuracy | **98.03%** |
+| 4 | Route Safety Classification | Random Forest Classifier | Accuracy | **100%** (CV: **99.6%**) |
+| 5 | Itinerary Recommendation | Random Forest Regressor (Hybrid) | Test RMSE / MAE | **0.5579** / **0.4318** |
 
 ### NLP Architecture (DITA Chatbot)
 - **Gemini API** — Model Bahasa Besar (LLM) untuk menghasilkan respons kontekstual yang natural.
@@ -108,7 +142,7 @@ python -m venv .venv
 # source .venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
 
-# Mengambil data cuaca historis (2022-2025)
+# Mengambil data cuaca historis (2022-2026)
 python scraper/scrape.py
 
 # Mengambil data realtime terbaru
