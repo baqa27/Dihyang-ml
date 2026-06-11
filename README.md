@@ -11,10 +11,10 @@
 Dihyang Web adalah platform pariwisata cerdas berbasis AI yang dirancang untuk mengatasi kesenjangan informasi keamanan di kawasan wisata Dataran Tinggi Dieng, Wonosobo. Dengan chatbot DITA, wisatawan mendapatkan rekomendasi rute aman, prediksi cuaca, dan informasi retribusi resmi secara **real-time**.
 
 ### ✨ Fitur Realtime
-- **WebSocket Dashboard** — Update cuaca setiap 5 menit otomatis
-- **Auto-Scraping** — Data cuaca terbaru dari Open-Meteo API
-- **ML Predictions** — Prediksi suhu, hujan, dan risiko secara realtime
-- **Auto-Retrain** — Model ML diperbarui otomatis setiap minggu dengan data terbaru
+- **WebSocket Dashboard** — Update cuaca setiap 5 menit secara otomatis.
+- **Auto-Scraping** — Data cuaca terbaru disinkronkan langsung dari Open-Meteo API.
+- **ML Predictions** — Prediksi suhu, hujan, dan risiko keselamatan secara real-time.
+- **Auto-Retrain** — Model ML diperbarui otomatis setiap minggu dengan data latih terbaru.
 
 ## 🏗️ Architecture
 
@@ -22,43 +22,60 @@ Dihyang Web adalah platform pariwisata cerdas berbasis AI yang dirancang untuk m
 CAPSTONE/
 ├── backend/                    # FastAPI Backend (Python 3.13)
 │   ├── app/
-│   │   ├── main.py             # Entry point
-│   │   ├── models/             # AI/ML Module
-│   │   │   ├── saved/          # Trained model files (.pkl)
-│   │   │   ├── predict.py      # ML inference engine
-│   │   │   ├── knowledge_base.py   # NLP custom knowledge base
+│   │   ├── main.py             # Entry point utama API
+│   │   ├── config.py           # Konfigurasi sistem & Environment
+│   │   ├── models/             # Modul AI & Machine Learning
+│   │   │   ├── saved/          # Berkas model latih (.pkl) & laporan
+│   │   │   │   ├── evaluation_report.json
+│   │   │   │   ├── itinerary_model_report.json
+│   │   │   │   └── [model_name].pkl
+│   │   │   ├── predict.py      # Engine inferensi ML
+│   │   │   ├── knowledge_base.py # KB kustom untuk NLP Chatbot
+│   │   │   ├── rag_engine.py   # RAG Context retrieval
+│   │   │   ├── itinerary_engine.py # Penjadwal rencana perjalanan
+│   │   │   ├── model_versioning.py # Versi & metrik model
 │   │   │   ├── train_weather_model.py
+│   │   │   ├── train_itinerary_model.py
 │   │   │   └── train_route_model.py
-│   │   ├── routers/            # API endpoints
-│   │   │   ├── chat.py         # DITA NLP chatbot
-│   │   │   ├── itinerary.py    # Smart itinerary generator
-│   │   │   ├── weather.py      # Weather data API
-│   │   │   ├── destinations.py # Destination info
-│   │   │   └── predictions.py  # ML prediction endpoints
-│   │   └── data/               # Datasets
-│   │       ├── dieng_historical_2023.json
-│   │       ├── dieng_retribusi.json
-│   │       └── dieng_route_dataset.csv
-│   ├── notebooks/              # Jupyter Notebooks (AI/ML)
+│   │   ├── routers/            # Router Endpoint API
+│   │   │   ├── chat.py         # Asisten NLP DITA
+│   │   │   ├── itinerary.py    # Perencana rencana perjalanan cerdas
+│   │   │   ├── weather.py      # Informasi data cuaca
+│   │   │   ├── destinations.py # Galeri destinasi wisata
+│   │   │   ├── predictions.py  # Inferensi ML predictions
+│   │   │   └── realtime.py     # Kontrol WebSocket & retrain scheduler
+│   │   └── data/               # Basis data Chroma DB & berkas statis
+│   │       ├── chroma_db/      # Vektor data untuk chatbot RAG
+│   │       └── convert_csv_to_json.py
+│   ├── notebooks/              # Jupyter Notebooks untuk analisis AI/ML
 │   │   ├── 01_EDA_weather.ipynb
 │   │   ├── 02_weather_models.ipynb
 │   │   ├── 03_route_safety_model.ipynb
-│   │   ├── 04_nlp_chatbot_analysis.ipynb
-│   │   └── figures/
-│   ├── scraper/                # Data collection scripts
-│   └── .env                    # Environment variables
+│   │   └── 04_nlp_chatbot_analysis.ipynb
+│   └── scraper/                # Skrip pengambilan data dari API cuaca
 │
-├── frontend/                   # React + Vite Frontend
+├── frontend/                   # React.js + Vite Frontend (TypeScript)
 │   └── src/
-│       ├── pages/              # Page components
-│       │   ├── Home.jsx        # Landing page
-│       │   ├── Dashboard.jsx   # Weather dashboard
-│       │   ├── Explore.jsx     # Destination explorer
-│       │   ├── Itinerary.jsx   # Smart itinerary
-│       │   ├── Chat.jsx        # DITA chatbot
-│       │   └── InfoCenter.jsx  # Info center
-│       ├── components/         # Reusable components
-│       └── services/           # API service layer
+│       ├── app/
+│       │   ├── App.tsx         # Halaman utama aplikasi (SPA)
+│       │   ├── pages/          # Halaman mandiri tambahan
+│       │   │   ├── Bantuan.tsx    # Pusat Bantuan & FAQ
+│       │   │   └── Perusahaan.tsx # Hubungi kami & Profil tim
+│       │   ├── components/     # Komponen UI dashboard interaktif
+│       │   │   ├── HeroSection.tsx
+│       │   │   ├── WeatherDashboard.tsx
+│       │   │   ├── RouteMap.tsx
+│       │   │   ├── RouteNavigation.tsx
+│       │   │   ├── SmartItinerary.tsx
+│       │   │   ├── ChatbotSection.tsx
+│       │   │   └── InfoCenter.tsx
+│       │   └── hooks/          # React Custom Hooks
+│       │       └── useThemeColors.ts
+│       ├── config/
+│       │   └── api.ts          # Centralized API fetch wrapper
+│       ├── services/
+│       │   └── api.service.ts  # Jembatan request API ke backend
+│       └── main.tsx            # Entry point aplikasi
 │
 └── README.md
 ```
@@ -73,34 +90,36 @@ CAPSTONE/
 | 4 | Route Safety Classification | Random Forest Classifier | Accuracy | **100%** |
 
 ### NLP Architecture (DITA Chatbot)
-- **Gemini API** — LLM for contextual responses
-- **Custom Knowledge Base** — Verified local data (RAG-style injection)
-- **Rule-based Fallback** — Offline intent classification (10+ intents)
+- **Gemini API** — Model Bahasa Besar (LLM) untuk menghasilkan respons kontekstual yang natural.
+- **Custom Knowledge Base** — Injeksi data lokal tervalidasi menggunakan pendekatan RAG (Retrieval-Augmented Generation) melalui Chroma DB.
+- **Rule-based Fallback** — Klasifikasi intent lokal secara offline (10+ intent dasar) apabila koneksi API terputus atau kunci API tidak terpasang.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.13+
-- Node.js 18+
+- Node.js 18+ (npm / pnpm)
 
 ### 1. Backend Setup
 ```bash
 cd backend
 python -m venv .venv
 .\.venv\Scripts\activate    # Windows
+# source .venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
 
-# Scrape data cuaca historis (2022-2025)
+# Mengambil data cuaca historis (2022-2025)
 python scraper/scrape.py
 
-# Scrape data realtime
+# Mengambil data realtime terbaru
 python scraper/scrape.py --realtime
 
-# Train ML models
+# Melatih model Machine Learning lokal
 python -m app.models.train_weather_model
 python -m app.models.train_route_model
+python -m app.models.train_itinerary_model
 
-# Jalankan server (dengan realtime scheduler)
+# Jalankan server FastAPI dengan auto-reload
 uvicorn app.main:app --reload
 ```
 
@@ -112,33 +131,41 @@ npm run dev
 ```
 
 ### 3. Environment Variables
-Create `backend/.env`:
+Buat berkas `backend/.env` untuk backend:
 ```env
-GEMINI_API_KEY=your_api_key_here
+ENVIRONMENT=development
+GEMINI_API_KEY=your_gemini_api_key_here
+ALLOWED_ORIGINS=http://localhost:5173
+```
+
+Buat berkas `frontend/.env` untuk frontend (jika ingin mengubah alamat host backend):
+```env
+VITE_API_URL=http://localhost:8000
+VITE_WS_URL=ws://localhost:8000
 ```
 
 ## 🔄 Realtime Features
 
 ### Auto-Scraping
-Server otomatis scrape data cuaca setiap **5 menit** saat berjalan:
+Server otomatis mengunduh data cuaca terbaru setiap **5 menit** ketika aktif berjalan.
 ```bash
-# Manual trigger
+# Pengambilan manual
 python scraper/scrape.py --realtime      # Data cuaca terkini
 python scraper/scrape.py --latest        # 30 hari terakhir untuk retrain
 ```
 
 ### WebSocket Endpoints
-- `ws://localhost:8000/api/realtime/ws/weather` — Weather updates
-- `ws://localhost:8000/api/realtime/ws/predictions` — ML predictions
-- `ws://localhost:8000/api/realtime/ws/dashboard` — Combined dashboard
+- `ws://<host>/api/realtime/ws/weather` — Pembaruan cuaca real-time.
+- `ws://<host>/api/realtime/ws/predictions` — Pembaruan prediksi ML secara real-time.
+- `ws://<host>/api/realtime/ws/dashboard` — Kombinasi data cuaca dan prediksi.
 
 ### Auto-Retrain
-Model ML otomatis retrain setiap **7 hari** dengan data terbaru:
+Model ML otomatis dilatih kembali setiap **7 hari** menggunakan data cuaca terbaru.
 ```bash
-# Manual trigger
+# Pemicu manual
 curl -X POST http://localhost:8000/api/realtime/retrain
 
-# Check status
+# Memeriksa status penjadwal
 curl http://localhost:8000/api/realtime/status
 ```
 
@@ -147,30 +174,35 @@ curl http://localhost:8000/api/realtime/status
 ### Weather & Realtime
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/weather/current` | GET | Current weather data |
-| `/api/weather/historical` | GET | Historical weather dataset |
-| `/api/realtime/status` | GET | Realtime system status |
-| `/api/realtime/retrain` | POST | Trigger manual retrain |
-| `ws://.../realtime/ws/weather` | WS | Weather WebSocket |
-| `ws://.../realtime/ws/dashboard` | WS | Dashboard WebSocket |
+| `/api/weather/current` | GET | Data cuaca terbaru hasil scrape |
+| `/api/weather/forecast` | GET | Prakiraan cuaca harian Dieng |
+| `/api/weather/hourly-today` | GET | Prakiraan cuaca per jam hari ini |
+| `/api/weather/historical` | GET | Akses dataset historis |
+| `/api/realtime/status` | GET | Memeriksa status scheduler realtime |
+| `/api/realtime/retrain` | POST | Memicu retrain model secara manual |
+| `/api/realtime/ws/weather` | WS | WebSocket update data cuaca harian |
+| `/api/realtime/ws/predictions` | WS | WebSocket update inferensi prediksi ML |
+| `/api/realtime/ws/dashboard` | WS | WebSocket gabungan data cuaca & prediksi |
 
 ### AI & ML
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/chat` | POST | DITA NLP chatbot |
-| `/api/itinerary/generate` | POST | AI-powered itinerary |
-| `/api/ml/model-info` | GET | ML model metrics |
-| `/api/ml/predict/quick` | GET | Real-time prediction |
-| `/api/ml/predict/dashboard` | GET | Dashboard predictions |
-| `/api/ml/predict/temperature` | POST | Temperature prediction |
-| `/api/ml/predict/rain` | POST | Rain prediction |
-| `/api/ml/predict/risk` | POST | Tourism risk level |
-| `/api/ml/predict/route-safety` | POST | Route safety classification |
+| `/api/chat` | POST | NLP Chatbot DITA (Gemini + RAG + Fallback) |
+| `/api/itinerary/generate` | POST | AI-powered itinerary generator |
+| `/api/itinerary/generate-smart` | POST | Smart itinerary generator |
+| `/api/itinerary/activities` | GET | Daftar rekomendasi aktivitas wisata |
+| `/api/ml/model-info` | GET | Informasi metrik & performa evaluasi model |
+| `/api/ml/predict/quick` | GET | Prediksi cepat parameter cuaca hari ini |
+| `/api/ml/predict/dashboard` | GET | Kombinasi dashboard prediksi ML |
+| `/api/ml/predict/temperature` | POST | Prediksi suhu berdasar variabel input |
+| `/api/ml/predict/rain` | POST | Prediksi curah hujan berdasar variabel input |
+| `/api/ml/predict/risk` | POST | Prediksi tingkat risiko keselamatan wisata |
+| `/api/ml/predict/route-safety` | POST | Klasifikasi keamanan jalur rute |
 
 ### Destinations
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/destinations/` | GET | Destination information |
+| `/api/destinations` | GET | Memperoleh daftar informasi 20 destinasi Dieng |
 
 ## 👥 Team
 
@@ -184,9 +216,9 @@ curl http://localhost:8000/api/realtime/status
 
 ## 📚 Tech Stack
 
-- **Frontend:** React 18, Vite, Leaflet.js, Recharts
-- **Backend:** FastAPI, Python 3.13
-- **AI/ML:** scikit-learn, pandas, numpy, Gemini API
+- **Frontend:** React 18 (TypeScript), Vite, Leaflet.js, Recharts, Framer Motion (motion/react)
+- **Backend:** FastAPI, Uvicorn, Python 3.13, SlowAPI Rate Limiter
+- **AI/ML:** scikit-learn, pandas, numpy, Google Gemini API, Chroma DB (Vector Store)
 - **Data:** Open-Meteo API, custom datasets
 
 ---
