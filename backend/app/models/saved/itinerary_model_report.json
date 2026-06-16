@@ -1,66 +1,66 @@
 {
   "model_type": "Random Forest Regressor",
-  "training_date": "2026-06-10T19:56:16.310002",
+  "training_date": "2026-06-16T11:18:58.956317",
   "n_samples": 1575,
   "n_features": 12,
   "n_users": 15,
   "n_activities": 105,
   "metrics": {
-    "train_rmse": 0.32483103529023805,
-    "test_rmse": 0.5579466007040349,
-    "train_mae": 0.25537280690153125,
-    "test_mae": 0.43183395203067015,
-    "train_r2": 0.7949434552248762,
-    "test_r2": 0.3837976072511191
+    "train_rmse": 0.3429362079148434,
+    "test_rmse": 0.49451726385672307,
+    "train_mae": 0.26305182016369744,
+    "test_mae": 0.3869235493310909,
+    "train_r2": 0.7819917863834311,
+    "test_r2": 0.522145638043817
   },
   "feature_importance": [
     {
       "feature": "interest_match",
-      "importance": 0.4342606770457929
+      "importance": 0.4264188971784134
     },
     {
       "feature": "priority_score",
-      "importance": 0.1326423988138611
+      "importance": 0.14754931559848758
     },
     {
       "feature": "vehicle_compatible",
-      "importance": 0.12597061641366583
+      "importance": 0.10342569087588722
     },
     {
       "feature": "cost",
-      "importance": 0.09434653618495363
-    },
-    {
-      "feature": "duration",
-      "importance": 0.05590465238759707
+      "importance": 0.09226757610616733
     },
     {
       "feature": "style_encoded",
-      "importance": 0.04898510020561916
+      "importance": 0.06235526821207129
+    },
+    {
+      "feature": "duration",
+      "importance": 0.05487573223159077
     },
     {
       "feature": "user_budget",
-      "importance": 0.03385857528219631
+      "importance": 0.03519818278798964
     },
     {
       "feature": "budget_encoded",
-      "importance": 0.02604588244254361
+      "importance": 0.023967082725602624
     },
     {
       "feature": "vehicle_encoded",
-      "importance": 0.024857977531608347
+      "importance": 0.023376685469673978
     },
     {
       "feature": "type_encoded",
-      "importance": 0.01313000363100882
-    },
-    {
-      "feature": "weather_sensitive",
-      "importance": 0.005357031878401785
+      "importance": 0.012003915310102722
     },
     {
       "feature": "physical_encoded",
-      "importance": 0.004640548182751444
+      "importance": 0.010466411047060769
+    },
+    {
+      "feature": "weather_sensitive",
+      "importance": 0.008095242456952667
     }
   ],
   "feature_columns": [
