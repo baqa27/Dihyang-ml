@@ -221,7 +221,7 @@ export default function SmartItinerary() {
                     <MapPin className="w-4 h-4 inline mr-1.5" style={{ color: c.primary }} />
                     Destinasi Wisata
                   </label>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {destinations.map((d) => (
                       <button
                         key={d}

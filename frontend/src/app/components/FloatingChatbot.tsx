@@ -122,7 +122,7 @@ export default function FloatingChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-end gap-3 w-[calc(100%-2rem)] sm:w-auto">
       {/* Chat Panel */}
       <AnimatePresence>
         {isOpen && (
@@ -131,7 +131,7 @@ export default function FloatingChatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
             transition={{ type: "spring", damping: 22, stiffness: 300 }}
-            className="w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
+            className="w-full sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
             style={{
               border: `1px solid ${c.border}`,
               boxShadow: "0 25px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.05)",
@@ -316,7 +316,7 @@ export default function FloatingChatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="relative flex items-center gap-2.5 pl-4 pr-5 py-3 rounded-full text-white font-semibold shadow-2xl transition-all"
+        className="relative flex items-center gap-2 md:gap-2.5 p-3 md:pl-4 md:pr-5 md:py-3 rounded-full text-white font-semibold shadow-2xl transition-all"
         style={{
           background: isOpen
             ? "linear-gradient(135deg, #374151, #1f2937)"
@@ -345,7 +345,7 @@ export default function FloatingChatbot() {
           )}
         </div>
 
-        <div className="text-left">
+        <div className="text-left hidden md:block">
           <div className="text-sm font-bold leading-tight">DITA</div>
           <div className="text-[10px] leading-tight opacity-80">
             {isOpen ? "Tutup Chat" : "Tanya wisata Dieng"}

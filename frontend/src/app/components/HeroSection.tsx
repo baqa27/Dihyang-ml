@@ -189,15 +189,15 @@ export default function HeroSection() {
               <div className="text-sm mb-4" style={{ color: "#bae6fd" }}>
                 {displayCondition}
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {[
                   { label: "Kelembaban", value: displayHumidity },
                   { label: "Angin", value: displayWind },
                   { label: "Malam nanti", value: "5°C" },
                 ].map((item) => (
-                  <div key={item.label} className="rounded-xl p-2.5 text-center" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
-                    <div className="text-white font-semibold text-sm">{item.value}</div>
-                    <div className="text-xs" style={{ color: "#93c5fd" }}>{item.label}</div>
+                  <div key={item.label} className="rounded-xl p-2 sm:p-2.5 text-center" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+                    <div className="text-white font-semibold text-xs sm:text-sm">{item.value}</div>
+                    <div className="text-[10px] sm:text-xs" style={{ color: "#93c5fd" }}>{item.label}</div>
                   </div>
                 ))}
               </div>
@@ -224,23 +224,23 @@ export default function HeroSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {stats.map(({ icon: Icon, value, label }) => (
                 <div
                   key={label}
-                  className="rounded-2xl p-4 flex items-center gap-3"
+                  className="rounded-2xl p-3 sm:p-4 flex items-center gap-2.5 sm:gap-3"
                   style={{
                     backgroundColor: "rgba(255,255,255,0.1)",
                     backdropFilter: "blur(20px)",
                     border: "1px solid rgba(255,255,255,0.15)",
                   }}
                 >
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(79,209,197,0.2)" }}>
-                    <Icon className="w-5 h-5" style={{ color: c.primary }} />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(79,209,197,0.2)" }}>
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: c.primary }} />
                   </div>
                   <div>
-                    <div className="text-white font-bold text-lg leading-none">{value}</div>
-                    <div className="text-xs mt-0.5" style={{ color: c.primaryLight }}>{label}</div>
+                    <div className="text-white font-bold text-sm sm:text-lg leading-none">{value}</div>
+                    <div className="text-[10px] sm:text-xs mt-0.5" style={{ color: c.primaryLight }}>{label}</div>
                   </div>
                 </div>
               ))}

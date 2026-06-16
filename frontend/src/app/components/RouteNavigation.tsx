@@ -158,6 +158,16 @@ export default function RouteNavigation() {
   const [showClosed, setShowClosed] = useState(true);
   const colors = useThemeColors();
 
+  const [mapHeight, setMapHeight] = useState(680);
+  useEffect(() => {
+    const handleResize = () => {
+      setMapHeight(window.innerWidth >= 1024 ? 680 : 450);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // ML route safety predictions keyed by route id
   const [mlSafety, setMlSafety] = useState<Record<string, any>>({});
 
@@ -281,16 +291,15 @@ export default function RouteNavigation() {
         {/* ─── TAB: Status Rute ─── */}
         {activeTab === "rute" && (
           <div
-            className="flex rounded-3xl overflow-hidden border shadow-lg"
-            style={{ borderColor: colors.border, height: "680px" }}
+            className="flex flex-col lg:flex-row rounded-3xl overflow-hidden border shadow-lg h-[900px] lg:h-[680px]"
+            style={{ borderColor: colors.border }}
           >
             {/* ── Left Sidebar ── */}
             <div
-              className="flex flex-col overflow-hidden flex-shrink-0"
+              className="flex flex-col overflow-hidden w-full lg:w-[360px] h-[450px] lg:h-full flex-shrink-0 border-b lg:border-b-0 lg:border-r"
               style={{
-                width: "360px",
                 backgroundColor: colors.bgSurface,
-                borderRight: `1px solid ${colors.border}`,
+                borderColor: colors.border,
               }}
             >
               {/* Sidebar header: title + filter */}
@@ -577,11 +586,11 @@ export default function RouteNavigation() {
             </div>
 
             {/* ── Map Panel ── */}
-            <div className="flex-1 relative z-0">
+            <div className="flex-1 relative z-0 h-[450px] lg:h-full">
               <RouteMap
                 activeRouteId={expandedRoute}
                 onRouteClick={(id) => setExpandedRoute(expandedRoute === id ? null : id)}
-                height={680}
+                height={mapHeight}
               />
             </div>
           </div>
