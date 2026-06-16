@@ -1,0 +1,13 @@
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+.git
+.gitignore
+notebooks
+tests
+*.md
+.env.example
+setup.py
+Makefile

@@ -1,21 +1,45 @@
-version: '3.8'
 
 services:
   backend:
     build: ./backend
+    container_name: dihyang-backend
     ports:
-      - "8000:8000"
+      - "${BACKEND_PORT:-8000}:8000"
+    env_file:
+      - ./backend/.env
     environment:
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
     volumes:
       - ./backend/app/data:/app/app/data
       - ./backend/app/models/saved:/app/app/models/saved
+    networks:
+      - dihyang-network
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
 
   frontend:
     build: ./frontend
+    container_name: dihyang-frontend
     ports:
-      - "5173:5173"
+      - "${FRONTEND_PORT:-5173}:5173"
+    environment:
+      - VITE_API_URL=http://dihyang-backend:8000
+      - VITE_WS_URL=ws://dihyang-backend:8000
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    networks:
+      - dihyang-network
     restart: unless-stopped
+
+networks:
+  dihyang-network:
+    name: dihyang-network
+    driver: bridge
