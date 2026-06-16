@@ -339,34 +339,31 @@ export default function WeatherDashboard() {
             <h3 className="font-bold text-base mb-4" style={{ color: c.textPrimary }}>
               Prakiraan 7 Hari
             </h3>
-            <div 
-              className="flex lg:grid lg:grid-cols-7 gap-2 overflow-x-auto pb-2 scrollbar-none"
-              style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
-            >
+            <div className="grid grid-cols-7 gap-1 sm:gap-2">
               {displayForecastData.map((day, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveDay(i)}
-                  className="flex-shrink-0 w-16 sm:w-20 lg:w-auto flex flex-col items-center gap-1.5 p-2.5 rounded-2xl transition-all hover:scale-105"
+                  className="flex flex-col items-center gap-1 p-1 sm:p-2.5 rounded-xl sm:rounded-2xl transition-all hover:scale-105 w-full"
                   style={{
                     backgroundColor: activeDay === i ? c.navBg : day.rain >= 50 ? c.dangerBg : c.bgTint,
                     border: day.rain >= 50 ? `1.5px solid ${c.dangerBorder}` : "1.5px solid transparent",
                     transform: activeDay === i ? "scale(1.05)" : "scale(1)",
                   }}
                 >
-                  <div className="text-[10px] font-semibold" style={{ color: activeDay === i ? c.primaryLight : c.textMuted }}>
+                  <div className="text-[9px] sm:text-[10px] font-semibold" style={{ color: activeDay === i ? c.primaryLight : c.textMuted }}>
                     {day.day}
                   </div>
-                  <span className="text-xl">{day.icon}</span>
-                  <div className="text-xs font-bold" style={{ color: activeDay === i ? "#ffffff" : c.textPrimary }}>
+                  <span className="text-base sm:text-xl">{day.icon}</span>
+                  <div className="text-[10px] sm:text-xs font-bold" style={{ color: activeDay === i ? "#ffffff" : c.textPrimary }}>
                     {day.maxTemp}°
                   </div>
-                  <div className="text-[10px]" style={{ color: activeDay === i ? c.primaryLight : c.textMuted }}>
+                  <div className="text-[9px] sm:text-[10px]" style={{ color: activeDay === i ? c.primaryLight : c.textMuted }}>
                     {day.minTemp}°
                   </div>
                   {day.rain >= 50 && (
                     <div
-                      className="text-[9px] px-1.5 py-0.5 rounded-full font-medium"
+                      className="text-[7.5px] sm:text-[9px] px-1 sm:px-1.5 py-0.5 rounded-full font-medium"
                       style={{ backgroundColor: activeDay === i ? "rgba(239,68,68,0.3)" : c.dangerBg, color: activeDay === i ? "#fca5a5" : c.dangerText }}
                     >
                       {day.rain}%
@@ -416,37 +413,30 @@ export default function WeatherDashboard() {
               </div>
               <Thermometer className="w-5 h-5" style={{ color: c.primary }} />
             </div>
-            <div 
-              className="overflow-x-auto pb-2 scrollbar-none" 
-              style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
-            >
-              <div className="min-w-[480px] md:min-w-0">
-                <ResponsiveContainer width="100%" height={200}>
-                  <AreaChart data={displayTempTrendData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="tempGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={c.primary} stopOpacity={0.3} />
-                        <stop offset="95%" stopColor={c.primary} stopOpacity={0} />
-                      </linearGradient>
-                      <linearGradient id="feelsGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor={c.accent} stopOpacity={0.2} />
-                        <stop offset="95%" stopColor={c.accent} stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke={c.borderLight} />
-                    <XAxis dataKey="time" tick={{ fontSize: 10, fill: c.textMuted }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 10, fill: c.textMuted }} axisLine={false} tickLine={false} domain={[0, 22]} unit="°" />
-                    <Tooltip
-                      contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", backgroundColor: c.bgSurface, color: c.textPrimary }}
-                      formatter={(value: number, name: string) => [`${value}°C`, name]}
-                    />
-                    <Legend iconType="circle" iconSize={8} />
-                    <Area key="suhu" type="monotone" dataKey="suhu" name="Suhu" stroke={c.primary} strokeWidth={2.5} fill="url(#tempGrad)" dot={false} activeDot={{ r: 5 }} />
-                    <Area key="terasa" type="monotone" dataKey="terasa" name="Terasa Seperti" stroke={c.accent} strokeWidth={2} fill="url(#feelsGrad)" dot={false} strokeDasharray="4 4" activeDot={{ r: 4 }} />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+            <ResponsiveContainer width="100%" height={200}>
+              <AreaChart data={displayTempTrendData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="tempGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={c.primary} stopOpacity={0.3} />
+                    <stop offset="95%" stopColor={c.primary} stopOpacity={0} />
+                  </linearGradient>
+                  <linearGradient id="feelsGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={c.accent} stopOpacity={0.2} />
+                    <stop offset="95%" stopColor={c.accent} stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke={c.borderLight} />
+                <XAxis dataKey="time" tick={{ fontSize: 9, fill: c.textMuted }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+                <YAxis tick={{ fontSize: 9, fill: c.textMuted }} axisLine={false} tickLine={false} domain={[0, 22]} unit="°" />
+                <Tooltip
+                  contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", backgroundColor: c.bgSurface, color: c.textPrimary }}
+                  formatter={(value: number, name: string) => [`${value}°C`, name]}
+                />
+                <Legend iconType="circle" iconSize={8} />
+                <Area key="suhu" type="monotone" dataKey="suhu" name="Suhu" stroke={c.primary} strokeWidth={2.5} fill="url(#tempGrad)" dot={false} activeDot={{ r: 5 }} />
+                <Area key="terasa" type="monotone" dataKey="terasa" name="Terasa Seperti" stroke={c.accent} strokeWidth={2} fill="url(#feelsGrad)" dot={false} strokeDasharray="4 4" activeDot={{ r: 4 }} />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
 
           {/* Rainfall Chart */}
@@ -463,30 +453,23 @@ export default function WeatherDashboard() {
               </div>
               <CloudRain className="w-5 h-5" style={{ color: "#0ea5e9" }} />
             </div>
-            <div 
-              className="overflow-x-auto pb-2 scrollbar-none" 
-              style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
-            >
-              <div className="min-w-[480px] md:min-w-0">
-                <ResponsiveContainer width="100%" height={200}>
-                  <BarChart data={displayRainfallData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke={c.borderLight} />
-                    <XAxis dataKey="day" tick={{ fontSize: 10, fill: c.textMuted }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 10, fill: c.textMuted }} axisLine={false} tickLine={false} />
-                    <Tooltip
-                      contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", backgroundColor: c.bgSurface, color: c.textPrimary }}
-                      formatter={(value: number, name: string) => [
-                        name === "Curah Hujan (mm)" ? `${value} mm` : `${value}%`,
-                        name,
-                      ]}
-                    />
-                    <Legend iconType="circle" iconSize={8} />
-                    <Bar key="curah" dataKey="curah" name="Curah Hujan (mm)" fill="#0ea5e9" radius={[6, 6, 0, 0]} maxBarSize={30} />
-                    <Bar key="peluang" dataKey="peluang" name="Peluang (%)" fill="#bae6fd" radius={[6, 6, 0, 0]} maxBarSize={30} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={displayRainfallData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke={c.borderLight} />
+                <XAxis dataKey="day" tick={{ fontSize: 9, fill: c.textMuted }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 9, fill: c.textMuted }} axisLine={false} tickLine={false} />
+                <Tooltip
+                  contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", backgroundColor: c.bgSurface, color: c.textPrimary }}
+                  formatter={(value: number, name: string) => [
+                    name === "Curah Hujan (mm)" ? `${value} mm` : `${value}%`,
+                    name,
+                  ]}
+                />
+                <Legend iconType="circle" iconSize={8} />
+                <Bar key="curah" dataKey="curah" name="Curah Hujan (mm)" fill="#0ea5e9" radius={[6, 6, 0, 0]} maxBarSize={30} />
+                <Bar key="peluang" dataKey="peluang" name="Peluang (%)" fill="#bae6fd" radius={[6, 6, 0, 0]} maxBarSize={30} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
