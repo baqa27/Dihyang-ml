@@ -275,7 +275,7 @@ def train_temperature_model(df: pd.DataFrame):
     imp = pd.Series(model.feature_importances_, index=FEATURE_COLS).nlargest(5)
     print("  Top 5 features:", dict(imp.round(4)))
 
-    joblib.dump(model,  os.path.join(MODEL_DIR, "temperature_model.pkl"))
+    joblib.dump(model,  os.path.join(MODEL_DIR, "temperature_model.pkl"), compress=3)
     joblib.dump(scaler, os.path.join(MODEL_DIR, "temp_scaler.pkl"))
 
     return model, scaler, {"mae": mae, "rmse": rmse, "r2": r2, "cv_r2": float(cv.mean())}

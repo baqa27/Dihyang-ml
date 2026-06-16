@@ -49,6 +49,7 @@ Thumbs.db
 
 # ML Models (too large for git - use Git LFS or download separately)
 *.pkl
+!backend/app/models/saved/*.pkl
 *.h5
 *.pt
 *.pth
