@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, Legend,
@@ -333,18 +333,18 @@ export default function WeatherDashboard() {
 
           {/* 7-Day Forecast */}
           <div
-            className="rounded-3xl p-5 col-span-2 shadow-sm border"
+            className="rounded-3xl p-5 col-span-1 lg:col-span-2 shadow-sm border"
             style={{ backgroundColor: c.bgSurface, borderColor: c.border }}
           >
             <h3 className="font-bold text-base mb-4" style={{ color: c.textPrimary }}>
               Prakiraan 7 Hari
             </h3>
-            <div className="grid grid-cols-7 gap-2">
+            <div className="flex lg:grid lg:grid-cols-7 gap-2 overflow-x-auto pb-2 scrollbar-none">
               {displayForecastData.map((day, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveDay(i)}
-                  className="flex flex-col items-center gap-1.5 p-2 rounded-2xl transition-all hover:scale-105"
+                  className="flex-shrink-0 w-12 lg:w-auto flex flex-col items-center gap-1.5 p-2 rounded-2xl transition-all hover:scale-105"
                   style={{
                     backgroundColor: activeDay === i ? c.navBg : day.rain >= 50 ? c.dangerBg : c.bgTint,
                     border: day.rain >= 50 ? `1.5px solid ${c.dangerBorder}` : "1.5px solid transparent",
@@ -380,7 +380,7 @@ export default function WeatherDashboard() {
               <div className="text-sm font-semibold mb-3" style={{ color: c.textPrimary }}>
                 {displayForecastData[activeDay]?.day}, {displayForecastData[activeDay]?.date} - {displayForecastData[activeDay]?.condition}
               </div>
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { label: "Maks / Min", value: `${displayForecastData[activeDay]?.maxTemp}° / ${displayForecastData[activeDay]?.minTemp}°` },
                   { label: "Curah Hujan", value: `${displayForecastData[activeDay]?.rain}%` },

@@ -122,7 +122,7 @@ export default function FloatingChatbot() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-end gap-3 w-[calc(100%-2rem)] sm:w-auto">
+    <div className="fixed bottom-4 right-4 sm:right-6 sm:bottom-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
       {/* Chat Panel */}
       <AnimatePresence>
         {isOpen && (
@@ -131,7 +131,7 @@ export default function FloatingChatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
             transition={{ type: "spring", damping: 22, stiffness: 300 }}
-            className="w-full sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
+            className="w-[calc(100vw-2rem)] sm:w-96 rounded-3xl overflow-hidden shadow-2xl pointer-events-auto"
             style={{
               border: `1px solid ${c.border}`,
               boxShadow: "0 25px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.05)",
@@ -316,7 +316,7 @@ export default function FloatingChatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="relative flex items-center gap-2 md:gap-2.5 p-3 md:pl-4 md:pr-5 md:py-3 rounded-full text-white font-semibold shadow-2xl transition-all"
+        className="relative flex items-center gap-2 md:gap-2.5 p-3 md:pl-4 md:pr-5 md:py-3 rounded-full text-white font-semibold shadow-2xl transition-all pointer-events-auto"
         style={{
           background: isOpen
             ? "linear-gradient(135deg, #374151, #1f2937)"
