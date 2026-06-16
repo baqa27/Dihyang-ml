@@ -17,9 +17,9 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (large files)
-app/data/*.json
-app/data/*.csv
+# Data (ignore only temporary/generated files)
+app/data/dieng_realtime_current.json
+app/data/chroma_db/
 !app/data/.gitkeep
 
 # Models (if too large for git)

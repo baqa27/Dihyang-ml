@@ -1,0 +1,733 @@
+[
+  {
+    "id": 1,
+    "name": "Tiket Kawasan",
+    "category": "Umum",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 50000,
+    "parking_motor": 0,
+    "parking_mobil": 0,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2069,
+      "lon": 109.91
+    },
+    "notes": "Tiket wajib saat melintasi gerbang utama kawasan Dieng. Retribusi ini masuk ke dana PEMDA untuk peme",
+    "description": "Tiket wajib saat melintasi gerbang utama kawasan Dieng. Retribusi ini masuk ke dana PEMDA untuk pemeliharaan fasilitas umum."
+  },
+  {
+    "id": 2,
+    "name": "Pandangan Petama",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.258,
+      "lon": 109.925
+    },
+    "notes": "Menawarkan sisi lain untuk menikmati keindahan lanskap Telaga Menjer dari atas. Selain sebagai spot ",
+    "description": "Menawarkan sisi lain untuk menikmati keindahan lanskap Telaga Menjer dari atas. Selain sebagai spot pandang, area ini juga menyediakan lahan yang bisa dimanfaatkan wisatawan untuk mendirikan tenda (camping) dan kegiatan rekreasi luar ruang lainnya."
+  },
+  {
+    "id": 3,
+    "name": "Telaga Menjer",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 5000,
+    "retribusi_asing": 15000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.26,
+      "lon": 109.92
+    },
+    "notes": "Danau vulkanik terluas di area Garung. Pengunjung bisa menyewa perahu kayu dengan biaya Rp 20.000,00",
+    "description": "Danau vulkanik terluas di area Garung. Pengunjung bisa menyewa perahu kayu dengan biaya Rp 20.000,00 atau berfoto dengan latar pegunungan yang asri."
+  },
+  {
+    "id": 4,
+    "name": "Bukit Cinta",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.255,
+      "lon": 109.918
+    },
+    "notes": "Spot rekreasi dan berfoto dengan sudut pandang dari ketinggian yang menghadap langsung ke Telaga Men",
+    "description": "Spot rekreasi dan berfoto dengan sudut pandang dari ketinggian yang menghadap langsung ke Telaga Menjer."
+  },
+  {
+    "id": 5,
+    "name": "Kahyangan Skyline",
+    "category": "Alam",
+    "retribusi_lokal": 20000,
+    "retribusi_asing": 20000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.257,
+      "lon": 109.922
+    },
+    "notes": "Destinasi modern bernuansa outdoor. Memiliki ikon jembatan kaca dan jaring gantung sebagai spot foto",
+    "description": "Destinasi modern bernuansa outdoor. Memiliki ikon jembatan kaca dan jaring gantung sebagai spot foto dengan latar Telaga Menjer."
+  },
+  {
+    "id": 6,
+    "name": "Bukit Saroja",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 25000,
+    "retribusi_asing": 25000,
+    "parking_motor": 10000,
+    "parking_mobil": 20000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.235,
+      "lon": 109.88
+    },
+    "notes": "Wisata alam yang menawarkan jalur pendakian via Desa Tieng. Memiliki trek yang relatif mudah sehingg",
+    "description": "Wisata alam yang menawarkan jalur pendakian via Desa Tieng. Memiliki trek yang relatif mudah sehingga sangat direkomendasikan bagi pengunjung yang hobi hiking santai. Menawarkan pemandangan alam yang indah dan merupakan lokasi yang sangat cocok untuk menikmati sunrise (matahari terbit)."
+  },
+  {
+    "id": 7,
+    "name": "Panama",
+    "category": "Agrowisata",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 3000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.245,
+      "lon": 109.89
+    },
+    "notes": "Dikenal sebagai Kebun Teh Panama. Memiliki fasilitas boardwalk (jembatan kayu) di tengah hamparan ke",
+    "description": "Dikenal sebagai Kebun Teh Panama. Memiliki fasilitas boardwalk (jembatan kayu) di tengah hamparan kebun teh untuk pejalan kaki dan spot foto."
+  },
+  {
+    "id": 8,
+    "name": "Swiss Van Java",
+    "category": "Alam",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 0,
+    "parking_mobil": 0,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.25,
+      "lon": 109.91
+    },
+    "notes": "Area viewpoint dengan lanskap pegunungan hijau dan tatanan alam yang sering disandingkan dengan kein",
+    "description": "Area viewpoint dengan lanskap pegunungan hijau dan tatanan alam yang sering disandingkan dengan keindahan pedesaan Swiss."
+  },
+  {
+    "id": 9,
+    "name": "Curug Sikarim",
+    "category": "Alam - Air Terjun",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.23,
+      "lon": 109.892
+    },
+    "notes": "Air terjun eksotis dengan debit air deras. Akses jalannya menanjak tajam dan cukup ekstrem, menuntut",
+    "description": "Air terjun eksotis dengan debit air deras. Akses jalannya menanjak tajam dan cukup ekstrem, menuntut kondisi kendaraan yang prima."
+  },
+  {
+    "id": 10,
+    "name": "Telaga Cebong",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 0,
+    "retribusi_asing": 0,
+    "parking_motor": 5000,
+    "parking_mobil": 15000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.224,
+      "lon": 109.899
+    },
+    "notes": "Titik kumpul utama dan area camping ground bagi wisatawan yang bersiap untuk melakukan pendakian ke ",
+    "description": "Titik kumpul utama dan area camping ground bagi wisatawan yang bersiap untuk melakukan pendakian ke Bukit Sikunir saat subuh."
+  },
+  {
+    "id": 11,
+    "name": "Bukit Sikunir",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 30000,
+    "parking_motor": 5000,
+    "parking_mobil": 15000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.225,
+      "lon": 109.9
+    },
+    "notes": "Destinasi terpopuler untuk berburu Golden Sunrise. Jalur pendakiannya berupa anak tangga yang tertat",
+    "description": "Destinasi terpopuler untuk berburu Golden Sunrise. Jalur pendakiannya berupa anak tangga yang tertata, memakan waktu sekitar 30-45 menit."
+  },
+  {
+    "id": 12,
+    "name": "Gunung Bismo Via Sikunang",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 35000,
+    "retribusi_asing": 35000,
+    "parking_motor": 10000,
+    "parking_mobil": 20000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.24,
+      "lon": 109.87
+    },
+    "notes": "Jalur pendakian Gunung Bismo yang relatif lebih singkat. Biaya parkir dihitung untuk tarif menginap ",
+    "description": "Jalur pendakian Gunung Bismo yang relatif lebih singkat. Biaya parkir dihitung untuk tarif menginap (camping)."
+  },
+  {
+    "id": 13,
+    "name": "Kawah Sikidang Pintu A dan Komplek Candi Arjuna",
+    "category": "Alam - Kawah",
+    "retribusi_lokal": 35000,
+    "retribusi_asing": 50000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2125,
+      "lon": 109.9064
+    },
+    "notes": "Tiket terusan (bundling) untuk dua ikon wisata Dieng. Pintu A adalah gerbang utama yang terintegrasi",
+    "description": "Tiket terusan (bundling) untuk dua ikon wisata Dieng. Pintu A adalah gerbang utama yang terintegrasi dengan deretan panjang kios oleh-oleh."
+  },
+  {
+    "id": 14,
+    "name": "Kawah Sikidang Pintu B dan Komplek Candi Arjuna",
+    "category": "Alam - Kawah",
+    "retribusi_lokal": 35000,
+    "retribusi_asing": 50000,
+    "parking_motor": 2000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.213,
+      "lon": 109.907
+    },
+    "notes": "Tiket terusan (bundling). Akses alternatif dengan rute perjalanan yang relatif lebih dekat karena ha",
+    "description": "Tiket terusan (bundling). Akses alternatif dengan rute perjalanan yang relatif lebih dekat karena hanya putar balik. Pengunjung tidak perlu berjalan jauh melewati deretan kios, sehingga sangat cocok untuk wisatawan yang tidak kuat berjalan jauh atau lansia."
+  },
+  {
+    "id": 15,
+    "name": "Candi Bima",
+    "category": "Budaya/Edukasi",
+    "retribusi_lokal": 0,
+    "retribusi_asing": 0,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2153,
+      "lon": 109.9142
+    },
+    "notes": "Candi dengan corak arsitektur khas India Utara. Berlokasi tepat di pinggir jalan utama menuju Kawah ",
+    "description": "Candi dengan corak arsitektur khas India Utara. Berlokasi tepat di pinggir jalan utama menuju Kawah Sikidang Pintu A."
+  },
+  {
+    "id": 16,
+    "name": "Dieng Pelataue Theater",
+    "category": "Budaya/Edukasi",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 15000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2083,
+      "lon": 109.9056
+    },
+    "notes": "Teater bioskop mini (Dieng Plateau Theater) yang memutar film dokumenter tentang sejarah letusan gun",
+    "description": "Teater bioskop mini (Dieng Plateau Theater) yang memutar film dokumenter tentang sejarah letusan gunung, geografi, dan budaya masyarakat Dieng."
+  },
+  {
+    "id": 17,
+    "name": "Batu Pandang Ratapan Angin",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 20000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2108,
+      "lon": 109.9167
+    },
+    "notes": "Destinasi favorit berisi bebatuan tebing menjulang tinggi. Ini adalah titik terbaik untuk melihat gr",
+    "description": "Destinasi favorit berisi bebatuan tebing menjulang tinggi. Ini adalah titik terbaik untuk melihat gradasi warna Telaga Warna dan Telaga Pengilon dari atas."
+  },
+  {
+    "id": 18,
+    "name": "Telaga Warna",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 27000,
+    "retribusi_asing": 60000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2167,
+      "lon": 109.915
+    },
+    "notes": "Danau vulkanik di kawasan konservasi BKSDA yang airnya bisa memantulkan warna berbeda karena kandung",
+    "description": "Danau vulkanik di kawasan konservasi BKSDA yang airnya bisa memantulkan warna berbeda karena kandungan sulfur. Area ini rimbun dan sakral karena di pulaunya terdapat banyak gua."
+  },
+  {
+    "id": 19,
+    "name": "Kebun Teh Tambi",
+    "category": "Agrowisata",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 2000,
+    "parking_mobil": 7000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.27,
+      "lon": 109.85
+    },
+    "notes": "Wisata agro peninggalan Belanda. Wisatawan bisa berkeliling hamparan kebun teh yang luas, atau mengi",
+    "description": "Wisata agro peninggalan Belanda. Wisatawan bisa berkeliling hamparan kebun teh yang luas, atau mengikuti tur pabrik teh (ada biaya terpisah)."
+  },
+  {
+    "id": 20,
+    "name": "Taman Langit",
+    "category": "Rekreasi",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.22,
+      "lon": 109.885
+    },
+    "notes": "Area wisata dataran tinggi yang didesain untuk bersantai menikmati lanskap perbukitan. Merupakan spo",
+    "description": "Area wisata dataran tinggi yang didesain untuk bersantai menikmati lanskap perbukitan. Merupakan spot yang sangat direkomendasikan untuk melihat sunrise, dengan suasana dan pemandangan yang hampir sama indahnya dengan Watu Angkruk."
+  },
+  {
+    "id": 21,
+    "name": "Watu Angkruk",
+    "category": "Alam",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 3000,
+    "parking_mobil": 7000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.22,
+      "lon": 109.887
+    },
+    "notes": "Destinasi populer untuk melihat sunrise tanpa perlu mendaki jauh. Tersedia spot jembatan kaca (glass",
+    "description": "Destinasi populer untuk melihat sunrise tanpa perlu mendaki jauh. Tersedia spot jembatan kaca (glass skywalk) dan kereta kencana tembaga."
+  },
+  {
+    "id": 22,
+    "name": "Bukit Sikapuk",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 3000,
+    "parking_mobil": 7000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.218,
+      "lon": 109.883
+    },
+    "notes": "Area lereng bukit yang menawarkan pemandangan hamparan awan dan pegunungan. Alternatif yang tenang u",
+    "description": "Area lereng bukit yang menawarkan pemandangan hamparan awan dan pegunungan. Alternatif yang tenang untuk menikmati sunrise dan berfoto."
+  },
+  {
+    "id": 23,
+    "name": "Gunung Pakuwaja via Parikesit",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 30000,
+    "retribusi_asing": 30000,
+    "parking_motor": 10000,
+    "parking_mobil": 25000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.21,
+      "lon": 109.875
+    },
+    "notes": "Jalur pendakian menuju ikon batu vertikal raksasa yang dipercaya sebagai 'paku' penguat Pulau Jawa. ",
+    "description": "Jalur pendakian menuju ikon batu vertikal raksasa yang dipercaya sebagai 'paku' penguat Pulau Jawa. Tarif parkir berlaku untuk inap."
+  },
+  {
+    "id": 24,
+    "name": "Gunung Prau via Igirmranak",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 35000,
+    "retribusi_asing": 30000,
+    "parking_motor": 10000,
+    "parking_mobil": 25000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.19,
+      "lon": 109.92
+    },
+    "notes": "Jalur pendakian Prau yang relatif landai namun berdurasi lebih panjang. Cocok untuk pendaki yang ing",
+    "description": "Jalur pendakian Prau yang relatif landai namun berdurasi lebih panjang. Cocok untuk pendaki yang ingin menghindari keramaian. Tarif parkir inap."
+  },
+  {
+    "id": 25,
+    "name": "Gunung Prau via Patakbanteng",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 40000,
+    "retribusi_asing": 40000,
+    "parking_motor": 10000,
+    "parking_mobil": 20000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.185,
+      "lon": 109.915
+    },
+    "notes": "Jalur pendakian Gunung Prau yang paling ramai dan populer. Treknya menanjak namun rutenya paling sin",
+    "description": "Jalur pendakian Gunung Prau yang paling ramai dan populer. Treknya menanjak namun rutenya paling singkat menuju area sabana. Tarif parkir inap."
+  },
+  {
+    "id": 26,
+    "name": "Gunung Prau via Kali Lembu",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 35000,
+    "retribusi_asing": 35000,
+    "parking_motor": 10000,
+    "parking_mobil": 25000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.192,
+      "lon": 109.91
+    },
+    "notes": "Jalur alternatif menuju puncak Prau yang lebih tenang. Didominasi trek panjang melipir perbukitan. T",
+    "description": "Jalur alternatif menuju puncak Prau yang lebih tenang. Didominasi trek panjang melipir perbukitan. Tarif parkir inap."
+  },
+  {
+    "id": 27,
+    "name": "Gunung Paru via Dieng",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 30000,
+    "retribusi_asing": 30000,
+    "parking_motor": 10000,
+    "parking_mobil": 25000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.195,
+      "lon": 109.905
+    },
+    "notes": "Rute pendakian klasik dari kawasan inti Dieng, akan melintasi area yang sering disebut sebagai Bukit",
+    "description": "Rute pendakian klasik dari kawasan inti Dieng, akan melintasi area yang sering disebut sebagai Bukit Teletubbies."
+  },
+  {
+    "id": 28,
+    "name": "Tuk Bimolukar",
+    "category": "Alam",
+    "retribusi_lokal": 5000,
+    "retribusi_asing": 5000,
+    "parking_motor": 2000,
+    "parking_mobil": 2000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2119,
+      "lon": 109.9094
+    },
+    "notes": "Mata air kuno yang disucikan dan bersejarah. Airnya sangat dingin, dan penduduk lokal percaya bahwa ",
+    "description": "Mata air kuno yang disucikan dan bersejarah. Airnya sangat dingin, dan penduduk lokal percaya bahwa mencuci muka di sini dapat membuat awet muda."
+  },
+  {
+    "id": 29,
+    "name": "Bukit Scoter",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.206,
+      "lon": 109.908
+    },
+    "notes": "Bukit landai yang sangat dekat dengan pusat desa Dieng Kulon. Spot santai terbaik untuk melihat lans",
+    "description": "Bukit landai yang sangat dekat dengan pusat desa Dieng Kulon. Spot santai terbaik untuk melihat lanskap desa, persawahan, dan kawasan candi."
+  },
+  {
+    "id": 30,
+    "name": "Bukit Sipandu",
+    "category": "Alam - Pendakian/Viewpoint",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 5000,
+    "parking_mobil": 15000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.24,
+      "lon": 109.93
+    },
+    "notes": "Berada di perbatasan Banjarnegara dan Batang. Menawarkan lanskap sabana dan padang rumput ilalang de",
+    "description": "Berada di perbatasan Banjarnegara dan Batang. Menawarkan lanskap sabana dan padang rumput ilalang dengan view pegunungan utara Jawa."
+  },
+  {
+    "id": 31,
+    "name": "D-Qiano Water Park",
+    "category": "Rekreasi Air",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 30000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.205,
+      "lon": 109.902
+    },
+    "notes": "Taman rekreasi air terbesar di area Dieng. Menyediakan kolam renang air panas bumi alami, dilengkapi",
+    "description": "Taman rekreasi air terbesar di area Dieng. Menyediakan kolam renang air panas bumi alami, dilengkapi berbagai fasilitas seluncuran air."
+  },
+  {
+    "id": 32,
+    "name": "Banyu Alam Hot Spring",
+    "category": "Rekreasi Air",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 3000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.203,
+      "lon": 109.9
+    },
+    "notes": "Pemandian air panas alami yang ideal untuk berendam merelaksasikan otot-otot di tengah cuaca Dieng y",
+    "description": "Pemandian air panas alami yang ideal untuk berendam merelaksasikan otot-otot di tengah cuaca Dieng yang membekukan."
+  },
+  {
+    "id": 33,
+    "name": "Pemandian Air Panas Bitingan",
+    "category": "Rekreasi Air",
+    "retribusi_lokal": 5000,
+    "retribusi_asing": 5000,
+    "parking_motor": 2000,
+    "parking_mobil": 0,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.209,
+      "lon": 109.912
+    },
+    "notes": "Fasilitas pemandian tradisional berbahan dasar mata air panas vulkanik yang dikelola secara komunal ",
+    "description": "Fasilitas pemandian tradisional berbahan dasar mata air panas vulkanik yang dikelola secara komunal oleh warga lokal setempat."
+  },
+  {
+    "id": 34,
+    "name": "Museum Kailasa",
+    "category": "Budaya/Edukasi",
+    "retribusi_lokal": 5000,
+    "retribusi_asing": 30000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2075,
+      "lon": 109.9058
+    },
+    "notes": "Museum geologi dan sejarah terlengkap di Dieng. Menyimpan artefak candi, informasi pembentukan alam,",
+    "description": "Museum geologi dan sejarah terlengkap di Dieng. Menyimpan artefak candi, informasi pembentukan alam, letusan kawah, hingga kehidupan sosial budaya."
+  },
+  {
+    "id": 35,
+    "name": "Candi Gatot Kaca",
+    "category": "Budaya/Edukasi",
+    "retribusi_lokal": 0,
+    "retribusi_asing": 0,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2097,
+      "lon": 109.9089
+    },
+    "notes": "Situs peninggalan Mataram Kuno yang terdiri dari candi tunggal. Dapat dikunjungi tanpa tiket karena ",
+    "description": "Situs peninggalan Mataram Kuno yang terdiri dari candi tunggal. Dapat dikunjungi tanpa tiket karena letaknya di ruang terbuka tepi jalan."
+  },
+  {
+    "id": 36,
+    "name": "Telaga Merdada",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 5000,
+    "retribusi_asing": 5000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2189,
+      "lon": 109.9178
+    },
+    "notes": "Telaga dengan area terluas di kawasan Dataran Tinggi Dieng. Perairan ini tidak beracun sehingga seri",
+    "description": "Telaga dengan area terluas di kawasan Dataran Tinggi Dieng. Perairan ini tidak beracun sehingga sering digunakan untuk kayak dan irigasi pertanian."
+  },
+  {
+    "id": 37,
+    "name": "Telaga Sewiwi",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 0,
+    "retribusi_asing": 0,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2195,
+      "lon": 109.92
+    },
+    "notes": "Telaga kecil nan rindang yang biasanya dinikmati saat wisatawan melintas. Pemandangannya hening dan ",
+    "description": "Telaga kecil nan rindang yang biasanya dinikmati saat wisatawan melintas. Pemandangannya hening dan belum banyak infrastruktur komersial."
+  },
+  {
+    "id": 38,
+    "name": "Telaga Sedringo",
+    "category": "Alam - Telaga",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 15000,
+    "parking_motor": 3000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.222,
+      "lon": 109.925
+    },
+    "notes": "Sering disebut sebagai Telaga Dringo. Akses jalannya ekstrem, namun pemandangannya sangat indah bak ",
+    "description": "Sering disebut sebagai Telaga Dringo. Akses jalannya ekstrem, namun pemandangannya sangat indah bak Ranu Kumbolo, menjadikannya surga camping."
+  },
+  {
+    "id": 39,
+    "name": "Kawah Candradimuka",
+    "category": "Alam - Kawah",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 15000,
+    "parking_motor": 2000,
+    "parking_mobil": 7000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.2042,
+      "lon": 109.9125
+    },
+    "notes": "Kawah legendaris yang dikaitkan dengan mitos pewayangan tempat penyucian Gatotkaca. Suasananya masih",
+    "description": "Kawah legendaris yang dikaitkan dengan mitos pewayangan tempat penyucian Gatotkaca. Suasananya masih sangat natural dan cukup tersembunyi."
+  },
+  {
+    "id": 40,
+    "name": "Kebun Teh Kertosari",
+    "category": "Agrowisata",
+    "retribusi_lokal": 7000,
+    "retribusi_asing": 7000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.265,
+      "lon": 109.86
+    },
+    "notes": "Wisata agro alternatif berupa hamparan perkebunan teh yang menghijau dengan udara sejuk, cocok untuk",
+    "description": "Wisata agro alternatif berupa hamparan perkebunan teh yang menghijau dengan udara sejuk, cocok untuk sekadar bersantai menjauh dari keramaian."
+  },
+  {
+    "id": 41,
+    "name": "Dieng Park",
+    "category": "Alam",
+    "retribusi_lokal": 15000,
+    "retribusi_asing": 60000,
+    "parking_motor": 5000,
+    "parking_mobil": 10000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.216,
+      "lon": 109.914
+    },
+    "notes": "Kawasan bukit yang menawarkan titik pantau strategis untuk menikmati pemandangan Telaga Warna dari a",
+    "description": "Kawasan bukit yang menawarkan titik pantau strategis untuk menikmati pemandangan Telaga Warna dari atas. Tempat ini merupakan destinasi yang sangat lengkap karena ideal digunakan untuk melihat sunrise (matahari terbit) pada pagi hari dan sunset (matahari terbenam) pada sore hari."
+  },
+  {
+    "id": 42,
+    "name": "Kebun Teh Sikatok",
+    "category": "Agrowisata",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.268,
+      "lon": 109.855
+    },
+    "notes": "Destinasi agro dengan hamparan daun teh yang memanjakan mata. Terdapat titian jembatan kayu memanjan",
+    "description": "Destinasi agro dengan hamparan daun teh yang memanjakan mata. Terdapat titian jembatan kayu memanjang yang estetik untuk spot berfoto."
+  },
+  {
+    "id": 43,
+    "name": "Taman Rumah Peri",
+    "category": "Rekreasi",
+    "retribusi_lokal": 10000,
+    "retribusi_asing": 10000,
+    "parking_motor": 2000,
+    "parking_mobil": 5000,
+    "open_hour": "07:00",
+    "close_hour": "17:00",
+    "coordinates": {
+      "lat": -7.204,
+      "lon": 109.904
+    },
+    "notes": "Tempat wisata ramah anak dan keluarga yang dikonsep khusus dengan spot foto unik berupa rumah-rumah ",
+    "description": "Tempat wisata ramah anak dan keluarga yang dikonsep khusus dengan spot foto unik berupa rumah-rumah kurcaci dan dekorasi miniatur ala negeri dongeng."
+  }
+]
