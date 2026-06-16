@@ -1,0 +1,17 @@
+{
+  "version_id": "rain_v20260616_111429",
+  "model_type": "rain",
+  "timestamp": "20260616_111429",
+  "datetime": "2026-06-16T11:14:29.090952",
+  "metrics": {
+    "accuracy": 0.9584881486226777,
+    "precision": 0.9467120181405896,
+    "recall": 0.9319196428571429,
+    "f1": 0.9392575928008999
+  },
+  "note": "Dataset: 39,024 records",
+  "files": [
+    "rain_classifier.pkl",
+    "rain_scaler.pkl"
+  ]
+}

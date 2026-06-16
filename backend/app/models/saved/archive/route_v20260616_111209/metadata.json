@@ -1,0 +1,18 @@
+{
+  "version_id": "route_v20260616_111209",
+  "model_type": "route",
+  "timestamp": "20260616_111209",
+  "datetime": "2026-06-16T11:12:09.196760",
+  "metrics": {
+    "accuracy": 1.0,
+    "cv_accuracy": 1.0
+  },
+  "note": "Dataset: 180 samples",
+  "files": [
+    "route_safety_model.pkl",
+    "route_scaler.pkl",
+    "le_surface.pkl",
+    "le_vehicle.pkl",
+    "le_weather.pkl"
+  ]
+}
