@@ -265,8 +265,8 @@ export default function RouteNavigation() {
 
         {/* Tabs */}
         <div
-          className="flex gap-1 p-1 rounded-2xl mb-8 w-fit"
-          style={{ backgroundColor: colors.border }}
+          className="flex gap-1 p-1 rounded-2xl mb-8 w-full max-w-full overflow-x-auto scrollbar-none"
+          style={{ backgroundColor: colors.border, WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
         >
           {([
             { id: "rute", label: "🗺️ Status Rute" },
@@ -276,7 +276,7 @@ export default function RouteNavigation() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
+              className="flex-shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all"
               style={{
                 backgroundColor: activeTab === tab.id ? colors.navBg : "transparent",
                 color: activeTab === tab.id ? "#ffffff" : colors.textSecondary,
