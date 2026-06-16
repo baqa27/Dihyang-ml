@@ -136,7 +136,7 @@ export default function NotificationPanel({ isOpen, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full right-0 mt-2 w-96 rounded-2xl shadow-2xl overflow-hidden z-50"
+            className="absolute top-full right-[-12px] sm:right-0 mt-2 w-[calc(100vw-32px)] sm:w-96 rounded-2xl shadow-2xl overflow-hidden z-50"
             style={{
               backgroundColor: c.bgSurface,
               border: `1px solid ${c.border}`,
@@ -186,12 +186,15 @@ export default function NotificationPanel({ isOpen, onClose }: Props) {
             </div>
 
             {/* Filter tabs */}
-            <div className="flex gap-1 px-4 py-2.5 border-b" style={{ borderColor: c.borderLight, backgroundColor: c.bgTint }}>
+            <div 
+              className="flex gap-1 px-4 py-2.5 border-b overflow-x-auto scrollbar-none max-w-full" 
+              style={{ borderColor: c.borderLight, backgroundColor: c.bgTint, WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
+            >
               {(["semua", "cuaca", "rute", "wisata"] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className="px-3 py-1 rounded-lg text-[11px] font-semibold capitalize transition-all"
+                  className="flex-shrink-0 px-3 py-1 rounded-lg text-[11px] font-semibold capitalize transition-all"
                   style={{
                     backgroundColor: filter === f ? c.navBg : "transparent",
                     color: filter === f ? "#ffffff" : c.textSecondary,
