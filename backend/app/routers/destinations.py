@@ -5,7 +5,7 @@ from ..models.knowledge_base import DESTINATIONS, RETRIBUSI_DATA
 
 router = APIRouter()
 
-@router.get("/")
+@router.get("")
 def get_destinations():
     result = []
     # Gabungkan data DESTINATIONS dengan RETRIBUSI_DATA
