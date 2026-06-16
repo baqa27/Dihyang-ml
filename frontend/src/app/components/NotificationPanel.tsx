@@ -136,7 +136,7 @@ export default function NotificationPanel({ isOpen, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full right-[-12px] sm:right-0 mt-2 w-[calc(100vw-32px)] sm:w-96 rounded-2xl shadow-2xl overflow-hidden z-50"
+            className="fixed sm:absolute top-16 sm:top-full left-4 sm:left-auto right-4 sm:right-0 w-auto sm:w-96 mt-2 rounded-2xl shadow-2xl overflow-hidden z-50"
             style={{
               backgroundColor: c.bgSurface,
               border: `1px solid ${c.border}`,
